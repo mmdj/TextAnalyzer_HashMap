@@ -33,12 +33,17 @@ public class MainActivity extends AppCompatActivity {
         EditTextInput = (EditText) findViewById(R.id.edtTxt_input);
 
 
-        String TextInString = EditTextInput.getText().toString();
-        if (TextInString.isEmpty()) {
-            doToast("There no text for analyze.");
+        String TextInString = null;
+        if (EditTextInput != null) {
+            TextInString = EditTextInput.getText().toString();
         }
 
-        strArray = TextInString.split(" ");
+        if (TextInString.isEmpty()) {                            //checking text
+            doToast("There no text for analyze.");
+            return;
+        }
+
+        strArray = TextInString.split(getString(R.string.spaceForDividingWords));
 
 
         List<Map.Entry<String, Integer>> result = analyzeArray(strArray);
@@ -64,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static List<Map.Entry<String, Integer>> analyzeArray(String[] strArray) {
         HashMap<String, Integer> map = new HashMap<>();
+
         fillMap(map, strArray);
 
         List<Map.Entry<String, Integer>> list = getList(map); //for sorting
@@ -85,10 +91,12 @@ public class MainActivity extends AppCompatActivity {
 
         for (String string : strArray) {
             int value = 1;
-            if (map.containsKey(string)) {
+
+            if (map.containsKey(string) ) {//TODO without points
                 value = map.get(string);
                 value++;
             }
+
             map.put(string, value);
         }
     }
@@ -99,10 +107,9 @@ public class MainActivity extends AppCompatActivity {
      ***********************/
     private void doToast(String message) {
         Context context = getApplicationContext();
-        String text = message;
         int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context, text, duration);
+        Toast toast = Toast.makeText(context, message, duration);
         toast.show();
     }
 }
