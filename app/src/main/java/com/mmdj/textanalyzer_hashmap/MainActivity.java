@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         String TextInString = EditTextInput.getText().toString();
-        if (TextInString == null) {
+        if (TextInString.isEmpty()) {
             doToast("There no text for analyze.");
         }
 
