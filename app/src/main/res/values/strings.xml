@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Text Analyzer (HashMap)</string>
+    <string name="name_btn_analyze">Analyze</string>
+</resources>

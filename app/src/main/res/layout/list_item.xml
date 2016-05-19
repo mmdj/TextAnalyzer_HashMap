@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:text="abc\t\t---- \t\t63"
+    android:layout_width="match_parent"
+    android:paddingStart="16dp"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:listPreferredItemHeight"
+    android:gravity="center_vertical"
+    android:id="@+id/txtVw_listItem"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp">
+
+</TextView>
