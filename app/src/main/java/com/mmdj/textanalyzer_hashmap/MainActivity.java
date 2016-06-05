@@ -5,17 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     EditText EditTextInput;
@@ -26,15 +18,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /****************************************************
-     * Main function
-     ***************************************************/
+    /****************************************************************************
+     *  function to get text from the editText and put into the resultActivity  *
+     ****************************************************************************/
     public void analyzeText(View view) {
-        String[] strArray = new String[0];
+
 
         //doing change to weight of ListView
-        LstVw_Result = (ListView) findViewById(R.id.lstVw_result);
-        LstVw_Result.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0, 1f));
+       // LstVw_Result = (ListView) findViewById(R.id.lstVw_result2);
+       // LstVw_Result.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0, 1f));
 
 
 
@@ -50,78 +42,20 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-         /*** instance 2 to remove punctuation.***/
-        if (TextInString != null) {
+
+
             Intent intent = new Intent(this, Result_Activity.class);
+            intent.putExtra("TextInString", TextInString);
             startActivity(intent);
-            strArray = TextInString.split("[\\p{Punct}\\s]+");
-        }
+           // strArray = TextInString.split("[\\p{Punct}\\s]+");
 
 
-        List<Map.Entry<String, Integer>> result = analyzeArray(strArray);
-
-        ArrayList<String> arList = new ArrayList<>();
-        for (Map.Entry<String, Integer> map : result) {
-            arList.add(String.valueOf(map.getKey() + "\t\t--\t\t " + String.valueOf(map.getValue())));
-        }
-
-        ArrayAdapter<String> txtInListAdapter = new ArrayAdapter<>(
-                this,                           //context
-                R.layout.list_item,    //layout
-                R.id.txtVw_listItem,    //list id
-                arList);
 
 
-        ListView lv = (ListView) findViewById(R.id.lstVw_result);
-        if (lv != null)
-            lv.setAdapter(txtInListAdapter);
 
     }
 
 
-    public static List<Map.Entry<String, Integer>> analyzeArray(String[] strArray) {
-        HashMap<String, Integer> map = new HashMap<>();
-
-        fillMap(map, strArray);
-
-        List<Map.Entry<String, Integer>> list = getList(map); //for sorting
-
-        Collections.sort(list, new EntriesComparator());
-        return list;
-    }
-
-    private static List<Map.Entry<String, Integer>> getList(HashMap<String, Integer> map) {
-        List<Map.Entry<String, Integer>> res = new ArrayList<>();
-
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            res.add(entry);
-        }
-        return res;
-    }
-
-    private static void fillMap(HashMap<String, Integer> map, String[] strArray) {
-
-        for (String string : strArray) {
-            int value = 1;
-
-            /* instance 2 to remove punctuation.
-            if (string.endsWith(".") ||
-                    string.endsWith(",") ||
-                    string.endsWith("!") ||
-                    string.endsWith("?") ||
-                    string.endsWith("-")) {
-                string = string.substring(0, string.length() - 1);
-            }
-            */
-            if (map.containsKey(string)) {
-                value = map.get(string);
-                value++;
-            }
-
-            map.put(string, value);
-        }
-
-    }
 
 
     /************************
@@ -132,5 +66,9 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, message, duration);
         toast.show();
+    }
+
+    public void resetText(View view) {
+        EditTextInput.setText("");
     }
 }
