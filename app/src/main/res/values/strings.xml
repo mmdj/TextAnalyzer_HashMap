@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Text Analyzer (HashMap)</string>
-    <string name="name_btn_analyze">Analyze</string>
+    <string name="app_name">Text Analyzer</string>
+    <string name="btn_analyze">Analyze</string>
     <string name="spaceForDividingWords">" "</string>
+    <string name="EditText_Input_Hint">Put your text here</string>
+    <string name="btn_reset">Reset</string>
 </resources>
