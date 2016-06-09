@@ -20,7 +20,8 @@
             android:layout_height="0dp"
             android:layout_weight="0.3"
             android:id="@+id/edtTxt_input"
-            android:gravity="top|left" />
+            android:gravity="top|left"
+            android:hint="@string/EditText_Input_Hint"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -31,19 +32,22 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/name_btn_analyze"
+                android:text="@string/btn_analyze"
                 android:id="@+id/btn_analyze"
                 android:layout_gravity="center_horizontal"
                 android:onClick="analyzeText"
                 android:layout_marginEnd="16dp"
-                />
+                android:singleLine="false"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reset"
-                android:id="@+id/button"
-                android:layout_marginStart="16dp"/>
+                android:text="@string/btn_reset"
+                android:id="@+id/btn_reset"
+                android:layout_marginStart="16dp"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:onClick="resetText"/>
         </LinearLayout>
 
         <ListView
