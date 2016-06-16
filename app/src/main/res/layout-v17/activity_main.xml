@@ -8,7 +8,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.mmdj.textanalyzer_hashmap.MainActivity">
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -41,9 +40,9 @@
                 android:text="@string/get_address"
                 android:id="@+id/btn_getURL"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:textAlignment="textEnd"
 
-
-                 />
+                />
         </LinearLayout>
 
 
@@ -88,5 +87,4 @@
             android:layout_height="0dp"
             android:layout_weight="0" />
     </LinearLayout>
-
 </RelativeLayout>

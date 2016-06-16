@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">Text Analyzer (HashMap)</string>
-    <string name="name_btn_analyze">Analyze</string>
+    <string name="app_name">Text Analyzer</string>
+    <string name="btn_analyze">Analyze</string>
+    <string name="spaceForDividingWords">" "</string>
+    <string name="EditText_Input_Hint"><font size="15">...or insert your text here</font></string>
+    <string name="EditText_URL_Input_Hint"><font size="15">Insert an internet address here</font></string>
+    <string name="btn_reset">Reset</string>
+    <string name="get_address">Get</string>
 </resources>
