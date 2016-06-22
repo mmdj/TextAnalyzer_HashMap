@@ -34,15 +34,12 @@
 
 
             <Button
-
                 android:layout_width="0dp"
                 android:layout_weight="0.23"
                 android:layout_height="wrap_content"
                 android:text="@string/get_address"
                 android:id="@+id/btn_getURL"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
-
-
                  />
         </LinearLayout>
 

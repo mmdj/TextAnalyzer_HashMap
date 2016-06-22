@@ -10,19 +10,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String LOG_TAG = "analyzer";
+    private final String LOG_TAG = "analyzer";
     private EditText editTextInput;
     private EditText editTextURLInput;
 
+    public EditText getEditTextInput() {
+        return editTextInput;
+    }
+
+    public String getLogTag() {
+        return LOG_TAG;
+    }
 
     // ListView LstVw_Result;
     @Override
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
     /****************************************************************************
      * function to get text from the editText and put into the resultActivity  *
      ****************************************************************************/
@@ -97,84 +101,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    /**
-     * convert InputStream to String
-     */
-    private String getStringsFromInputStream(InputStream is) {
-        StringBuilder sb = new StringBuilder();
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        String line;
-        try {
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            /** finally block to close the {@link BufferedReader} */
+
+    public void get_address(View view) {
+        OpenHTTPConnection mt;
+        if (editTextURLInput.getText().toString().equals("")) {
+            doToast("Address field is empty.");
+        } else {
+            String strURL = editTextURLInput.getText().toString();
+            String TextInString = null;
+
+            Log.d(LOG_TAG, "Connection start");
+            mt = new OpenHTTPConnection();
+            mt.execute(strURL);
+
+
             try {
-                br.close();
-            } catch (IOException e) {
+                editTextInput.setText(mt.get(2, TimeUnit.SECONDS));
+                Log.d(LOG_TAG, "Connection done");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (TimeoutException e) {
                 e.printStackTrace();
             }
+
         }
-        return sb.toString();
     }
-
-
-    /**
-     * get stream from URL
-     *
-     * @throws IOException
-     */
-    private InputStream OpenHttpConnection(String strURL)
-            throws IOException {
-        URLConnection conn;
-        InputStream inputStream = null;
-        URL url = new URL(strURL);
-        conn = url.openConnection();
-        HttpURLConnection httpConn = (HttpURLConnection) conn;
-        httpConn.setRequestMethod("GET");
-        httpConn.connect();
-        if (httpConn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-            inputStream = httpConn.getInputStream();
-        }
-        return inputStream;
-    }
-
 
     public void resetText(View view) {
         editTextInput.setText("");
         editTextURLInput.setText("");
     }
 
-
-    public void get_address(View view) {
-        doToast("Get");
-        Log.d(LOG_TAG, "get_address ok");
-
-
-        if (editTextURLInput != null) {
-            String strURL = editTextURLInput.getText().toString();
-            String TextInString = null;
-
-            try {
-                Log.d(LOG_TAG, "Connection ok1");
-                InputStream is = OpenHttpConnection(strURL);
-                TextInString = getStringsFromInputStream(is);
-                Log.d(LOG_TAG, "Connection ok2");
-            } catch (IOException e) {
-                e.printStackTrace();
-                Log.d(LOG_TAG, "Connection error");
-                doToast("Connection error");
-            }
-            editTextInput.setText(TextInString);
-        } else {
-            doToast("Address field is empty.");
-        }
-
-    }
 
     /************************
      * For toasting!
@@ -185,9 +145,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, message, duration);
         toast.show();
-        Log.d(LOG_TAG, message);
+        Log.d(LOG_TAG, "was Toast: " + message);
     }
-
 
 
 }
