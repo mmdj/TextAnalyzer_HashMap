@@ -10,18 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+
+//import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private final String LOG_TAG = "analyzer";
     private EditText editTextInput;
     private EditText editTextURLInput;
-
-    public EditText getEditTextInput() {
-        return editTextInput;
-    }
 
     public String getLogTag() {
         return LOG_TAG;
@@ -104,27 +103,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void get_address(View view) {
-        OpenHTTPConnection mt;
+        OpenHTTPConnection httpConnection;
         if (editTextURLInput.getText().toString().equals("")) {
             doToast("Address field is empty.");
         } else {
             String strURL = editTextURLInput.getText().toString();
-            String TextInString = null;
+           // String TextInString = null;
 
             Log.d(LOG_TAG, "Connection start");
-            mt = new OpenHTTPConnection();
-            mt.execute(strURL);
+            httpConnection = new OpenHTTPConnection();
+            httpConnection.execute(strURL);
 
 
             try {
-                editTextInput.setText(mt.get(2, TimeUnit.SECONDS));
-                Log.d(LOG_TAG, "Connection done");
+                if(httpConnection.get()=="") {
+                    String command = "ping -c 1 google.com";
+                    if(!(Runtime.getRuntime().exec (command).waitFor() == 0)){
+                        doToast("Internet connection error");
+                    }else doToast("The address is wrong. Try again.");
+                    return;
+                }
+                editTextInput.setText(httpConnection.get(2, TimeUnit.SECONDS));
+
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Log.d(LOG_TAG, "InterruptedException");
             } catch (ExecutionException e) {
-                e.printStackTrace();
+                Log.d(LOG_TAG, "ExecutionException");
             } catch (TimeoutException e) {
-                e.printStackTrace();
+                Log.d(LOG_TAG, "TimeoutException");
+            } catch (IOException e) {
+                Log.d(LOG_TAG, "IOException");
             }
 
         }
@@ -132,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void resetText(View view) {
         editTextInput.setText("");
-        editTextURLInput.setText("");
+        editTextURLInput.setText("http://");
     }
 
 

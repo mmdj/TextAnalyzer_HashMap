@@ -28,7 +28,7 @@
                 android:id="@+id/edtTxt_URL_Input"
                 android:gravity="top|left"
                 android:hint="@string/EditText_URL_Input_Hint"
-
+                android:text="http://"
                 android:inputType="textWebEmailAddress" />
 
 

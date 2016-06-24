@@ -46,10 +46,8 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
             // just want to do an HTTP GET here
             conn.setRequestMethod("GET");
 
-            // uncomment this if you want to write output to this url
-            //connection.setDoOutput(true);
 
-            // give it 15 seconds to respond
+            // give it 10 seconds to respond
             conn.setReadTimeout(10 * 1000);
 
             conn.connect();
