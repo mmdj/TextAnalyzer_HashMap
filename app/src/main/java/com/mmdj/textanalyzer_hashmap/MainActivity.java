@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         if (TextInString == null || TextInString.isEmpty()) {                            //checking text
-            doToast("There no text for analyze.");
+            doToast(getString(R.string.CheckText4Analyze));
             return;
         }
 
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void get_address(View view) {
         OpenHTTPConnection httpConnection;
         if (editTextURLInput.getText().toString().equals("")) {
-            doToast("Address field is empty.");
+            doToast(getString(R.string.CheckAddress));
         } else {
             String strURL = editTextURLInput.getText().toString();
            // String TextInString = null;
@@ -119,8 +119,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(httpConnection.get()=="") {
                     String command = "ping -c 1 google.com";
                     if(!(Runtime.getRuntime().exec (command).waitFor() == 0)){
-                        doToast("Internet connection error");
-                    }else doToast("The address is wrong. Try again.");
+                        doToast(getString(R.string.ConnectionError));
+                    }else {
+                        doToast(getString(R.string.AddressIsWrong));
+                    }
                     return;
                 }
                 editTextInput.setText(httpConnection.get(2, TimeUnit.SECONDS));
@@ -140,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void resetText(View view) {
         editTextInput.setText("");
-        editTextURLInput.setText("http://");
+        editTextURLInput.setText(R.string.http2TextURLInput);
     }
 
 

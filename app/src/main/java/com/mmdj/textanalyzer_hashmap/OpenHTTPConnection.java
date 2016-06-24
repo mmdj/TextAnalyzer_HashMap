@@ -60,12 +60,20 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
 
 
             while ((line = bufferedReader.readLine()) != null) {
+
                 content.append(line).append("\n");
             }
             bufferedReader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return content.toString();
+        String stringForParsing = content.toString();
+        String result  = stringForParsing.replaceAll("(<script(\\s|\\S)*?<\\/script>)|(<style(\\s|\\S)*?<\\/style>)|(<!--(\\s|\\S)*?-->)|(<\\/?(\\s|\\S)*?>)|[\\n]"," ");
+
+        //String result = Arrays.toString(stringForParsing.split
+        //        ("(<script(\\s|\\S)*?<\\/script>)|(<style(\\s|\\S)*?<\\/style>)|(<!--(\\s|\\S)*?-->)|(<\\/?(\\s|\\S)*?>)"));
+        return result;
+        //<[^>]*>
+        // (<script(\s|\S)*?<\/script>)|(<style(\s|\S)*?<\/style>)|(<!--(\s|\S)*?-->)|(<\/?(\s|\S)*?>)
     }
 }
