@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mmdj.textanalyzer_hashmap">
-    <uses-permission android:name="android.permission.INTERNET"/>
+    package="com.mmdj.textanalyzer">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,20 +10,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MainActivity">
+        <activity android:name="com.mmdj.textanalyzer.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".Result_Activity"
-            android:label="Result">
-
-        </activity>
+        <activity
+            android:name="com.mmdj.textanalyzer.Result_Activity"
+            android:label="Result"></activity>
     </application>
 
 </manifest>

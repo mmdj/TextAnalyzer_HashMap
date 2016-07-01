@@ -7,13 +7,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mmdj.textanalyzer_hashmap.MainActivity">
+    tools:context="com.mmdj.textanalyzer.MainActivity">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+
+
 
         <LinearLayout
             android:orientation="horizontal"
@@ -28,19 +30,22 @@
                 android:id="@+id/edtTxt_URL_Input"
                 android:gravity="top|left"
                 android:hint="@string/EditText_URL_Input_Hint"
-                android:text="http://"
+
                 android:inputType="textWebEmailAddress" />
 
 
 
             <Button
+
                 android:layout_width="0dp"
                 android:layout_weight="0.23"
                 android:layout_height="wrap_content"
                 android:text="@string/get_address"
                 android:id="@+id/btn_getURL"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                 />
+
+
+                />
         </LinearLayout>
 
 
