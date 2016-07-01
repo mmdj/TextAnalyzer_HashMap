@@ -130,8 +130,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             String strURL = editTextURLInput.getText().toString();
 
-//TODO!
-            if (!(strURL.matches("http://" + "\\b.*"))||!(strURL.matches("https://" + "\\b.*"))){
+            //add "http://" to URL
+            if (!strURL.startsWith("http")){
                 String strUrlWithHTTP = "http://";
                 strUrlWithHTTP = strUrlWithHTTP.concat(strURL);
                 Log.d(LOG_TAG, "strUrlWithHTTP: " + strUrlWithHTTP + " strURL: " +strURL);

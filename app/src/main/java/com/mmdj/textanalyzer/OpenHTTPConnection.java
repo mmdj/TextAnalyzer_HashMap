@@ -1,7 +1,6 @@
 package com.mmdj.textanalyzer;
 
 import android.os.AsyncTask;
-import android.os.Build;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -10,10 +9,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Objects;
 
 public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
-    private static final String CHARSET = "UTF-8";;
+    private static final String CHARSET = "UTF-8";
     private MainActivity main = new MainActivity();
 
     @Override
@@ -27,23 +25,20 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
             content = OpenHttpConnection(currentURL, CHARSET);
             // Log.d(main.getLogTag(), "content1: done");
             // Log.d(main.getLogTag(), "currentURL = " + currentURL);
-
-            String realCharset = getCharset(content);
-
-
-
-                if (!Objects.equals(CHARSET, realCharset)&&Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (content.toString().contains("harset")) {
+                String realCharset = getCharset(content);
+                if (!CHARSET.equals(realCharset)) {
                     content = OpenHttpConnection(currentURL, realCharset);
                     Log.d(main.getLogTag(), "Encoding HTML: " + realCharset);
                 }
-
-
+            }
             result = getContentWithoutHTML(content);
-            //Log.d(main.getLogTag(), "resultWithoutHTML: " + result);
-
+            Log.d(main.getLogTag(), "resultWithoutHTML: " + result);
 
         } catch (IOException ex) {
-            Log.d(main.getLogTag(), "IOException in Background");
+            Log.d(main.getLogTag(), "IOException in HttpConnection");
+        } catch (NullPointerException e) {
+            Log.d(main.getLogTag(), "NullPointerException in HttpConnection");
         }
 
         return result;
@@ -93,36 +88,40 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
 
     private String getContentWithoutHTML(StringBuilder content) {
         //deleting all tags from HTML:
-        return content.toString().replaceAll("(<script(\\s|\\S)*?<\\/script>)|" +
-                "(<style(\\s|\\S)*?<\\/style>)|" +
-                "(<!--(\\s|\\S)*?-->)|" +
-                "(<\\/?(\\s|\\S)*?>)|" +
-                "[\\n]", " ");
+        return content.toString().replaceAll(main.getString(R.string.getContentWithoutHTML_Regex), " ");
+                //"(<script(\s|\S)*?<\/script>)|(<style(\s|\S)*?<\/style>)|(<!--(\s|\S)*?-->)|(<\/?(\s|\S)*?>)|[\n]";
     }
 
     private String getCharset(StringBuilder content) {
-        // String charset = content.toString().replaceFirst("charset\\s?=[\\s\"']*([^\\s\"'/>]*)\"", "");
-        String[] charsetArray = content.toString().split("charset=");
-        //Log.d(main.getLogTag(), "charsetArray[1]: " + charsetArray[1]);
+
+        String[] charsetArray = content.toString().split("harset( *)=");
+      //  Log.d(main.getLogTag(), "charsetArray[1]: " + charsetArray[1]);
 
         String charset = "UTF-8";
+        try {
+            if (charsetArray[1] != null) {
+                charsetArray = charsetArray[1].split("\"");
+                charset = charsetArray[0];
 
-        if (charsetArray != null) {
-            charsetArray = charsetArray[1].split("\"");
-            charset = charsetArray[0];
 
+                if (charset.equals("")) {
+                    charset = charsetArray[1];
+                    // Log.d(main.getLogTag(), "charsetArrayIf[0]: " + charsetArray[0]);
+                    //Log.d(main.getLogTag(), "charsetArrayIf[1]: " + charsetArray[1]);
+                }
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && Objects.equals(charset, "")) {
-                charset = charsetArray[1];
-               // Log.d(main.getLogTag(), "charsetArrayIf[0]: " + charsetArray[0]);
-                Log.d(main.getLogTag(), "charsetArrayIf[1]: " + charsetArray[1]);
+                // Log.d(main.getLogTag(), "charset: " + charset);
+
             }
-
-           // Log.d(main.getLogTag(), "charset: " + charset);
-
+        } catch (Exception e) {
+            Log.d(main.getLogTag(), "Exception: " + e);
         }
         return charset;
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
 }
