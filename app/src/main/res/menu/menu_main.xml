@@ -9,4 +9,11 @@
             android:title="About"
             app:showAsAction="never"
            />
+
+        <item
+            android:id="@+id/action_encoding"
+            android:orderInCategory="200"
+            android:title="Change encoding"
+            app:showAsAction="never"
+            />
     </menu>

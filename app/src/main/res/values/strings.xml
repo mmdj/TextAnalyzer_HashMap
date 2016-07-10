@@ -12,6 +12,5 @@
     <string name="CheckAddress">Address field is empty.</string>
     <string name="CheckText4Analyze">There no text for analyze.</string>
     <string name="forReset" />
-    <string name="getContentWithoutHTML_Regex"><![CDATA[(<script(\\s|\\S)*?<\\/script>)|(<style(\\s|\\S)*?<\\/style>)|(<!--(\\s|\\S)*?-->)|(<\\/?(\\s|\\S)*?>)|[\\n]]]></string>
 
 </resources>

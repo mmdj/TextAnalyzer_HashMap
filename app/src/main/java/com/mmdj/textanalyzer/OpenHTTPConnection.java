@@ -31,14 +31,17 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
                     content = OpenHttpConnection(currentURL, realCharset);
                     Log.d(main.getLogTag(), "Encoding HTML: " + realCharset);
                 }
+
+
             }
+
             result = getContentWithoutHTML(content);
             Log.d(main.getLogTag(), "resultWithoutHTML: " + result);
 
         } catch (IOException ex) {
             Log.d(main.getLogTag(), "IOException in HttpConnection");
         } catch (NullPointerException e) {
-            Log.d(main.getLogTag(), "NullPointerException in HttpConnection");
+            Log.d(main.getLogTag(), "NullPointerException in HttpConnection" + e);
         }
 
         return result;
@@ -57,11 +60,11 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
 
             conn = (HttpURLConnection) url.openConnection();
 
-            // just want to do an HTTP GET here
+            //  HTTP GET here
             conn.setRequestMethod("GET");
 
 
-            // give it 10 seconds to respond
+            // 10 seconds to respond
             conn.setReadTimeout(10 * 1000);
 
             conn.connect();
@@ -87,9 +90,9 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
 
 
     private String getContentWithoutHTML(StringBuilder content) {
-        //deleting all tags from HTML:
-        return content.toString().replaceAll(main.getString(R.string.getContentWithoutHTML_Regex), " ");
-                //"(<script(\s|\S)*?<\/script>)|(<style(\s|\S)*?<\/style>)|(<!--(\s|\S)*?-->)|(<\/?(\s|\S)*?>)|[\n]";
+        //deleting all tags from HTML:         |                          tags                             |      comments      |                   |   special chars  |
+        return content.toString().replaceAll("(<script(\\s|\\S)*?<\\/script>)|(<style(\\s|\\S)*?<\\/style>)|(<!--(\\s|\\S)*?-->)|(<\\/?(\\s|\\S)*?>)|&(?:[a-z]+|#\\d+);|[\\n]", " ");
+                                            //"(<script(\s|\S)*?<\/script>)|(<style(\s|\S)*?<\/style>)|(<!--(\s|\S)*?-->)|(<\/?(\s|\S)*?>)|&(?:[a-z]+|#\d+);|[\n]";
     }
 
     private String getCharset(StringBuilder content) {
