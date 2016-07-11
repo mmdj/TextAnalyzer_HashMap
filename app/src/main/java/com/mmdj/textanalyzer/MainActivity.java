@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mmdj.textanalyzer.connection.OpenHTTPConnection;
+
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -93,25 +95,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      ****************************************************************************/
     public void getTextFromActivity(View view) {
 
-
-        //doing change to weight of ListView
-        // LstVw_Result = (ListView) findViewById(R.id.lstVw_result2);
-        // LstVw_Result.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0, 1f));
-
-
         String TextInString = null;
-
 
         if (editTextInput != null) {                                               //from text
             TextInString = editTextInput.getText().toString();
         }
 
-
-        if (TextInString == null || TextInString.isEmpty()) {                            //checking text
+        if (TextInString == null || TextInString.isEmpty()) {                      //checking text
             doToast(getString(R.string.CheckText4Analyze));
             return;
         }
-
 
         Intent intent = new Intent(this, Result_Activity.class);
         intent.putExtra("TextInString", TextInString);

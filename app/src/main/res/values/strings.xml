@@ -10,7 +10,7 @@
     <string name="AddressIsWrong">The address is wrong. Try again.</string>
     <string name="ConnectionError">Internet connection error</string>
     <string name="CheckAddress">Address field is empty.</string>
-    <string name="CheckText4Analyze">There no text for analyze.</string>
+    <string name="CheckText4Analyze">There is no text to analyze.</string>
     <string name="forReset" />
 
 </resources>

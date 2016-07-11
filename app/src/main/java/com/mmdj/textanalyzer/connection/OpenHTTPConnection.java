@@ -1,7 +1,9 @@
-package com.mmdj.textanalyzer;
+package com.mmdj.textanalyzer.connection;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.mmdj.textanalyzer.MainActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,10 +33,7 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
                     content = OpenHttpConnection(currentURL, realCharset);
                     Log.d(main.getLogTag(), "Encoding HTML: " + realCharset);
                 }
-
-
             }
-
             result = getContentWithoutHTML(content);
             Log.d(main.getLogTag(), "resultWithoutHTML: " + result);
 
@@ -90,15 +89,15 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
 
 
     private String getContentWithoutHTML(StringBuilder content) {
-        //deleting all tags from HTML:         |                          tags                             |      comments      |                   |   special chars  |
+        //deleting all tags from HTML:         |                          tags                             |      comments      |       other       |   special chars  |
         return content.toString().replaceAll("(<script(\\s|\\S)*?<\\/script>)|(<style(\\s|\\S)*?<\\/style>)|(<!--(\\s|\\S)*?-->)|(<\\/?(\\s|\\S)*?>)|&(?:[a-z]+|#\\d+);|[\\n]", " ");
-                                            //"(<script(\s|\S)*?<\/script>)|(<style(\s|\S)*?<\/style>)|(<!--(\s|\S)*?-->)|(<\/?(\s|\S)*?>)|&(?:[a-z]+|#\d+);|[\n]";
+        //"(<script(\s|\S)*?<\/script>)|(<style(\s|\S)*?<\/style>)|(<!--(\s|\S)*?-->)|(<\/?(\s|\S)*?>)|&(?:[a-z]+|#\d+);|[\n]";
     }
 
     private String getCharset(StringBuilder content) {
 
         String[] charsetArray = content.toString().split("harset( *)=");
-      //  Log.d(main.getLogTag(), "charsetArray[1]: " + charsetArray[1]);
+        //  Log.d(main.getLogTag(), "charsetArray[1]: " + charsetArray[1]);
 
         String charset = "UTF-8";
         try {
