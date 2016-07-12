@@ -1,4 +1,4 @@
-package com.mmdj.textanalyzer_hashmap;
+package com.mmdj.textanalyzer.analisis;
 
 import java.util.Map;
 
