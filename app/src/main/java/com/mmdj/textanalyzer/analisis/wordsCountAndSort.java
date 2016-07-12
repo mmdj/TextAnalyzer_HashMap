@@ -1,15 +1,23 @@
 package com.mmdj.textanalyzer.analisis;
 
+import android.util.Log;
+
+import com.mmdj.textanalyzer.MainActivity;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 
 public class WordsCountAndSort {
+    private static MainActivity main = new MainActivity();
+
     /**
      * counting an amount of words and sorting
+     *
      * @param strArray words in array
      * @return List of sorted and counted words
      */
@@ -52,4 +60,30 @@ public class WordsCountAndSort {
         }
     }
 
+    public static LinkedHashMap<String, Integer> elementaryCounts(String textInString) {
+        LinkedHashMap<String, Integer> elementaryCountsMap = new LinkedHashMap<>();
+
+        //The amount of all characters
+        int allSymbols = textInString.length();
+        Log.d(main.getLogTag(), "The amount of all characters: " + allSymbols);
+
+
+        //  The amount of characters  and digits (WithoutPunctuation)
+        String stringWithoutPunctuation = textInString.replaceAll("[^\\w]", "");
+        int symbolsWithoutPunctuation = stringWithoutPunctuation.length();
+        Log.d(main.getLogTag(), " without spaces and punctuation: " + symbolsWithoutPunctuation);
+
+        //  The amount of characters  (without digits and punctuation)
+       String stringOnlyWords = stringWithoutPunctuation.replaceAll("([0-9])+", "");
+        int onlyWords =stringOnlyWords.length();
+        Log.d(main.getLogTag(), " onlyWords: " + onlyWords);
+        Log.d(main.getLogTag(), " stringOnlyWords: " + stringOnlyWords);
+
+
+        elementaryCountsMap.put("allSymbols", allSymbols);
+        elementaryCountsMap.put("symbolsWithoutPunctuation", symbolsWithoutPunctuation);
+        elementaryCountsMap.put("onlyWords", onlyWords);
+
+        return elementaryCountsMap;
+    }
 }

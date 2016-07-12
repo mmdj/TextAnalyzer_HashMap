@@ -14,6 +14,7 @@ import java.util.Map;
 
 public class Result_Activity extends AppCompatActivity {
     public String[] strArray = new String[0];
+    private MainActivity main = new MainActivity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +23,15 @@ public class Result_Activity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String TextInString = intent.getStringExtra("TextInString");
+        String textInString = intent.getStringExtra("textInString");
+
+        //The amount of all characters
+        WordsCountAndSort.elementaryCounts(textInString);
+
 
         //delete all punctuation signs and get string array:
         //TODO delete digits and other arrays
-        strArray = TextInString.split("[\\p{Punct}\\s]+");
+        strArray = textInString.toLowerCase().split("[\\p{Punct}\\s]+"); //without punctuation
 
         /***** words counting *****/
         List<Map.Entry<String, Integer>> wordsList = WordsCountAndSort.countAndSort(strArray);

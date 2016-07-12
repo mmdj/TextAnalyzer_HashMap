@@ -95,21 +95,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      ****************************************************************************/
     public void getTextFromActivity(View view) {
 
-        String TextInString = null;
+        String textInString = null;
 
         if (editTextInput != null) {                                               //from text
-            TextInString = editTextInput.getText().toString();
+            textInString = editTextInput.getText().toString();
         }
 
-        if (TextInString == null || TextInString.isEmpty()) {                      //checking text
+        if (textInString == null || textInString.isEmpty()) {                      //checking text
             doToast(getString(R.string.CheckText4Analyze));
             return;
         }
 
         Intent intent = new Intent(this, Result_Activity.class);
-        intent.putExtra("TextInString", TextInString);
+        intent.putExtra("textInString", textInString);
         startActivity(intent);
-        // strArray = TextInString.split("[\\p{Punct}\\s]+");
+        // strArray = textInString.split("[\\p{Punct}\\s]+");
 
 
     }
