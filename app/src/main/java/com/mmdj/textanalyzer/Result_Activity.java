@@ -3,12 +3,14 @@ package com.mmdj.textanalyzer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
+import android.util.Log;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import com.mmdj.textanalyzer.analisis.WordsCountAndSort;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,19 +38,50 @@ public class Result_Activity extends AppCompatActivity {
         /***** words counting *****/
         List<Map.Entry<String, Integer>> wordsList = WordsCountAndSort.countAndSort(strArray);
 
+
+       /* List<Map<String, Integer>> arListOfMaps1 = new ArrayList<>();
         ArrayList<String> arList = new ArrayList<>();
         for (Map.Entry<String, Integer> map : wordsList) {
-            arList.add(String.valueOf(map.getKey() + "\t\t-\t\t " + String.valueOf(map.getValue())));
+            arList.add(String.valueOf(map.getKey() + "\t\t\t\t " + String.valueOf(map.getValue())));
+        }*/
+
+
+
+        List<Map<String, String>> arListOfMaps = new ArrayList<>();
+        // ArrayList<String> arList = new ArrayList<>();
+
+        Map<String, String> simpleMap;
+        for (Map.Entry<String, Integer> map : wordsList) {
+           simpleMap = new HashMap<>() ;
+            simpleMap.put("Word",map.getKey()) ;
+            simpleMap.put("Amount",map.getValue().toString()) ;
+            arListOfMaps.add(simpleMap);
         }
 
+       // Log.d(main.getLogTag(), "simpleMap: " + simpleMap.toString());
+        Log.d(main.getLogTag(), "ListOfMaps: " + arListOfMaps.toString());
+/*
         ArrayAdapter<String> txtInListAdapter = new ArrayAdapter<>(
                 this,                  //context
                 R.layout.list_item,    //layout
-                R.id.txtVw_listItem,   //list id
+                R.id.txtVw_wordAmount,   //list id
                 arList);               //values
+*/
+
+        SimpleAdapter txtInListAdapter = new SimpleAdapter(
+                this,
+                arListOfMaps,
+               // android.R.layout.simple_list_item_2,
+                R.layout.list_item,
+                new String[] { "Word", "Amount"},
+               // new int[] { android.R.id.text1,android.R.id.text2 });
+                new int[] { R.id.txtVw_wordName, R.id.txtVw_wordAmount });
 
 
-        ListView LstVw_Result = (ListView) findViewById(R.id.lstVw_result2);
+
+
+
+        ListView LstVw_Result = (ListView) findViewById(R.id.lstVw_result);
         if (LstVw_Result != null)
             LstVw_Result.setAdapter(txtInListAdapter);
     }

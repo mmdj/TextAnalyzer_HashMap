@@ -17,7 +17,6 @@ public class WordsCountAndSort {
 
     /**
      * counting an amount of words and sorting
-     *
      * @param strArray words in array
      * @return List of sorted and counted words
      */
@@ -40,6 +39,9 @@ public class WordsCountAndSort {
             res.add(entry);
         }
         Collections.sort(res, new EntriesComparator());
+
+
+
         return res;
     }
 
