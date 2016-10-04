@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.mmdj.textanalyzer.TabbedActivity">
+    tools:context="com.mmdj.textanalyzer.Result_Activity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -29,7 +29,10 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            app:tabGravity="center"
+            />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -37,7 +40,8 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -45,6 +49,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
+        android:src="@android:drawable/ic_menu_share" />
 
 </android.support.design.widget.CoordinatorLayout>

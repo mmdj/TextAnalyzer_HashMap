@@ -2,91 +2,97 @@ package com.mmdj.textanalyzer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
-import com.mmdj.textanalyzer.analisis.WordsCountAndSort;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.mmdj.textanalyzer.fragments.SectionsPagerAdapter;
 
 public class Result_Activity extends AppCompatActivity {
-    public String[] strArray = new String[0];
-  //  private MainActivity main = new MainActivity();
+
+     // private MainActivity main = new MainActivity();
+
+    private static String textInString;
+
+    public static String getTextInString() {
+        return textInString;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
+        setContentView(R.layout.activity_tabbed);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
+        SectionsPagerAdapter mSectionsPagerAdapter =
+                new SectionsPagerAdapter(getSupportFragmentManager(), this);
+
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
+        if (mViewPager != null) {
+            mViewPager.setAdapter(mSectionsPagerAdapter);
+            // mViewPager.setOffscreenPageLimit(4);
+        }
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        if (tabLayout != null) {
+            tabLayout.setupWithViewPager(mViewPager);
+        }
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {    //TODO
+                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
+        }
+        /**************** From getting intent till transforming data here ************/
         Intent intent = getIntent();
-        String textInString = intent.getStringExtra("textInString");
-
-        //The amount of all characters
-        WordsCountAndSort.elementaryCounts(textInString);
+        textInString = intent.getStringExtra("textInString");
 
 
-        //delete all punctuation signs and get string array:
-        //TODO delete digits and other arrays
-        strArray = textInString.toLowerCase().split("[\\p{Punct}\\s]+"); //without punctuation
-
-        /***** words counting *****/
-        List<Map.Entry<String, Integer>> wordsList = WordsCountAndSort.countAndSort(strArray);
+    }
 
 
 
-/*************************** From here filling ListView: *********************************/
 
-        List<Map<String, String>> arListOfMaps = new ArrayList<>();
-        // ArrayList<String> arList = new ArrayList<>();
 
-        Map<String, String> simpleMap;
-        for (Map.Entry<String, Integer> map : wordsList) {
-            simpleMap = new HashMap<>();
-            simpleMap.put("Word", map.getKey());
-            simpleMap.put("Amount", map.getValue().toString());
-            arListOfMaps.add(simpleMap);
+
+    /************************** Menu: *******************************/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_tabbed, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
 
-        // Log.d(main.getLogTag(), "simpleMap: " + simpleMap.toString());
-        //Log.d(main.getLogTag(), "ListOfMaps: " + arListOfMaps.toString());
-
-
-        //ArrayAdapter for list_item by one item:
-
-       /*  List<Map<String, Integer>> arListOfMaps1 = new ArrayList<>();
-        ArrayList<String> arList = new ArrayList<>();
-        for (Map.Entry<String, Integer> map : wordsList) {
-            arList.add(String.valueOf(map.getKey() + "\t\t\t\t " + String.valueOf(map.getValue())));
-        }
-
-       ArrayAdapter<String> txtInListAdapter = new ArrayAdapter<>(
-                this,                  //context
-                R.layout.list_item,    //layout
-                R.id.txtVw_wordAmount, //list id
-                arList);               //values
-        */
-
-
-        // ArrayAdapter for list_item by two items */
-        SimpleAdapter txtInListAdapter = new SimpleAdapter(
-                this,
-                arListOfMaps,
-                // android.R.layout.simple_list_item_2,                  //default
-                R.layout.list_item,
-                new String[]{"Word", "Amount"},
-                // new int[] { android.R.id.text1,android.R.id.text2 }); //default
-                new int[]{R.id.txtVw_wordName, R.id.txtVw_wordAmount});
-
-
-        ListView LstVw_Result = (ListView) findViewById(R.id.lstVw_result);
-        if (LstVw_Result != null)
-            LstVw_Result.setAdapter(txtInListAdapter);
+        return super.onOptionsItemSelected(item);
     }
 
 
 }
+
+

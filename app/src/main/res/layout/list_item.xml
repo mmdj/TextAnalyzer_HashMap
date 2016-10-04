@@ -8,10 +8,10 @@
     <TextView
         android:id="@+id/txtVw_wordName"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:gravity="center|right"
-        android:minHeight="?android:listPreferredItemHeight"
+        android:minHeight="?android:listPreferredItemHeightSmall"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingStart="16dp"
@@ -19,18 +19,22 @@
 
     </TextView>
 
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent" />
 
     <TextView
         android:id="@+id/txtVw_wordAmount"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:gravity="center|left"
-        android:minHeight="?android:listPreferredItemHeight"
+        android:minHeight="?android:listPreferredItemHeightSmall"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingStart="16dp"
-        tools:text="63">
+        tools:text="3">
 
     </TextView>
 

@@ -1,0 +1,1886 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="stopWordsEn">
+        <item>first</item>
+        <item>a</item>
+        <item>able</item>
+        <item>about</item>
+        <item>above</item>
+        <item>abst</item>
+        <item>accordance</item>
+        <item>according</item>
+        <item>accordingly</item>
+        <item>across</item>
+        <item>act</item>
+        <item>actually</item>
+        <item>added</item>
+        <item>adj</item>
+        <item>affected</item>
+        <item>affecting</item>
+        <item>affects</item>
+        <item>after</item>
+        <item>afterwards</item>
+        <item>again</item>
+        <item>against</item>
+        <item>ah</item>
+        <item>all</item>
+        <item>almost</item>
+        <item>alone</item>
+        <item>along</item>
+        <item>already</item>
+        <item>also</item>
+        <item>although</item>
+        <item>always</item>
+        <item>am</item>
+        <item>among</item>
+        <item>amongst</item>
+        <item>an</item>
+        <item>and</item>
+        <item>announce</item>
+        <item>another</item>
+        <item>any</item>
+        <item>anybody</item>
+        <item>anyhow</item>
+        <item>anymore</item>
+        <item>anyone</item>
+        <item>anything</item>
+        <item>anyway</item>
+        <item>anyways</item>
+        <item>anywhere</item>
+        <item>apparently</item>
+        <item>approximately</item>
+        <item>are</item>
+        <item>aren</item>
+        <item>arent</item>
+        <item>arise</item>
+        <item>around</item>
+        <item>as</item>
+        <item>aside</item>
+        <item>ask</item>
+        <item>asking</item>
+        <item>at</item>
+        <item>auth</item>
+        <item>available</item>
+        <item>away</item>
+        <item>awfully</item>
+        <item>b</item>
+        <item>back</item>
+        <item>be</item>
+        <item>became</item>
+        <item>because</item>
+        <item>become</item>
+        <item>becomes</item>
+        <item>becoming</item>
+        <item>been</item>
+        <item>before</item>
+        <item>beforehand</item>
+        <item>begin</item>
+        <item>beginning</item>
+        <item>beginnings</item>
+        <item>begins</item>
+        <item>behind</item>
+        <item>being</item>
+        <item>believe</item>
+        <item>below</item>
+        <item>beside</item>
+        <item>besides</item>
+        <item>between</item>
+        <item>beyond</item>
+        <item>biol</item>
+        <item>both</item>
+        <item>brief</item>
+        <item>briefly</item>
+        <item>but</item>
+        <item>by</item>
+        <item>c</item>
+        <item>ca</item>
+        <item>came</item>
+        <item>can</item>
+        <item>cannot</item>
+        <item>can\'t</item>
+        <item>cause</item>
+        <item>causes</item>
+        <item>certain</item>
+        <item>certainly</item>
+        <item>co</item>
+        <item>com</item>
+        <item>come</item>
+        <item>comes</item>
+        <item>contain</item>
+        <item>containing</item>
+        <item>contains</item>
+        <item>could</item>
+        <item>couldn\'t</item>
+        <item>d</item>
+        <item>date</item>
+        <item>did</item>
+        <item>didn\'t</item>
+        <item>different</item>
+        <item>do</item>
+        <item>does</item>
+        <item>doesn\'t</item>
+        <item>doing</item>
+        <item>done</item>
+        <item>don\'t</item>
+        <item>down</item>
+        <item>downwards</item>
+        <item>due</item>
+        <item>during</item>
+        <item>e</item>
+        <item>each</item>
+        <item>ed</item>
+        <item>edu</item>
+        <item>effect</item>
+        <item>eg</item>
+        <item>eight</item>
+        <item>eighty</item>
+        <item>either</item>
+        <item>else</item>
+        <item>elsewhere</item>
+        <item>end</item>
+        <item>ending</item>
+        <item>enough</item>
+        <item>especially</item>
+        <item>et</item>
+        <item>et-al</item>
+        <item>etc</item>
+        <item>even</item>
+        <item>ever</item>
+        <item>every</item>
+        <item>everybody</item>
+        <item>everyone</item>
+        <item>everything</item>
+        <item>everywhere</item>
+        <item>ex</item>
+        <item>except</item>
+        <item>f</item>
+        <item>far</item>
+        <item>few</item>
+        <item>ff</item>
+        <item>fifth</item>
+        <item>first</item>
+        <item>five</item>
+        <item>fix</item>
+        <item>followed</item>
+        <item>following</item>
+        <item>follows</item>
+        <item>for</item>
+        <item>former</item>
+        <item>formerly</item>
+        <item>forth</item>
+        <item>found</item>
+        <item>four</item>
+        <item>from</item>
+        <item>further</item>
+        <item>furthermore</item>
+        <item>g</item>
+        <item>gave</item>
+        <item>get</item>
+        <item>gets</item>
+        <item>getting</item>
+        <item>give</item>
+        <item>given</item>
+        <item>gives</item>
+        <item>giving</item>
+        <item>go</item>
+        <item>goes</item>
+        <item>gone</item>
+        <item>got</item>
+        <item>gotten</item>
+        <item>h</item>
+        <item>had</item>
+        <item>happens</item>
+        <item>hardly</item>
+        <item>has</item>
+        <item>hasn\'t</item>
+        <item>have</item>
+        <item>haven\'t</item>
+        <item>having</item>
+        <item>he</item>
+        <item>hed</item>
+        <item>hence</item>
+        <item>her</item>
+        <item>here</item>
+        <item>hereafter</item>
+        <item>hereby</item>
+        <item>herein</item>
+        <item>heres</item>
+        <item>hereupon</item>
+        <item>hers</item>
+        <item>herself</item>
+        <item>hes</item>
+        <item>hi</item>
+        <item>hid</item>
+        <item>him</item>
+        <item>himself</item>
+        <item>his</item>
+        <item>hither</item>
+        <item>home</item>
+        <item>how</item>
+        <item>howbeit</item>
+        <item>however</item>
+        <item>hundred</item>
+        <item>i</item>
+        <item>id</item>
+        <item>ie</item>
+        <item>if</item>
+        <item>i\'ll</item>
+        <item>i\'m</item>
+        <item>immediate</item>
+        <item>immediately</item>
+        <item>importance</item>
+        <item>important</item>
+        <item>in</item>
+        <item>inc</item>
+        <item>indeed</item>
+        <item>index</item>
+        <item>information</item>
+        <item>instead</item>
+        <item>into</item>
+        <item>invention</item>
+        <item>inward</item>
+        <item>is</item>
+        <item>isn\'t</item>
+        <item>it</item>
+        <item>itd</item>
+        <item>it\'ll</item>
+        <item>its</item>
+        <item>itself</item>
+        <item>i\'ve</item>
+        <item>j</item>
+        <item>just</item>
+        <item>k</item>
+        <item>keep</item>
+        <item>keeps</item>
+        <item>kept</item>
+        <item>kg</item>
+        <item>km</item>
+        <item>know</item>
+        <item>known</item>
+        <item>knows</item>
+        <item>l</item>
+        <item>largely</item>
+        <item>last</item>
+        <item>lately</item>
+        <item>later</item>
+        <item>latter</item>
+        <item>latterly</item>
+        <item>least</item>
+        <item>less</item>
+        <item>lest</item>
+        <item>let</item>
+        <item>lets</item>
+        <item>like</item>
+        <item>liked</item>
+        <item>likely</item>
+        <item>line</item>
+        <item>little</item>
+        <item>I\'ll</item>
+        <item>look</item>
+        <item>looking</item>
+        <item>looks</item>
+        <item>ltd</item>
+        <item>m</item>
+        <item>made</item>
+        <item>mainly</item>
+        <item>make</item>
+        <item>makes</item>
+        <item>many</item>
+        <item>may</item>
+        <item>maybe</item>
+        <item>me</item>
+        <item>mean</item>
+        <item>means</item>
+        <item>meantime</item>
+        <item>meanwhile</item>
+        <item>merely</item>
+        <item>mg</item>
+        <item>might</item>
+        <item>million</item>
+        <item>miss</item>
+        <item>ml</item>
+        <item>more</item>
+        <item>moreover</item>
+        <item>most</item>
+        <item>mostly</item>
+        <item>mr</item>
+        <item>mrs</item>
+        <item>much</item>
+        <item>mug</item>
+        <item>must</item>
+        <item>my</item>
+        <item>myself</item>
+        <item>n</item>
+        <item>na</item>
+        <item>name</item>
+        <item>namely</item>
+        <item>nay</item>
+        <item>nd</item>
+        <item>near</item>
+        <item>nearly</item>
+        <item>necessarily</item>
+        <item>necessary</item>
+        <item>need</item>
+        <item>needs</item>
+        <item>neither</item>
+        <item>never</item>
+        <item>nevertheless</item>
+        <item>new</item>
+        <item>next</item>
+        <item>nine</item>
+        <item>ninety</item>
+        <item>no</item>
+        <item>nobody</item>
+        <item>non</item>
+        <item>none</item>
+        <item>nonetheless</item>
+        <item>noone</item>
+        <item>nor</item>
+        <item>normally</item>
+        <item>nos</item>
+        <item>not</item>
+        <item>noted</item>
+        <item>nothing</item>
+        <item>now</item>
+        <item>nowhere</item>
+        <item>o</item>
+        <item>obtain</item>
+        <item>obtained</item>
+        <item>obviously</item>
+        <item>of</item>
+        <item>off</item>
+        <item>often</item>
+        <item>oh</item>
+        <item>ok</item>
+        <item>okay</item>
+        <item>old</item>
+        <item>omitted</item>
+        <item>on</item>
+        <item>once</item>
+        <item>one</item>
+        <item>ones</item>
+        <item>only</item>
+        <item>onto</item>
+        <item>or</item>
+        <item>ord</item>
+        <item>other</item>
+        <item>others</item>
+        <item>otherwise</item>
+        <item>ought</item>
+        <item>our</item>
+        <item>ours</item>
+        <item>ourselves</item>
+        <item>out</item>
+        <item>outside</item>
+        <item>over</item>
+        <item>overall</item>
+        <item>owing</item>
+        <item>own</item>
+        <item>p</item>
+        <item>page</item>
+        <item>pages</item>
+        <item>part</item>
+        <item>particular</item>
+        <item>particularly</item>
+        <item>past</item>
+        <item>per</item>
+        <item>perhaps</item>
+        <item>placed</item>
+        <item>please</item>
+        <item>plus</item>
+        <item>poorly</item>
+        <item>possible</item>
+        <item>possibly</item>
+        <item>potentially</item>
+        <item>pp</item>
+        <item>predominantly</item>
+        <item>present</item>
+        <item>previously</item>
+        <item>primarily</item>
+        <item>probably</item>
+        <item>promptly</item>
+        <item>proud</item>
+        <item>provides</item>
+        <item>put</item>
+        <item>q</item>
+        <item>que</item>
+        <item>quickly</item>
+        <item>quite</item>
+        <item>qv</item>
+        <item>r</item>
+        <item>ran</item>
+        <item>rather</item>
+        <item>rd</item>
+        <item>re</item>
+        <item>readily</item>
+        <item>really</item>
+        <item>recent</item>
+        <item>recently</item>
+        <item>ref</item>
+        <item>refs</item>
+        <item>regarding</item>
+        <item>regardless</item>
+        <item>regards</item>
+        <item>related</item>
+        <item>relatively</item>
+        <item>research</item>
+        <item>respectively</item>
+        <item>resulted</item>
+        <item>resulting</item>
+        <item>results</item>
+        <item>right</item>
+        <item>run</item>
+        <item>s</item>
+        <item>said</item>
+        <item>same</item>
+        <item>saw</item>
+        <item>say</item>
+        <item>saying</item>
+        <item>says</item>
+        <item>sec</item>
+        <item>section</item>
+        <item>see</item>
+        <item>seeing</item>
+        <item>seem</item>
+        <item>seemed</item>
+        <item>seeming</item>
+        <item>seems</item>
+        <item>seen</item>
+        <item>self</item>
+        <item>selves</item>
+        <item>sent</item>
+        <item>seven</item>
+        <item>several</item>
+        <item>shall</item>
+        <item>she</item>
+        <item>shed</item>
+        <item>she\'ll</item>
+        <item>shes</item>
+        <item>should</item>
+        <item>shouldn\'t</item>
+        <item>show</item>
+        <item>showed</item>
+        <item>shown</item>
+        <item>showns</item>
+        <item>shows</item>
+        <item>significant</item>
+        <item>significantly</item>
+        <item>similar</item>
+        <item>similarly</item>
+        <item>since</item>
+        <item>six</item>
+        <item>slightly</item>
+        <item>so</item>
+        <item>some</item>
+        <item>somebody</item>
+        <item>somehow</item>
+        <item>someone</item>
+        <item>somethan</item>
+        <item>something</item>
+        <item>sometime</item>
+        <item>sometimes</item>
+        <item>somewhat</item>
+        <item>somewhere</item>
+        <item>soon</item>
+        <item>sorry</item>
+        <item>specifically</item>
+        <item>specified</item>
+        <item>specify</item>
+        <item>specifying</item>
+        <item>still</item>
+        <item>stop</item>
+        <item>strongly</item>
+        <item>sub</item>
+        <item>substantially</item>
+        <item>successfully</item>
+        <item>such</item>
+        <item>sufficiently</item>
+        <item>suggest</item>
+        <item>sup</item>
+        <item>sure</item>
+        <item>t</item>
+        <item>take</item>
+        <item>taken</item>
+        <item>taking</item>
+        <item>tell</item>
+        <item>tends</item>
+        <item>th</item>
+        <item>than</item>
+        <item>thank</item>
+        <item>thanks</item>
+        <item>thanx</item>
+        <item>that</item>
+        <item>that\'ll</item>
+        <item>thats</item>
+        <item>that\'ve</item>
+        <item>the</item>
+        <item>their</item>
+        <item>theirs</item>
+        <item>them</item>
+        <item>themselves</item>
+        <item>then</item>
+        <item>thence</item>
+        <item>there</item>
+        <item>thereafter</item>
+        <item>thereby</item>
+        <item>thered</item>
+        <item>therefore</item>
+        <item>therein</item>
+        <item>there\'ll</item>
+        <item>thereof</item>
+        <item>therere</item>
+        <item>theres</item>
+        <item>thereto</item>
+        <item>thereupon</item>
+        <item>there\'ve</item>
+        <item>these</item>
+        <item>they</item>
+        <item>theyd</item>
+        <item>they\'ll</item>
+        <item>they\'re</item>
+        <item>they\'ve</item>
+        <item>think</item>
+        <item>this</item>
+        <item>those</item>
+        <item>thou</item>
+        <item>though</item>
+        <item>thoughh</item>
+        <item>thousand</item>
+        <item>throug</item>
+        <item>through</item>
+        <item>throughout</item>
+        <item>thru</item>
+        <item>thus</item>
+        <item>til</item>
+        <item>tip</item>
+        <item>to</item>
+        <item>together</item>
+        <item>too</item>
+        <item>took</item>
+        <item>toward</item>
+        <item>towards</item>
+        <item>tried</item>
+        <item>tries</item>
+        <item>truly</item>
+        <item>try</item>
+        <item>trying</item>
+        <item>ts</item>
+        <item>twice</item>
+        <item>two</item>
+        <item>u</item>
+        <item>un</item>
+        <item>under</item>
+        <item>unfortunately</item>
+        <item>unless</item>
+        <item>unlike</item>
+        <item>unlikely</item>
+        <item>until</item>
+        <item>unto</item>
+        <item>up</item>
+        <item>upon</item>
+        <item>ups</item>
+        <item>us</item>
+        <item>use</item>
+        <item>used</item>
+        <item>useful</item>
+        <item>usefully</item>
+        <item>usefulness</item>
+        <item>uses</item>
+        <item>using</item>
+        <item>usually</item>
+        <item>v</item>
+        <item>value</item>
+        <item>various</item>
+        <item>\'ve</item>
+        <item>very</item>
+        <item>via</item>
+        <item>viz</item>
+        <item>vol</item>
+        <item>vols</item>
+        <item>vs</item>
+        <item>w</item>
+        <item>want</item>
+        <item>wants</item>
+        <item>was</item>
+        <item>wasn\'t</item>
+        <item>way</item>
+        <item>we</item>
+        <item>wed</item>
+        <item>welcome</item>
+        <item>we\'ll</item>
+        <item>went</item>
+        <item>were</item>
+        <item>weren\'t</item>
+        <item>we\'ve</item>
+        <item>what</item>
+        <item>whatever</item>
+        <item>what\'ll</item>
+        <item>whats</item>
+        <item>when</item>
+        <item>whence</item>
+        <item>whenever</item>
+        <item>where</item>
+        <item>whereafter</item>
+        <item>whereas</item>
+        <item>whereby</item>
+        <item>wherein</item>
+        <item>wheres</item>
+        <item>whereupon</item>
+        <item>wherever</item>
+        <item>whether</item>
+        <item>which</item>
+        <item>while</item>
+        <item>whim</item>
+        <item>whither</item>
+        <item>who</item>
+        <item>whod</item>
+        <item>whoever</item>
+        <item>whole</item>
+        <item>who\'ll</item>
+        <item>whom</item>
+        <item>whomever</item>
+        <item>whos</item>
+        <item>whose</item>
+        <item>why</item>
+        <item>widely</item>
+        <item>willing</item>
+        <item>wish</item>
+        <item>with</item>
+        <item>within</item>
+        <item>without</item>
+        <item>won\'t</item>
+        <item>words</item>
+        <item>world</item>
+        <item>would</item>
+        <item>wouldn\'t</item>
+        <item>www</item>
+        <item>x</item>
+        <item>y</item>
+        <item>yes</item>
+        <item>yet</item>
+        <item>you</item>
+        <item>youd</item>
+        <item>you\'ll</item>
+        <item>your</item>
+        <item>youre</item>
+        <item>yours</item>
+        <item>yourself</item>
+        <item>yourselves</item>
+        <item>you\'ve</item>
+        <item>z</item>
+        <item>zero</item>
+
+    </string-array>
+
+    <string-array name="stopWordsRu">
+        <item>а</item>
+        <item>е</item>
+        <item>и</item>
+        <item>ж</item>
+        <item>м</item>
+        <item>о</item>
+        <item>на</item>
+        <item>не</item>
+        <item>ни</item>
+        <item>об</item>
+        <item>но</item>
+        <item>он</item>
+        <item>мне</item>
+        <item>мои</item>
+        <item>мож</item>
+        <item>она</item>
+        <item>они</item>
+        <item>оно</item>
+        <item>мной</item>
+        <item>много</item>
+        <item>многочисленное</item>
+        <item>многочисленная</item>
+        <item>многочисленные</item>
+        <item>многочисленный</item>
+        <item>мною</item>
+        <item>мой</item>
+        <item>мог</item>
+        <item>могут</item>
+        <item>можно</item>
+        <item>может</item>
+        <item>можхо</item>
+        <item>мор</item>
+        <item>моя</item>
+        <item>моё</item>
+        <item>мочь</item>
+        <item>над</item>
+        <item>нее</item>
+        <item>оба</item>
+        <item>нам</item>
+        <item>нем</item>
+        <item>нами</item>
+        <item>ними</item>
+        <item>мимо</item>
+        <item>немного</item>
+        <item>одной</item>
+        <item>одного</item>
+        <item>менее</item>
+        <item>однажды</item>
+        <item>однако</item>
+        <item>меня</item>
+        <item>нему</item>
+        <item>меньше</item>
+        <item>ней</item>
+        <item>наверху</item>
+        <item>него</item>
+        <item>ниже</item>
+        <item>мало</item>
+        <item>надо</item>
+        <item>один</item>
+        <item>одиннадцать</item>
+        <item>одиннадцатый</item>
+        <item>назад</item>
+        <item>наиболее</item>
+        <item>недавно</item>
+        <item>миллионов</item>
+        <item>недалеко</item>
+        <item>между</item>
+        <item>низко</item>
+        <item>меля</item>
+        <item>нельзя</item>
+        <item>нибудь</item>
+        <item>непрерывно</item>
+        <item>наконец</item>
+        <item>никогда</item>
+        <item>никуда</item>
+        <item>нас</item>
+        <item>наш</item>
+        <item>нет</item>
+        <item>нею</item>
+        <item>неё</item>
+        <item>них</item>
+        <item>мира</item>
+        <item>наша</item>
+        <item>наше</item>
+        <item>наши</item>
+        <item>ничего</item>
+        <item>начала</item>
+        <item>нередко</item>
+        <item>несколько</item>
+        <item>обычно</item>
+        <item>опять</item>
+        <item>около</item>
+        <item>мы</item>
+        <item>ну</item>
+        <item>нх</item>
+        <item>от</item>
+        <item>отовсюду</item>
+        <item>особенно</item>
+        <item>нужно</item>
+        <item>очень</item>
+        <item>отсюда</item>
+        <item>в</item>
+        <item>во</item>
+        <item>вон</item>
+        <item>вниз</item>
+        <item>внизу</item>
+        <item>вокруг</item>
+        <item>вот</item>
+        <item>восемнадцать</item>
+        <item>восемнадцатый</item>
+        <item>восемь</item>
+        <item>восьмой</item>
+        <item>вверх</item>
+        <item>вам</item>
+        <item>вами</item>
+        <item>важное</item>
+        <item>важная</item>
+        <item>важные</item>
+        <item>важный</item>
+        <item>вдали</item>
+        <item>везде</item>
+        <item>ведь</item>
+        <item>вас</item>
+        <item>ваш</item>
+        <item>ваша</item>
+        <item>ваше</item>
+        <item>ваши</item>
+        <item>впрочем</item>
+        <item>весь</item>
+        <item>вдруг</item>
+        <item>вы</item>
+        <item>все</item>
+        <item>второй</item>
+        <item>всем</item>
+        <item>всеми</item>
+        <item>времени</item>
+        <item>время</item>
+        <item>всему</item>
+        <item>всего</item>
+        <item>всегда</item>
+        <item>всех</item>
+        <item>всею</item>
+        <item>всю</item>
+        <item>вся</item>
+        <item>всё</item>
+        <item>всюду</item>
+        <item>г</item>
+        <item>год</item>
+        <item>говорил</item>
+        <item>говорит</item>
+        <item>года</item>
+        <item>году</item>
+        <item>где</item>
+        <item>да</item>
+        <item>ее</item>
+        <item>за</item>
+        <item>из</item>
+        <item>ли</item>
+        <item>же</item>
+        <item>им</item>
+        <item>до</item>
+        <item>по</item>
+        <item>ими</item>
+        <item>под</item>
+        <item>иногда</item>
+        <item>довольно</item>
+        <item>именно</item>
+        <item>долго</item>
+        <item>позже</item>
+        <item>более</item>
+        <item>должно</item>
+        <item>пожалуйста</item>
+        <item>значит</item>
+        <item>иметь</item>
+        <item>больше</item>
+        <item>пока</item>
+        <item>ему</item>
+        <item>имя</item>
+        <item>пор</item>
+        <item>пора</item>
+        <item>потом</item>
+        <item>потому</item>
+        <item>после</item>
+        <item>почему</item>
+        <item>почти</item>
+        <item>посреди</item>
+        <item>ей</item>
+        <item>два</item>
+        <item>две</item>
+        <item>двенадцать</item>
+        <item>двенадцатый</item>
+        <item>двадцать</item>
+        <item>двадцатый</item>
+        <item>двух</item>
+        <item>его</item>
+        <item>дел</item>
+        <item>или</item>
+        <item>без</item>
+        <item>день</item>
+        <item>занят</item>
+        <item>занята</item>
+        <item>занято</item>
+        <item>заняты</item>
+        <item>действительно</item>
+        <item>давно</item>
+        <item>девятнадцать</item>
+        <item>девятнадцатый</item>
+        <item>девять</item>
+        <item>девятый</item>
+        <item>даже</item>
+        <item>алло</item>
+        <item>жизнь</item>
+        <item>далеко</item>
+        <item>близко</item>
+        <item>здесь</item>
+        <item>дальше</item>
+        <item>для</item>
+        <item>лет</item>
+        <item>зато</item>
+        <item>даром</item>
+        <item>первый</item>
+        <item>перед</item>
+        <item>затем</item>
+        <item>зачем</item>
+        <item>лишь</item>
+        <item>десять</item>
+        <item>десятый</item>
+        <item>ею</item>
+        <item>её</item>
+        <item>их</item>
+        <item>бы</item>
+        <item>еще</item>
+        <item>при</item>
+        <item>был</item>
+        <item>про</item>
+        <item>процентов</item>
+        <item>против</item>
+        <item>просто</item>
+        <item>бывает</item>
+        <item>бывь</item>
+        <item>если</item>
+        <item>люди</item>
+        <item>была</item>
+        <item>были</item>
+        <item>было</item>
+        <item>будем</item>
+        <item>будет</item>
+        <item>будете</item>
+        <item>будешь</item>
+        <item>прекрасно</item>
+        <item>буду</item>
+        <item>будь</item>
+        <item>будто</item>
+        <item>будут</item>
+        <item>ещё</item>
+        <item>пятнадцать</item>
+        <item>пятнадцатый</item>
+        <item>друго</item>
+        <item>другое</item>
+        <item>другой</item>
+        <item>другие</item>
+        <item>другая</item>
+        <item>других</item>
+        <item>есть</item>
+        <item>пять</item>
+        <item>быть</item>
+        <item>лучше</item>
+        <item>пятый</item>
+        <item>к</item>
+        <item>ком</item>
+        <item>конечно</item>
+        <item>кому</item>
+        <item>кого</item>
+        <item>когда</item>
+        <item>которой</item>
+        <item>которого</item>
+        <item>которая</item>
+        <item>которые</item>
+        <item>который</item>
+        <item>которых</item>
+        <item>кем</item>
+        <item>каждое</item>
+        <item>каждая</item>
+        <item>каждые</item>
+        <item>каждый</item>
+        <item>кажется</item>
+        <item>как</item>
+        <item>какой</item>
+        <item>какая</item>
+        <item>кто</item>
+        <item>кроме</item>
+        <item>куда</item>
+        <item>кругом</item>
+        <item>с</item>
+        <item>т</item>
+        <item>у</item>
+        <item>я</item>
+        <item>та</item>
+        <item>те</item>
+        <item>уж</item>
+        <item>со</item>
+        <item>то</item>
+        <item>том</item>
+        <item>снова</item>
+        <item>тому</item>
+        <item>совсем</item>
+        <item>того</item>
+        <item>тогда</item>
+        <item>тоже</item>
+        <item>собой</item>
+        <item>тобой</item>
+        <item>собою</item>
+        <item>тобою</item>
+        <item>сначала</item>
+        <item>только</item>
+        <item>уметь</item>
+        <item>тот</item>
+        <item>тою</item>
+        <item>хорошо</item>
+        <item>хотеть</item>
+        <item>хочешь</item>
+        <item>хоть</item>
+        <item>хотя</item>
+        <item>свое</item>
+        <item>свои</item>
+        <item>твой</item>
+        <item>своей</item>
+        <item>своего</item>
+        <item>своих</item>
+        <item>свою</item>
+        <item>твоя</item>
+        <item>твоё</item>
+        <item>раз</item>
+        <item>уже</item>
+        <item>сам</item>
+        <item>там</item>
+        <item>тем</item>
+        <item>чем</item>
+        <item>сама</item>
+        <item>сами</item>
+        <item>теми</item>
+        <item>само</item>
+        <item>рано</item>
+        <item>самом</item>
+        <item>самому</item>
+        <item>самой</item>
+        <item>самого</item>
+        <item>семнадцать</item>
+        <item>семнадцатый</item>
+        <item>самим</item>
+        <item>самими</item>
+        <item>самих</item>
+        <item>саму</item>
+        <item>семь</item>
+        <item>чему</item>
+        <item>раньше</item>
+        <item>сейчас</item>
+        <item>чего</item>
+        <item>сегодня</item>
+        <item>себе</item>
+        <item>тебе</item>
+        <item>сеаой</item>
+        <item>человек</item>
+        <item>разве</item>
+        <item>теперь</item>
+        <item>себя</item>
+        <item>тебя</item>
+        <item>седьмой</item>
+        <item>спасибо</item>
+        <item>слишком</item>
+        <item>так</item>
+        <item>такое</item>
+        <item>такой</item>
+        <item>такие</item>
+        <item>также</item>
+        <item>такая</item>
+        <item>сих</item>
+        <item>тех</item>
+        <item>чаще</item>
+        <item>четвертый</item>
+        <item>через</item>
+        <item>часто</item>
+        <item>шестой</item>
+        <item>шестнадцать</item>
+        <item>шестнадцатый</item>
+        <item>шесть</item>
+        <item>четыре</item>
+        <item>четырнадцать</item>
+        <item>четырнадцатый</item>
+        <item>сколько</item>
+        <item>сказал</item>
+        <item>сказала</item>
+        <item>сказать</item>
+        <item>ту</item>
+        <item>ты</item>
+        <item>три</item>
+        <item>эта</item>
+        <item>эти</item>
+        <item>что</item>
+        <item>это</item>
+        <item>чтоб</item>
+        <item>этом</item>
+        <item>этому</item>
+        <item>этой</item>
+        <item>этого</item>
+        <item>чтобы</item>
+        <item>этот</item>
+        <item>стал</item>
+        <item>туда</item>
+        <item>этим</item>
+        <item>этими</item>
+        <item>рядом</item>
+        <item>тринадцать</item>
+        <item>тринадцатый</item>
+        <item>этих</item>
+        <item>третий</item>
+        <item>тут</item>
+        <item>эту</item>
+        <item>суть</item>
+        <item>чуть</item>
+        <item>тысяч</item>
+        <item>а вернее сказать</item>
+        <item>а вернее</item>
+        <item>а впрочем</item>
+        <item>а главное</item>
+        <item>а значит</item>
+        <item>а лучше сказать</item>
+        <item>а между прочим</item>
+        <item>а может быть</item>
+        <item>а наоборот</item>
+        <item>а например</item>
+        <item>а следовательно</item>
+        <item>а точнее</item>
+        <item>без всякого сомнения</item>
+        <item>без сомнения</item>
+        <item>без шуток</item>
+        <item>безусловно</item>
+        <item>бесспорно</item>
+        <item>благодарение богу</item>
+        <item>бог даст</item>
+        <item>более того</item>
+        <item>больше того</item>
+        <item>бывало</item>
+        <item>быть может</item>
+        <item>в конце концов</item>
+        <item>в общем</item>
+        <item>в общем-то</item>
+        <item>в первую очередь</item>
+        <item>в принципе</item>
+        <item>в самом деле</item>
+        <item>в свою очередь</item>
+        <item>в сущности говоря</item>
+        <item>в сущности</item>
+        <item>в частности</item>
+        <item>в-третьих</item>
+        <item>вдобавок ко всему прочему</item>
+        <item>верите ли</item>
+        <item>веришь ли</item>
+        <item>вернее говоря</item>
+        <item>вернее сказать</item>
+        <item>вернее</item>
+        <item>верно</item>
+        <item>вероятнее всего</item>
+        <item>вероятно</item>
+        <item>вестимо</item>
+        <item>видать</item>
+        <item>видимо</item>
+        <item>видит бог</item>
+        <item>видите ли</item>
+        <item>видишь ли</item>
+        <item>видно</item>
+        <item>вишь</item>
+        <item>вне всякого сомнения</item>
+        <item>вне сомнения</item>
+        <item>во всяком случае</item>
+        <item>во-вторых</item>
+        <item>во-первых</item>
+        <item>возможно</item>
+        <item>воистину</item>
+        <item>воля ваша</item>
+        <item>воля твоя</item>
+        <item>вообрази себе</item>
+        <item>вообрази</item>
+        <item>вообразите себе</item>
+        <item>вообразите</item>
+        <item>вообще говоря</item>
+        <item>вообще</item>
+        <item>вообще-то</item>
+        <item>выходит</item>
+        <item>главное дело</item>
+        <item>главное</item>
+        <item>главным делом</item>
+        <item>говорят</item>
+        <item>грешным делом</item>
+        <item>грубо говоря</item>
+        <item>да и то сказать</item>
+        <item>дай бог память</item>
+        <item>далее</item>
+        <item>делать нечего</item>
+        <item>должно быть</item>
+        <item>допустим</item>
+        <item>другими словами</item>
+        <item>если позволите</item>
+        <item>если позволишь</item>
+        <item>если угодно</item>
+        <item>если хотите знать</item>
+        <item>если хотите</item>
+        <item>если хочешь знать</item>
+        <item>если хочешь</item>
+        <item>естественно</item>
+        <item>еще лучше</item>
+        <item>еще того лучше</item>
+        <item>еще того хуже</item>
+        <item>еще хуже</item>
+        <item>жалко</item>
+        <item>жаль</item>
+        <item>знаете ли</item>
+        <item>знаете</item>
+        <item>знаешь ли</item>
+        <item>знаешь</item>
+        <item>знамо дело</item>
+        <item>знамо</item>
+        <item>знать</item>
+        <item>значится</item>
+        <item>вообще</item>
+        <item>кроме того</item>
+        <item>лучше того</item>
+        <item>и наоборот</item>
+        <item>и однако</item>
+        <item>и правда</item>
+        <item>и таким образом</item>
+        <item>и того лучше</item>
+        <item>и того хуже</item>
+        <item>и хуже того</item>
+        <item>известно</item>
+        <item>иначе говоря</item>
+        <item>иначе сказать</item>
+        <item>истинный бог</item>
+        <item>к вашему сведению</item>
+        <item>к несчастью</item>
+        <item>к огорчению</item>
+        <item>к примеру сказать</item>
+        <item>к примеру</item>
+        <item>к прискорбию</item>
+        <item>к радости своей</item>
+        <item>к радости</item>
+        <item>к слову сказать</item>
+        <item>к слову</item>
+        <item>к сожалению</item>
+        <item>к стыду своему</item>
+        <item>к стыду</item>
+        <item>к счастью</item>
+        <item>к твоему сведению</item>
+        <item>к удивлению</item>
+        <item>к ужасу</item>
+        <item>к чести</item>
+        <item>кажись</item>
+        <item>казалось бы</item>
+        <item>казалось</item>
+        <item>как бы там ни было</item>
+        <item>как бы то ни было</item>
+        <item>как вам известно </item>
+        <item>как видите</item>
+        <item>как видишь</item>
+        <item>как видно</item>
+        <item>как водится</item>
+        <item>как всегда</item>
+        <item>как выяснилось</item>
+        <item>как выясняется</item>
+        <item>как говорилось</item>
+        <item>как говорится</item>
+        <item>как говорят</item>
+        <item>как знать</item>
+        <item>как известно</item>
+        <item>как исключение</item>
+        <item>как на заказ</item>
+        <item>как назло</item>
+        <item>как например</item>
+        <item>как нарочно</item>
+        <item>как ни говори</item>
+        <item>как ни говорите</item>
+        <item>как ни странно</item>
+        <item>как обычно</item>
+        <item>как оказалось</item>
+        <item>как оказывается</item>
+        <item>как перед богом</item>
+        <item>как по заказу</item>
+        <item>как полагается</item>
+        <item>как положено</item>
+        <item>как правило</item>
+        <item>как принято говорить</item>
+        <item>как принято</item>
+        <item>как сказано</item>
+        <item>как сказать</item>
+        <item>как следствие</item>
+        <item>как хотите</item>
+        <item>как хочешь</item>
+        <item>как это ни странно</item>
+        <item>ко всему прочему</item>
+        <item>коротко говоря</item>
+        <item>короче говоря</item>
+        <item>короче</item>
+        <item>кроме всего прочего</item>
+        <item>кроме того</item>
+        <item>кроме шуток</item>
+        <item>кроме этого</item>
+        <item>кстати говоря</item>
+        <item>кстати сказать</item>
+        <item>кстати</item>
+        <item>легко сказать</item>
+        <item>лучше сказать</item>
+        <item>мало сказать</item>
+        <item>мало того</item>
+        <item>между нами говоря</item>
+        <item>между нами</item>
+        <item>между прочим</item>
+        <item>может быть</item>
+        <item>может статься</item>
+        <item>можно подумать</item>
+        <item>можно сказать</item>
+        <item>мол</item>
+        <item>мягко выражаясь</item>
+        <item>мягко говоря</item>
+        <item>на беду</item>
+        <item>на ваш взгляд</item>
+        <item>на мой взгляд</item>
+        <item>на несчастье</item>
+        <item>на первый взгляд</item>
+        <item>на самом деле</item>
+        <item>на счастье</item>
+        <item>на твой взгляд</item>
+        <item>на худой конец</item>
+        <item>наверно</item>
+        <item>наверное</item>
+        <item>надеюсь</item>
+        <item>надо быть</item>
+        <item>надо думать</item>
+        <item>надо полагать</item>
+        <item>называется</item>
+        <item>наоборот</item>
+        <item>например</item>
+        <item>напротив</item>
+        <item>натурально</item>
+        <item>небось</item>
+        <item>несомненно</item>
+        <item>нет слов</item>
+        <item>нечего сказать</item>
+        <item>ничего не скажешь</item>
+        <item>но вообще-то</item>
+        <item>но кроме того</item>
+        <item>однако же</item>
+        <item>одним словом</item>
+        <item>оказывается</item>
+        <item>определенно</item>
+        <item>откровенно говоря</item>
+        <item>откровенно сказать</item>
+        <item>откровенно</item>
+        <item>очевидно</item>
+        <item>по вашему мнению</item>
+        <item>по видимости</item>
+        <item>по всей вероятности</item>
+        <item>по всей видимости</item>
+        <item>по данным</item>
+        <item>по замыслу</item>
+        <item>по идее</item>
+        <item>по крайней мере</item>
+        <item>по мне</item>
+        <item>по мнению</item>
+        <item>по моему мнению</item>
+        <item>по обыкновению</item>
+        <item>по обычаю</item>
+        <item>по определению</item>
+        <item>по правде говоря</item>
+        <item>по правде сказать</item>
+        <item>по правде</item>
+        <item>по преданию</item>
+        <item>по прогнозам</item>
+        <item>по сведениям</item>
+        <item>по своему обыкновению</item>
+        <item>по словам</item>
+        <item>по слухам</item>
+        <item>по совести говоря</item>
+        <item>по совести сказать</item>
+        <item>по совести</item>
+        <item>по сообщению</item>
+        <item>по сообщениям</item>
+        <item>по справедливости говоря</item>
+        <item>по справедливости</item>
+        <item>по сути говоря</item>
+        <item>по сути дела</item>
+        <item>по сути</item>
+        <item>по существу говоря</item>
+        <item>по существу</item>
+        <item>по счастью</item>
+        <item>по твоему мнению</item>
+        <item>по чести говоря</item>
+        <item>по чести признаться</item>
+        <item>по чести сказать</item>
+        <item>по-вашему</item>
+        <item>по-видимому</item>
+        <item>по-ихнему</item>
+        <item>по-моему</item>
+        <item>по-нашему</item>
+        <item>по-твоему</item>
+        <item>поверите ли</item>
+        <item>поверишь ли</item>
+        <item>поди</item>
+        <item>подумать только</item>
+        <item>пожалуй</item>
+        <item>позволь</item>
+        <item>позвольте</item>
+        <item>положим</item>
+        <item>положимте</item>
+        <item>получается</item>
+        <item>помилуй</item>
+        <item>помилуйте</item>
+        <item>помимо всего прочего</item>
+        <item>помимо всего</item>
+        <item>помимо того</item>
+        <item>помимо этого</item>
+        <item>помнится</item>
+        <item>понятно</item>
+        <item>понятное дело</item>
+        <item>попросту говоря</item>
+        <item>попросту сказать</item>
+        <item>похоже</item>
+        <item>почитай</item>
+        <item>правда</item>
+        <item>правду говоря</item>
+        <item>правду сказать</item>
+        <item>правильнее говоря</item>
+        <item>правильнее сказать</item>
+        <item>правильнее</item>
+        <item>право слово</item>
+        <item>право</item>
+        <item>предположим</item>
+        <item>предположительно</item>
+        <item>представь себе</item>
+        <item>представь</item>
+        <item>представьте себе</item>
+        <item>представьте</item>
+        <item>прежде всего</item>
+        <item>признаться сказать</item>
+        <item>признаться</item>
+        <item>признаюсь</item>
+        <item>примерно</item>
+        <item>против обыкновения</item>
+        <item>проще говоря</item>
+        <item>проще сказать</item>
+        <item>разумеется</item>
+        <item>с вашего позволения</item>
+        <item>с вашего разрешения</item>
+        <item>с другой стороны</item>
+        <item>с моей точки зрения</item>
+        <item>с одной стороны</item>
+        <item>с позволения сказать</item>
+        <item>с твоего позволения</item>
+        <item>с твоего разрешения</item>
+        <item>с точки зрения</item>
+        <item>само собой разумеется</item>
+        <item>само собой</item>
+        <item>сверх того</item>
+        <item>серьезно</item>
+        <item>скажем</item>
+        <item>сказать по правде</item>
+        <item>сказать по совести</item>
+        <item>сказать по чести</item>
+        <item>скорее всего</item>
+        <item>скорее</item>
+        <item>слава богу</item>
+        <item>следовательно</item>
+        <item>слов нет</item>
+        <item>словом</item>
+        <item>случаем</item>
+        <item>случайно</item>
+        <item>слыхать</item>
+        <item>слышно</item>
+        <item>слышь ты</item>
+        <item>слышь</item>
+        <item>со своей стороны</item>
+        <item>собственно говоря</item>
+        <item>собственно</item>
+        <item>согласитесь</item>
+        <item>соответственно</item>
+        <item>спрашивается</item>
+        <item>стало быть</item>
+        <item>строго говоря</item>
+        <item>судя по всему</item>
+        <item>так или иначе</item>
+        <item>так сказать</item>
+        <item>таким образом</item>
+        <item>точнее говоря</item>
+        <item>точнее сказать</item>
+        <item>точнее</item>
+        <item>чего доброго</item>
+        <item>что и говорить</item>
+        <item>что называется</item>
+        <item>что ни говори</item>
+        <item>что ни говорите</item>
+        <item>что удивительно</item>
+        <item>шутка ли сказать</item>
+        <item>шутка ли</item>
+        <item>шутка сказать</item>
+        <item>ясное дело</item>
+        <item>бытует мнение</item>
+        <item>в любом случае</item>
+        <item>в настоящее время</item>
+        <item>в наше время</item>
+        <item>в нашей повседневной жизни</item>
+        <item>в некоторых случаях</item>
+        <item>в связи с этим</item>
+        <item>в то же время</item>
+        <item>в целом</item>
+        <item>важно знать</item>
+        <item>во все времена считалось</item>
+        <item>все мы прекрасно знаем</item>
+        <item>все очень просто</item>
+        <item>всем известно</item>
+        <item>главным образом</item>
+        <item>даже самым изысканным ценителям</item>
+        <item>достаточно сложно</item>
+        <item>если говорить о</item>
+        <item>зачастую</item>
+        <item>и хотя</item>
+        <item>известно ли вам</item>
+        <item>интересно</item>
+        <item>исходя из вышеизложенного необходимо отметить</item>
+        <item>исходя из вышеизложенного необходимо сказать</item>
+        <item>исходя из вышеизложенного стоит отметить</item>
+        <item>исходя из вышеизложенного стоит сказать</item>
+        <item>исходя из вышеизложенного хотелось бы</item>
+        <item>итак</item>
+        <item>каждый знает</item>
+        <item>каждый из нас не раз слышал</item>
+        <item>конечно же</item>
+        <item>лишний раз упомянуть</item>
+        <item>между тем</item>
+        <item>многие скажут</item>
+        <item>многим известно</item>
+        <item>на самом же деле</item>
+        <item>на самый взыскательный вкус</item>
+        <item>набирает всё большую популярность</item>
+        <item>наверняка</item>
+        <item>напомним что</item>
+        <item>напомню что</item>
+        <item>на самом деле</item>
+        <item>не секрет что</item>
+        <item>не так давно</item>
+        <item>не удивительно</item>
+        <item>нельзя не отметить</item>
+        <item>нельзя не сказать</item>
+        <item>нельзя не согласиться</item>
+        <item>нельзя не согласиться с тем</item>
+        <item>нельзя не упомянуть</item>
+        <item>ни для кого не секрет</item>
+        <item>но всё же</item>
+        <item>но тем не менее</item>
+        <item>нужно отметить</item>
+        <item>нужно сразу отметить</item>
+        <item>очень важно знать</item>
+        <item>очень важно понимать</item>
+        <item>по словам экспертов</item>
+        <item>при этом</item>
+        <item>примечательно что</item>
+        <item>принято считать</item>
+        <item>скажем так</item>
+        <item>следует заметить</item>
+        <item>следует отметить</item>
+        <item>следует упомянуть</item>
+        <item>совершенно очевидно</item>
+        <item>сразу следует заметить</item>
+        <item>существует мнение</item>
+        <item>существует устоявшееся мнение</item>
+        <item>считается</item>
+        <item>считается что</item>
+        <item>также можно отметить</item>
+        <item>также нужно отметить</item>
+        <item>также следует отметить</item>
+        <item>также хотелось бы отметить</item>
+        <item>также хочу отметить</item>
+        <item>тем не менее</item>
+        <item>трудно не согласиться</item>
+        <item>трудно переоценить</item>
+        <item>удивительно</item>
+        <item>уже не новость что</item>
+        <item>хотелось бы сказать</item>
+        <item>хочу напомнить что</item>
+        <item>что касается</item>
+        <item>это значит</item>
+    </string-array>
+
+    <string-array name="stopWordsHe">
+        <item>אפילו</item>
+        <item>ניתן</item>
+        <item>שני</item>
+        <item>אוכל</item>
+        <item>קשה</item>
+        <item>משחק</item>
+        <item>ביום</item>
+        <item>ככה</item>
+        <item>אמא</item>
+        <item>בת</item>
+        <item>השבוע</item>
+        <item>נוספים</item>
+        <item>לגבי</item>
+        <item>בבית</item>
+        <item>אחרת</item>
+        <item>לפי</item>
+        <item>ללא</item>
+        <item>שנים</item>
+        <item>הזמן</item>
+        <item>שמן</item>
+        <item>מעט</item>
+        <item>לפחות</item>
+        <item>אף</item>
+        <item>שוב</item>
+        <item>שלהם</item>
+        <item>במקום</item>
+        <item>כולם</item>
+        <item>נועית</item>
+        <item>הבא</item>
+        <item>מעל</item>
+        <item>לב</item>
+        <item>המון</item>
+        <item>לדבר</item>
+        <item>ע</item>
+        <item>אוהב</item>
+        <item>מוסיפים</item>
+        <item>חצי</item>
+        <item>בעיקר</item>
+        <item>כפות</item>
+        <item>לפעמים</item>
+        <item>שהיא</item>
+        <item>הנהלת</item>
+        <item>ועל</item>
+        <item>ק</item>
+        <item>אוהבים</item>
+        <item>ת</item>
+        <item>יודעת</item>
+        <item>ד</item>
+        <item>גרוע</item>
+        <item>שאנחנו</item>
+        <item>מים</item>
+        <item>לילדים</item>
+        <item>בארץ</item>
+        <item>מודיע</item>
+        <item>אשמח</item>
+        <item>שלכם</item>
+        <item>פחות</item>
+        <item>לכולם</item>
+        <item>די</item>
+        <item>אהבה</item>
+        <item>יכולה</item>
+        <item>דברים</item>
+        <item>הקהילה</item>
+        <item>לעזור</item>
+        <item>פרטים</item>
+        <item>בדיוק</item>
+        <item>מלח</item>
+        <item>קל</item>
+        <item>הראשי</item>
+        <item>שלה</item>
+        <item>להוסיף</item>
+        <item>השני</item>
+        <item>לדעתי</item>
+        <item>בר</item>
+        <item>למרות</item>
+        <item>שגם</item>
+        <item>מוזמנים</item>
+        <item>לאחר</item>
+        <item>במה</item>
+        <item>חושב</item>
+        <item>מאד</item>
+        <item>יפה</item>
+        <item>להגשים</item>
+        <item>חדש</item>
+        <item>קטן</item>
+        <item>מחפשים</item>
+        <item>שמח</item>
+        <item>מדברים</item>
+        <item>ואם</item>
+        <item>במיוחד</item>
+        <item>עבודה</item>
+        <item>מדי</item>
+        <item>ואז</item>
+        <item>חשוב</item>
+        <item>שאם</item>
+        <item>אוהבת</item>
+        <item>פעמים</item>
+        <item>מנהלת</item>
+        <item>אומר</item>
+        <item>מול</item>
+        <item>קשר</item>
+        <item>מנהל</item>
+        <item>שיהיה</item>
+        <item>שאין</item>
+        <item>שאנו</item>
+        <item>האהבה</item>
+        <item>ס</item>
+        <item>הצטרפו</item>
+        <item>כפית</item>
+        <item>בשביל</item>
+        <item>החגים</item>
+        <item>אופן</item>
+        <item>לתת</item>
+        <item>כף</item>
+        <item>בתוך</item>
+        <item>סוכר</item>
+        <item>גיל</item>
+        <item>בהצלחה</item>
+        <item>והוא</item>
+        <item>מקווה</item>
+        <item>סתם</item>
+        <item>ויש</item>
+        <item>נגד</item>
+        <item>כמעט</item>
+        <item>שאת</item>
+        <item>עולה</item>
+        <item>אי</item>
+        <item>מספר</item>
+        <item>ראשון</item>
+        <item>לדרך</item>
+        <item>נהיה</item>
+        <item>לעצב</item>
+        <item>עושים</item>
+        <item>ולנהל</item>
+        <item>היתה</item>
+        <item>עליו</item>
+        <item>מזה</item>
+        <item>הייתה</item>
+        <item>בא</item>
+        <item>בפרס</item>
+        <item>חלות</item>
+        <item>ראש</item>
+        <item>מזמינים</item>
+        <item>טיפים</item>
+        <item>מכבי</item>
+        <item>רבה</item>
+        <item>הורים</item>
+        <item>‡</item>
+        <item>מקרה</item>
+        <item>קרן</item>
+        <item>המוצלח</item>
+        <item>להגיע</item>
+        <item>גדולה</item>
+        <item>כנראה</item>
+        <item>החמשיר</item>
+        <item>הראשון</item>
+        <item>פלפל</item>
+        <item>המשחק</item>
+        <item>וכאן</item>
+        <item>לדעת</item>
+        <item>ואת</item>
+        <item>גרועים</item>
+        <item>ספר</item>
+        <item>אגב</item>
+        <item>אחרים</item>
+        <item>להגיד</item>
+        <item>בתפוז</item>
+        <item>והעולם</item>
+        <item>אופנה</item>
+        <item>דווקא</item>
+        <item>מספיק</item>
+        <item>שעות</item>
+        <item>תמונות</item>
+        <item>כשאנחנו</item>
+        <item>שוקולד</item>
+        <item>ולכן</item>
+        <item>ג</item>
+        <item>לקרוא</item>
+        <item>לניהול</item>
+        <item>שבוע</item>
+        <item>ויופי</item>
+        <item>חלום</item>
+        <item>בה</item>
+        <item>שהיה</item>
+        <item>שאלה</item>
+        <item>מקומה</item>
+        <item>הזו</item>
+        <item>בפורומים</item>
+        <item>החדש</item>
+        <item>מתאמצים</item>
+        <item>שחקן</item>
+        <item>שמזינים</item>
+        <item>נשמת</item>
+        <item>בערך</item>
+        <item>מכל</item>
+        <item>ומה</item>
+        <item>רגל</item>
+        <item>כסף</item>
+        <item>רואה</item>
+        <item>קטנה</item>
+        <item>בצל</item>
+        <item>בעולם</item>
+        <item>אינטרנט</item>
+        <item>חוץ</item>
+        <item>ברור</item>
+        <item>הולך</item>
+        <item>חושבת</item>
+        <item>לזה</item>
+        <item>כלום</item>
+        <item>הן</item>
+        <item>כאלה</item>
+        <item>בטוח</item>
+        <item>הדבר</item>
+        <item>תהיה</item>
+        <item>מגיע</item>
+        <item>סוף</item>
+        <item>האמת</item>
+        <item>ממנו</item>
+        <item>מיכל</item>
+        <item>החדשה</item>
+        <item>לתרום</item>
+        <item>האנשים</item>
+        <item>ועד</item>
+        <item>בדרך</item>
+        <item>אצלי</item>
+        <item>ההורים</item>
+        <item>בני</item>
+        <item>מתוך</item>
+        <item>כאשר</item>
+        <item>לבד</item>
+        <item>ראיתי</item>
+        <item>מצב</item>
+        <item>מלא</item>
+        <item>לבחור</item>
+        <item>נשמח</item>
+        <item>החג</item>
+        <item>רע</item>
+        <item>עוף</item>
+        <item>מן</item>
+        <item>להביא</item>
+        <item>מצאתי</item>
+        <item>כתובות</item>
+        <item>מעניין</item>
+        <item>צריכה</item>
+        <item>להכנס</item>
+        <item>לחלוטין</item>
+        <item>שעה</item>
+        <item>מתכון</item>
+        <item>קודם</item>
+        <item>תשובות</item>
+        <item>מדובר</item>
+        <item>ניהול</item>
+        <item>מזל</item>
+        <item>כדאי</item>
+        <item>יהיו</item>
+        <item>ההודעות</item>
+        <item>בוקר</item>
+        <item>נילוות</item>
+        <item>איפה</item>
+        <item>בעיה</item>
+        <item>קמח</item>
+        <item>ללכת</item>
+        <item>פורומים</item>
+        <item>אמר</item>
+        <item>נושא</item>
+        <item>ההכנה</item>
+        <item>בבקשה</item>
+        <item>שכל</item>
+        <item>הזאת</item>
+        <item>למשחק</item>
+        <item>פנינה</item>
+        <item>תחרות</item>
+        <item>חבר</item>
+        <item>לקנות</item>
+        <item>מהם</item>
+        <item>רגע</item>
+        <item>גרם</item>
+        <item>אלו</item>
+        <item>עצמו</item>
+        <item>מראש</item>
+        <item>הכלב</item>
+        <item>כולנו</item>
+        <item>עדיף</item>
+        <item>איתו</item>
+        <item>למשל</item>
+        <item>לבשל</item>
+        <item>למי</item>
+        <item>רעיונות</item>
+        <item>הבלוג</item>
+        <item>רוב</item>
+        <item>אביב</item>
+        <item>כרגע</item>
+        <item>בסוף</item>
+        <item>אלה</item>
+        <item>לחג</item>
+        <item>ערוץ</item>
+        <item>שווה</item>
+        <item>באופן</item>
+        <item>מאמין</item>
+        <item>לבן</item>
+        <item>בזה</item>
+        <item>הכבוד</item>
+        <item>לראש</item>
+        <item>ם</item>
+        <item>ימי</item>
+        <item>שחור</item>
+        <item>בצורה</item>
+        <item>בעמוד</item>
+        <item>ועם</item>
+        <item>וחצי</item>
+        <item>האלה</item>
+        <item>תמונה</item>
+        <item>בשלב</item>
+        <item>משחקים</item>
+        <item>נו</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/section_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="?android:listPreferredItemHeightSmall"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingStart="16dp"
+        android:text="Statistic"
+        android:textSize="@dimen/design_tab_text_size"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center|right"
+            android:minHeight="?android:listPreferredItemHeight"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingStart="16dp">
+
+            <TextView
+                android:id="@+id/txtVw_charsNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of all symbols" />
+
+            <TextView
+                android:id="@+id/txtVw_charsNumberWithoutSpaces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minus spaces" />
+
+            <TextView
+                android:id="@+id/txtVw_charsWOPunct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minus punctuations marks" />
+
+            <TextView
+                android:id="@+id/txtVw_charsMeaningful"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Significant characters only"/>
+
+            <TextView
+                android:id="@+id/txtVw_wordsNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of words" />
+
+            <TextView
+                android:id="@+id/txtVw_uniqueWords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unique words" />
+
+            <TextView
+                android:id="@+id/txtVw_stopWords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of stop-words" />
+
+            <TextView
+                android:id="@+id/txtVw_dilution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Percent of dilution" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.35"
+            android:orientation="vertical"
+            android:gravity="center|left"
+            android:minHeight="?android:listPreferredItemHeight"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingStart="16dp">
+
+            <TextView
+                android:id="@+id/txtVw_charsNumberInt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="999999" />
+
+            <TextView
+                android:id="@+id/txtVw_charsNumberWithoutSpacesInt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="999999" />
+
+            <TextView
+                android:id="@+id/txtVw_charsWOPunctInt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="999999" />
+
+            <TextView
+                android:id="@+id/txtVw_charsMeaningfulInt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="999999" />
+
+
+            <TextView
+                android:id="@+id/txtVw_wordsNumberInt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="999999" />
+
+            <TextView
+                android:id="@+id/txtVw_uniqueWordsInt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="999999" />
+
+            <TextView
+                android:id="@+id/txtVw_stopWordsInt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="999999" />
+
+            <TextView
+                android:id="@+id/txtVw_dilutionInt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="999999" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

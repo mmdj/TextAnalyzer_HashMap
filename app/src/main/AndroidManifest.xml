@@ -22,10 +22,6 @@
             android:name=".Result_Activity"
             android:label="Result" />
 
-        <activity
-            android:name=".TabbedActivity"
-            android:label="@string/title_activity_tabbed"
-            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
