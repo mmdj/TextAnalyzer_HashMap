@@ -2,8 +2,8 @@
     <string name="app_name">Text Analyzer</string>
     <string name="btn_analyze">Analyze</string>
     <string name="spaceForDividingWords">" "</string>
-    <string name="EditText_Input_Hint"><font size="15">...or insert your text here</font></string>
-    <string name="EditText_URL_Input_Hint"><font size="15">Insert an internet address here</font></string>
+    <string name="EditText_Input_Hint"><font size="15">...or add your text here</font></string>
+    <string name="EditText_URL_Input_Hint"><font size="15">Enter an internet address here</font></string>
     <string name="btn_reset">Reset</string>
     <string name="get_address">Get</string>
     <string name="http2TextURLInput"> </string>
@@ -15,5 +15,15 @@
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">section: %1$d</string>
+    <string name="tab_name_statistical_data">Statistical data</string>
+    <string name="txtSummary_all_symbols_number">All symbols number</string>
+    <string name="txtSum_without_spaces">Without spaces</string>
+    <string name="txtSum_without_punctuation_marks">Without punctuation marks</string>
+    <string name="txtSum_significant_characters_only">Significant characters only</string>
+    <string name="txtSum_number_of_words">Number of words</string>
+    <string name="txtSum_unique_words">Unique words</string>
+    <string name="txtSum_number_of_stop_words">Number of stop-words</string>
+    <string name="txtSum_percent_of_dilution">Percent of dilution</string>
+    <string name="txtSum_999999">999999</string>
 
 </resources>

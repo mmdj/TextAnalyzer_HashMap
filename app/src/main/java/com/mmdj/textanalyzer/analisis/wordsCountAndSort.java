@@ -17,25 +17,36 @@ import java.util.Set;
 public class WordsCountAndSort {
     //   private static MainActivity main = new MainActivity();
     private static String[] arrWords;
+    private static final String GET_TAG = "analyzer";
+
 
 
     /**
      * convert received text from string to words array
-     *
      * @param textInString
      * @return String[]
      */
+
     public static String[] textInStringToArray(String textInString) {
         //get string array
         //without punctuation and digits, but dividing by spaces
         arrWords = textInString.toLowerCase().split("(?!'\\w+)(?!\\w+')[^\\w]+|([0-9])+");
+
+        //This list for removing ""(empty) elements from arrWords:
+        List<String> list = new ArrayList<>();
+        for (String s : arrWords) {
+            if (s != null && s.length() > 0) {
+                list.add(s);
+            }
+        }
+        arrWords = list.toArray(new String[list.size()]);
+
         return arrWords;
     }
 
 
     /**
      * counting an amount of words and sorting
-     *
      * @param words
      * @return List of sorted and counted words
      */
@@ -98,26 +109,26 @@ public class WordsCountAndSort {
 
         //The amount of all characters
         int allChars = textInString.length();
-        Log.d("analyzer", "The amount of all characters: " + allChars);
+        //     Log.d(GET_TAG, "The amount of all characters: " + allChars);
 
 
         //without spaces
         String strWOSpaces = textInString.replaceAll("(\\s)", "");
         int woSpaces = strWOSpaces.length();
-        Log.d("analyzer", " without spaces: " + strWOSpaces);
+        //     Log.d(GET_TAG, " without spaces: " + strWOSpaces);
 
 
         //  The amount of characters  and digits (Without punctuation marks and spaces, with apostrophe in the middle)
         String strWOPunct = textInString.replaceAll("(?!'\\w+)(?!\\w+')[^\\w]+", "");
         int woPunct = strWOPunct.length();
-        Log.d("analyzer", "Without punctuation marks and spaces: " + woPunct);
+        //      Log.d(GET_TAG, "Without punctuation marks and spaces: " + woPunct);
 
 
         //  The amount of characters  (without digits and punctuation marks - significant chars)
         String strWithoutDigitsAndPunctuation = strWOPunct.replaceAll("([0-9])+", "");
         int significantChars = strWithoutDigitsAndPunctuation.length();
-        Log.d("analyzer", " significantChars: " + significantChars);
-        Log.d("analyzer", " significantChars: " + strWithoutDigitsAndPunctuation);
+        Log.d(GET_TAG, " significantChars: " + significantChars);
+        Log.d(GET_TAG, " strWithoutDigitsAndPunctuation: " + strWithoutDigitsAndPunctuation);
 
 
         /*************** WORDS: ****************/
@@ -125,7 +136,7 @@ public class WordsCountAndSort {
         //simple words count:
         // String[] arrWords =  textInString.toLowerCase().split("(?!'\\w+)(?!\\w+')[^\\w]+|([0-9])+");
         int allWords = arrWords.length;
-        Log.d("analyzer", " without spaces and punctuation: " + allWords);
+        Log.d(GET_TAG, " without spaces and punctuation: " + allWords);
 
 
         //unique words count(w/o dublicate):
@@ -133,7 +144,7 @@ public class WordsCountAndSort {
         Set<String> set = new HashSet<>(Arrays.asList(arrWords));
         int uniqueWords = set.size();
         String[] strUniqueWords = set.toArray(new String[set.size()]);
-        Log.d("analyzer", "unique words: " + uniqueWords);
+        Log.d(GET_TAG, "unique words: " + uniqueWords);
 
 
         // stop words count:
@@ -147,18 +158,18 @@ public class WordsCountAndSort {
             while (iterator.hasNext()) {
                 String key = (String) iterator.next();
                 Integer value = currentStopWords.get(key);
-                Log.d("analyzer", "stopWords: " + key + " - " + value);
+                Log.d(GET_TAG, "stopWords: " + key + " - " + value);
                 stopWords += value;
             }
 
-            Log.d("analyzer", "stopWords: " + stopWords);
+            Log.d(GET_TAG, "stopWords: " + stopWords);
         }
 
 
         //dilution (water)
 
         double dilution = currentStopWords != null ? dilutionCalculate(currentStopWords, allWords) : 0;
-        Log.d("analyzer", "dilution: " + dilution);
+        Log.d(GET_TAG, "dilution: " + dilution);
 
         // filling map with results:
         elementaryCountsMap.put("allChars", allChars);
@@ -179,7 +190,7 @@ public class WordsCountAndSort {
         for (int value : currentStopWords.values()) {
             nStopWords += value;
         }
-        return  nAllWords == 0 ? 0 : (nStopWords*100)/ nAllWords;
+        return nAllWords == 0 ? 0 : (nStopWords * 100) / nAllWords;
     }
 
 
@@ -221,9 +232,10 @@ public class WordsCountAndSort {
                     //last word without space:
                     textSentence = textSentence.append(arrWords[i + stopSentence.length - 1]);
                     textWord = textSentence.toString();
+                    // Log.d(GET_TAG, "textSentence after appending: " + textWord);
 
-                    Log.d("analyzer", "textSentence after appending: " + textWord);
                 }
+
 
                 if (textWord.equals(stopWord)) {
                     foundTextWords.add(textWord);

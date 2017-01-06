@@ -3,8 +3,6 @@ package com.mmdj.textanalyzer.connection;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.mmdj.textanalyzer.MainActivity;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +12,7 @@ import java.net.URL;
 
 public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
     private static final String CHARSET = "UTF-8";
-    private MainActivity main = new MainActivity();
+   // private MainActivity main = new MainActivity();
 
     @Override
     protected String doInBackground(String... str) {
@@ -31,16 +29,16 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
                 String realCharset = getCharset(content);
                 if (!CHARSET.equals(realCharset)) {
                     content = OpenHttpConnection(currentURL, realCharset);
-                    Log.d(main.getLogTag(), "Encoding HTML: " + realCharset);
+                    Log.d("analyze", "Encoding HTML: " + realCharset);
                 }
             }
             result = getContentWithoutHTML(content);
-            Log.d(main.getLogTag(), "resultWithoutHTML: " + result);
+            Log.d("analyze", "resultWithoutHTML: " + result);
 
         } catch (IOException ex) {
-            Log.d(main.getLogTag(), "IOException in HttpConnection");
+            Log.d("analyze", "IOException in HttpConnection");
         } catch (NullPointerException e) {
-            Log.d(main.getLogTag(), "NullPointerException in HttpConnection" + e);
+            Log.d("analyze", "NullPointerException in HttpConnection" + e);
         }
 
         return result;
@@ -55,7 +53,7 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
 
         try {
             URL url = new URL(strURL);
-            Log.d(main.getLogTag(), "URL = " + url.toString());
+            Log.d("analyze", "URL = " + url.toString());
 
             conn = (HttpURLConnection) url.openConnection();
 
@@ -116,7 +114,7 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
 
             }
         } catch (Exception e) {
-            Log.d(main.getLogTag(), "Exception: " + e);
+            Log.d("analyze", "Exception: " + e);
         }
         return charset;
     }

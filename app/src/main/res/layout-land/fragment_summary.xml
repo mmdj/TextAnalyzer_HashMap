@@ -94,7 +94,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.35"
+            android:layout_weight="0.5"
             android:orientation="vertical"
             android:gravity="center|left"
             android:minHeight="?android:listPreferredItemHeight"
@@ -106,28 +106,24 @@
                 android:id="@+id/txtVw_charsNumberInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:freezesText="true"
                 android:text="@string/txtSum_999999" />
 
             <TextView
                 android:id="@+id/txtVw_charsNumberWithoutSpacesInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:freezesText="true"
                 android:text="@string/txtSum_999999" />
 
             <TextView
                 android:id="@+id/txtVw_charsWOPunctInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:freezesText="true"
                 android:text="@string/txtSum_999999" />
 
             <TextView
                 android:id="@+id/txtVw_charsMeaningfulInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:freezesText="true"
                 android:text="@string/txtSum_999999" />
 
 
@@ -135,28 +131,24 @@
                 android:id="@+id/txtVw_wordsNumberInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:freezesText="true"
                 android:text="@string/txtSum_999999" />
 
             <TextView
                 android:id="@+id/txtVw_uniqueWordsInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:freezesText="true"
                 android:text="@string/txtSum_999999" />
 
             <TextView
                 android:id="@+id/txtVw_stopWordsInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:freezesText="true"
                 android:text="@string/txtSum_999999" />
 
             <TextView
                 android:id="@+id/txtVw_dilutionInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:freezesText="true"
                 android:text="@string/txtSum_999999" />
 
         </LinearLayout>

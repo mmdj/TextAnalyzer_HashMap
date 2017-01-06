@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextInput;
     private EditText editTextURLInput;
 
-    public String getLogTag() {
-        return LOG_TAG;
-    }
 
     // ListView LstVw_Result;
     @Override
@@ -106,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
+        //this give textInString to Result_Activity
         Intent intent = new Intent(this, Result_Activity.class);
         intent.putExtra("textInString", textInString);
         startActivity(intent);

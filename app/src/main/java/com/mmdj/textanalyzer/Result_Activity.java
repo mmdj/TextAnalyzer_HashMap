@@ -16,9 +16,9 @@ import com.mmdj.textanalyzer.fragments.SectionsPagerAdapter;
 
 public class Result_Activity extends AppCompatActivity {
 
-     // private MainActivity main = new MainActivity();
 
     private static String textInString;
+
 
     public static String getTextInString() {
         return textInString;
@@ -32,9 +32,9 @@ public class Result_Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        //give context to  SectionsPagerAdapter
         SectionsPagerAdapter mSectionsPagerAdapter =
-                new SectionsPagerAdapter(getSupportFragmentManager(), this);
+                new SectionsPagerAdapter(getSupportFragmentManager());
 
         ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
         if (mViewPager != null) {
@@ -57,17 +57,29 @@ public class Result_Activity extends AppCompatActivity {
                 }
             });
         }
+
+
+
+
         /**************** From getting intent till transforming data here ************/
+        //this take textInString from MainActivity
         Intent intent = getIntent();
-        textInString = intent.getStringExtra("textInString");
 
 
+        if (savedInstanceState != null) {
+            textInString = savedInstanceState.getString("text");
+
+        }
+        else textInString = intent.getStringExtra("textInString");
     }
 
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("text",textInString);
 
-
-
+    }
 
     /************************** Menu: *******************************/
     @Override
