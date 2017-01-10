@@ -18,8 +18,12 @@ public class WordsCountAndSort {
     //   private static MainActivity main = new MainActivity();
     private static String[] arrWords;
     private static final String GET_TAG = "analyzer";
+    private static List<Map.Entry<String, Integer>> sortedStopWordsList;
 
 
+    public static List<Map.Entry<String, Integer>> getSortedStopWordsList() {
+        return sortedStopWordsList;
+    }
 
     /**
      * convert received text from string to words array
@@ -71,7 +75,6 @@ public class WordsCountAndSort {
             res.add(entry);
         }
         Collections.sort(res, new EntriesComparator());
-
 
         return res;
     }
@@ -127,8 +130,8 @@ public class WordsCountAndSort {
         //  The amount of characters  (without digits and punctuation marks - significant chars)
         String strWithoutDigitsAndPunctuation = strWOPunct.replaceAll("([0-9])+", "");
         int significantChars = strWithoutDigitsAndPunctuation.length();
-        Log.d(GET_TAG, " significantChars: " + significantChars);
-        Log.d(GET_TAG, " strWithoutDigitsAndPunctuation: " + strWithoutDigitsAndPunctuation);
+     //   Log.d(GET_TAG, " significantChars: " + significantChars);
+     //   Log.d(GET_TAG, " strWithoutDigitsAndPunctuation: " + strWithoutDigitsAndPunctuation);
 
 
         /*************** WORDS: ****************/
@@ -136,7 +139,7 @@ public class WordsCountAndSort {
         //simple words count:
         // String[] arrWords =  textInString.toLowerCase().split("(?!'\\w+)(?!\\w+')[^\\w]+|([0-9])+");
         int allWords = arrWords.length;
-        Log.d(GET_TAG, " without spaces and punctuation: " + allWords);
+     //   Log.d(GET_TAG, " without spaces and punctuation: " + allWords);
 
 
         //unique words count(w/o dublicate):
@@ -144,11 +147,18 @@ public class WordsCountAndSort {
         Set<String> set = new HashSet<>(Arrays.asList(arrWords));
         int uniqueWords = set.size();
         String[] strUniqueWords = set.toArray(new String[set.size()]);
-        Log.d(GET_TAG, "unique words: " + uniqueWords);
+    //    Log.d(GET_TAG, "unique words: " + uniqueWords);
 
 
         // stop words count:
         HashMap<String, Integer> currentStopWords = checkStopWords(stopWordsAllLang);
+
+        sortedStopWordsList = sortingList(currentStopWords);
+        /*for (Map.Entry stopWord:sortedStopWordsList) {
+            Log.d(GET_TAG, "sortedStopWordsList: " + stopWord.getKey());
+        }*/
+
+
         int stopWords = 0;
 
         if (currentStopWords != null) {
@@ -169,7 +179,7 @@ public class WordsCountAndSort {
         //dilution (water)
 
         double dilution = currentStopWords != null ? dilutionCalculate(currentStopWords, allWords) : 0;
-        Log.d(GET_TAG, "dilution: " + dilution);
+      //  Log.d(GET_TAG, "dilution: " + dilution);
 
         // filling map with results:
         elementaryCountsMap.put("allChars", allChars);
@@ -206,7 +216,7 @@ public class WordsCountAndSort {
                 stopWordIndex = -stopWordIndex - 1;     // we will find its a potential index in array
             }
 
-            Log.d("analyzer", "found stopWord by index: " + String.valueOf(stopWordsAllLang.get(stopWordIndex)));
+           // Log.d("analyzer", "found stopWord by index: " + String.valueOf(stopWordsAllLang.get(stopWordIndex)));
 
             // we must to check if there are several consecutive stop-words in the one sentence
 

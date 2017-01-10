@@ -2,7 +2,6 @@ package com.mmdj.textanalyzer.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +23,7 @@ import java.util.Map;
 import static com.mmdj.textanalyzer.R.id.lstVw_result;
 import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.countAndSort;
 import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.elementaryCounts;
+import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.getSortedStopWordsList;
 import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.textInStringToArray;
 
 
@@ -76,30 +76,40 @@ public class PlaceholderFragment extends Fragment {
 
 
         rootView = inflater.inflate(mPageLayout, container, false);
-//        ViewForList = inflater.inflate(R.layout.fragment_activity_listview, container, false);
-
-//        Log.d(GET_TAG, "onCreateView started and rootview is: " + rootView.findViewById(lstVw_result));
 
         super.onActivityCreated(savedInstanceState);
 
 
         /***** words counting *****/
 
-        if (rootView.findViewById(lstVw_result) != null) {      //List of all words fragment
+        if (rootView.findViewById(lstVw_result) != null) {
+            int fragmentNumber = SectionsPagerAdapter.getPositionNumber();
 
-            listViewFiller(wordsList);
+            if (fragmentNumber == 1) {
+                listViewFiller(wordsList);                   //List of all words fragment
+            }
 
-        } else {                                                //Summary fragment
+            else if (fragmentNumber == 2) {
+                listViewFiller(wordsList);                   //List of all words fragment
+            }
+
+            else if (fragmentNumber == 3) {
+                listViewFiller(getSortedStopWordsList());    //List of stop-words fragment
+            }
+
+
+        } else {                                             //Summary fragment
             ArrayList<String> stopWordsAllLang = getStopWordsFromArraysXML();
             LinkedHashMap<String, Integer> summaryMap = elementaryCounts(textInStringFromActivity, stopWordsAllLang);
             summaryPageFiller(summaryMap);
         }
 
-
         return rootView;
     }
 
-
+    /**********************************
+     * getting StopWords from xml
+     ***********************************/
     private ArrayList<String> getStopWordsFromArraysXML() {
         String[] stopWordsEn = getResources().getStringArray(R.array.stopWordsEn);
         String[] stopWordsRu = getResources().getStringArray(R.array.stopWordsRu);
@@ -115,13 +125,12 @@ public class PlaceholderFragment extends Fragment {
 
 
     /*******************************
-     * filling ListView:
+     * filling any ListView:
      *******************************/
 
     public void listViewFiller(List<Map.Entry<String, Integer>> wordsList) {
-        //  ListView LstVw_Result = new ListView(context);
+
         List<Map<String, String>> arListOfMaps = new ArrayList<>();
-        // ArrayList<String> arList = new ArrayList<>();
 
         Map<String, String> simpleMap;
         for (Map.Entry<String, Integer> map : wordsList) {
@@ -131,44 +140,16 @@ public class PlaceholderFragment extends Fragment {
             arListOfMaps.add(simpleMap);
         }
 
-        //  Log.d(main.getLogTag(), "simpleMap: " + simpleMap.toString());
-        // Log.d(main.getLogTag(), "ListOfMaps: " + arListOfMaps.toString());
-
-
-        //ArrayAdapter for list_item by one item:
-
-       /*  List<Map<String, Integer>> arListOfMaps1 = new ArrayList<>();
-        ArrayList<String> arList = new ArrayList<>();
-        for (Map.Entry<String, Integer> map : wordsList) {
-            arList.add(String.valueOf(map.getKey() + "\t\t\t\t " + String.valueOf(map.getValue())));
-        }
-
-       ArrayAdapter<String> txtInListAdapter = new ArrayAdapter<>(
-                this,                  //context
-                R.layout.list_item,    //layout
-                R.id.txtVw_wordAmount, //list id
-                arList);               //values
-        */
-
-
-        // ArrayAdapter for list_item by two items */
         SimpleAdapter txtInListAdapter = new SimpleAdapter(
-                //SectionsPagerAdapter.mContext,//take a context from  SectionsPagerAdapter
-                getActivity(),
+                getActivity(),// take a context from  SectionsPagerAdapter
                 arListOfMaps,
-                // android.R.layout.simple_list_item_2,                  //default
                 R.layout.list_item,
                 new String[]{"Word", "Amount"},
-                // new int[] { android.R.id.text1,android.R.id.text2 }); //default
                 new int[]{R.id.txtVw_wordName, R.id.txtVw_wordAmount});
 
-        //  PlaceholderFragment.newInstance(3).getPageLayout()
+        ListView lstVw_Result = (ListView) rootView.findViewById(lstVw_result);
 
-
-        ListView lstVw_Result = (ListView) rootView.findViewById(R.id.lstVw_result);//null  rootView.findViewById(R.id.lstVw_result)
-        Log.d("PlaceHolderFragment", "R.id.lstVw_result: " + lstVw_Result);
-        Log.d("PlaceHolderFragment", "View " + rootView.findViewById(R.id.lstVw_result));
-        if (lstVw_Result != null) {//??
+        if (lstVw_Result != null) {
             lstVw_Result.setAdapter(txtInListAdapter);
         }
 
@@ -187,7 +168,6 @@ public class PlaceholderFragment extends Fragment {
         String stopWords = String.valueOf(map.get("stopWords"));
         String dilution = String.valueOf(map.get("dilution"));
 
-
         //get id
         TextView charsNumberInt = (TextView) rootView.findViewById(R.id.txtVw_charsNumberInt);
         TextView charsWOSpaces = (TextView) rootView.findViewById(R.id.txtVw_charsNumberWithoutSpacesInt);
@@ -198,6 +178,7 @@ public class PlaceholderFragment extends Fragment {
         TextView stopWordsInt = (TextView) rootView.findViewById(R.id.txtVw_stopWordsInt);
         TextView dilutionInt = (TextView) rootView.findViewById(R.id.txtVw_dilutionInt);
 
+        //set text in activity
         charsNumberInt.setText(allChars);
         charsWOSpaces.setText(woSpaces);
         charsWOPunct.setText(woPunct);

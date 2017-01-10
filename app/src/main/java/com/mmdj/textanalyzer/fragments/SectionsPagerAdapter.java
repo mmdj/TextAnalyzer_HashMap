@@ -9,24 +9,30 @@ import com.mmdj.textanalyzer.R;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+    private static int positionNumber = 0;
 
 
     String[] pageTitles = {"Summary"
             , "Semantic Core"
-            , "Words"
+            , "All words"
             , "Stop-words"};
 
 
     public SectionsPagerAdapter(FragmentManager fm) {
-
         super(fm);
+    }
 
+    /**
+     * Getter in order to know what a fragment is active now
+     **/
+    public static int getPositionNumber() {
+        return positionNumber;
     }
 
 
     @Override
     public Fragment getItem(int position) { //compile all fragments
-
+        positionNumber = position; //this use in getter getPositionNumber
         switch (position) {
             case 0:
                 return PlaceholderFragment
@@ -34,7 +40,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
             case 1:
                 return PlaceholderFragment
-                        .newInstance(position + 1).setPageLayout(R.layout.fragment_summary);
+                        .newInstance(position + 1).setPageLayout(R.layout.fragment_activity_listview);
 
             case 2:
                 return PlaceholderFragment
@@ -42,7 +48,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
             case 3:
                 return PlaceholderFragment
-                        .newInstance(position + 1).setPageLayout(R.layout.fragment_summary);
+                        .newInstance(position + 1).setPageLayout(R.layout.fragment_activity_listview);
         }
         return null;
     }

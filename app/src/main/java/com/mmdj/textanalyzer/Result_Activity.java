@@ -59,8 +59,6 @@ public class Result_Activity extends AppCompatActivity {
         }
 
 
-
-
         /**************** From getting intent till transforming data here ************/
         //this take textInString from MainActivity
         Intent intent = getIntent();
@@ -69,19 +67,20 @@ public class Result_Activity extends AppCompatActivity {
         if (savedInstanceState != null) {
             textInString = savedInstanceState.getString("text");
 
-        }
-        else textInString = intent.getStringExtra("textInString");
+        } else textInString = intent.getStringExtra("textInString");
     }
 
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("text",textInString);
+        outState.putString("text", textInString);
 
     }
 
-    /************************** Menu: *******************************/
+    /**************************
+     * Menu:
+     *******************************/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
