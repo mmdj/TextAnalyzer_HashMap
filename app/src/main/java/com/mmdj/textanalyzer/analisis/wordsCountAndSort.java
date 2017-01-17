@@ -15,11 +15,17 @@ import java.util.Set;
 
 
 public class WordsCountAndSort {
-    //   private static MainActivity main = new MainActivity();
+
     private static String[] arrWords;
     private static final String GET_TAG = "analyzer";
     private static List<Map.Entry<String, Integer>> sortedStopWordsList;
+    private static HashMap<String, Integer> countedWordsMap;
+    private static List<Map.Entry<String, Integer>> semanticCoreList;
 
+
+    public static List<Map.Entry<String, Integer>> getSemanticCoreList() {
+        return semanticCoreList;
+    }
 
     public static List<Map.Entry<String, Integer>> getSortedStopWordsList() {
         return sortedStopWordsList;
@@ -27,6 +33,7 @@ public class WordsCountAndSort {
 
     /**
      * convert received text from string to words array
+     *
      * @param textInString
      * @return String[]
      */
@@ -51,13 +58,15 @@ public class WordsCountAndSort {
 
     /**
      * counting an amount of words and sorting
+     *
      * @param words
      * @return List of sorted and counted words
      */
     public static List<Map.Entry<String, Integer>> countAndSort(String[] words) {
-
         HashMap<String, Integer> map = new HashMap<>();
-        fillMapAndCounting(map, words);
+
+       countedWordsMap = fillMapAndCounting(map, words);
+        Log.d(GET_TAG,"countAndSort started | countedWordsMap="+countedWordsMap);
         return sortingList(map);
     }
 
@@ -86,7 +95,7 @@ public class WordsCountAndSort {
      * @param map      empty
      * @param strArray uncounted words
      */
-    private static void fillMapAndCounting(HashMap<String, Integer> map, String[] strArray) {
+    private static HashMap<String, Integer> fillMapAndCounting(HashMap<String, Integer> map, String[] strArray) {
         for (String string : strArray) {
             int value = 1;
             if (map.containsKey(string)) {
@@ -95,6 +104,7 @@ public class WordsCountAndSort {
             }
             map.put(string, value);//word,count
         }
+        return map;
     }
 
 
@@ -130,8 +140,8 @@ public class WordsCountAndSort {
         //  The amount of characters  (without digits and punctuation marks - significant chars)
         String strWithoutDigitsAndPunctuation = strWOPunct.replaceAll("([0-9])+", "");
         int significantChars = strWithoutDigitsAndPunctuation.length();
-     //   Log.d(GET_TAG, " significantChars: " + significantChars);
-     //   Log.d(GET_TAG, " strWithoutDigitsAndPunctuation: " + strWithoutDigitsAndPunctuation);
+        //   Log.d(GET_TAG, " significantChars: " + significantChars);
+        //   Log.d(GET_TAG, " strWithoutDigitsAndPunctuation: " + strWithoutDigitsAndPunctuation);
 
 
         /*************** WORDS: ****************/
@@ -139,7 +149,7 @@ public class WordsCountAndSort {
         //simple words count:
         // String[] arrWords =  textInString.toLowerCase().split("(?!'\\w+)(?!\\w+')[^\\w]+|([0-9])+");
         int allWords = arrWords.length;
-     //   Log.d(GET_TAG, " without spaces and punctuation: " + allWords);
+        //   Log.d(GET_TAG, " without spaces and punctuation: " + allWords);
 
 
         //unique words count(w/o dublicate):
@@ -147,7 +157,7 @@ public class WordsCountAndSort {
         Set<String> set = new HashSet<>(Arrays.asList(arrWords));
         int uniqueWords = set.size();
         String[] strUniqueWords = set.toArray(new String[set.size()]);
-    //    Log.d(GET_TAG, "unique words: " + uniqueWords);
+        //    Log.d(GET_TAG, "unique words: " + uniqueWords);
 
 
         // stop words count:
@@ -162,6 +172,12 @@ public class WordsCountAndSort {
         int stopWords = 0;
 
         if (currentStopWords != null) {
+            Log.d(GET_TAG, "elementaryCounts is started | semanticCoreList" + semanticCoreList);
+
+            if(countedWordsMap!=null) {
+                semanticCoreList = findSemanticCore(currentStopWords);
+            }
+
             Set setOfKeys = currentStopWords.keySet();
             Iterator iterator = setOfKeys.iterator();
 
@@ -172,14 +188,14 @@ public class WordsCountAndSort {
                 stopWords += value;
             }
 
-            Log.d(GET_TAG, "stopWords: " + stopWords);
+          //  Log.d(GET_TAG, "stopWords: " + stopWords);
         }
 
 
         //dilution (water)
 
         double dilution = currentStopWords != null ? dilutionCalculate(currentStopWords, allWords) : 0;
-      //  Log.d(GET_TAG, "dilution: " + dilution);
+        //  Log.d(GET_TAG, "dilution: " + dilution);
 
         // filling map with results:
         elementaryCountsMap.put("allChars", allChars);
@@ -216,7 +232,7 @@ public class WordsCountAndSort {
                 stopWordIndex = -stopWordIndex - 1;     // we will find its a potential index in array
             }
 
-           // Log.d("analyzer", "found stopWord by index: " + String.valueOf(stopWordsAllLang.get(stopWordIndex)));
+            // Log.d("analyzer", "found stopWord by index: " + String.valueOf(stopWordsAllLang.get(stopWordIndex)));
 
             // we must to check if there are several consecutive stop-words in the one sentence
 
@@ -272,5 +288,24 @@ public class WordsCountAndSort {
         currentStopWords.put(stopWord, value);//word,count
         return currentStopWords;
     }
+
+   private static List<Map.Entry<String, Integer>> findSemanticCore(HashMap<String, Integer> currentStopWords) {
+Log.d(GET_TAG,"findSemanticCore is started | countedWordsMap="+countedWordsMap);
+
+       HashMap<String,Integer> semanticCoreMap = new HashMap<>();
+       for (Map.Entry<String, Integer> entry : countedWordsMap.entrySet()) {
+            // Check if the current value is a key in the 2nd map
+            if (!currentStopWords.containsKey(entry.getKey()) && entry.getValue()>1) {
+
+                semanticCoreMap.put(entry.getKey(), entry.getValue());
+               Log.d(GET_TAG, "semanticCoreMap: " + entry.getKey() + ": " + entry.getValue());
+
+            }
+        }
+
+        return sortingList(semanticCoreMap);
+    }
+
+
 
 }

@@ -15,15 +15,10 @@ import android.widget.Toast;
 
 import com.mmdj.textanalyzer.connection.OpenHTTPConnection;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
 //import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private final String LOG_TAG = "analyzer";
+    public final String LOG_TAG = "analyzer";
     private EditText editTextInput;
     private EditText editTextURLInput;
 
@@ -75,13 +70,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_getURL:
-                get_address(v);
+                get_address();
                 break;
             case R.id.btn_analyze:
-                getTextFromActivity(v);
+                getTextFromActivity();
                 break;
             case R.id.btn_reset:
-                resetText(v);
+                resetText();
                 break;
         }
 
@@ -90,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /****************************************************************************
      * function to get text from the editText and put into the resultActivity  *
      ****************************************************************************/
-    public void getTextFromActivity(View view) {
+    public void getTextFromActivity() {
 
         String textInString = null;
 
@@ -114,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-    public void get_address(View view) {
+    public void get_address() {
         OpenHTTPConnection httpConnection;
         if (editTextURLInput.getText().toString().equals("")) {
             doToast(getString(R.string.CheckAddress));
@@ -131,38 +126,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
                 Log.d(LOG_TAG, "Connection start");
-            httpConnection = new OpenHTTPConnection();
+            httpConnection = new OpenHTTPConnection(editTextInput,this); //TODO add progress bar
             httpConnection.execute(strURL);
 
 
-            try {
-                //checking why doesn't work
-                if(httpConnection.get()=="") {
-                    String command = "ping -c 1 google.com";
-                    if(!(Runtime.getRuntime().exec (command).waitFor() == 0)){
-                        doToast(getString(R.string.ConnectionError));
-                    }else {
-                        doToast(getString(R.string.AddressIsWrong));
-                    }
-                    return;
-                }
-                //set text to editText from internet
-                editTextInput.setText(httpConnection.get(2, TimeUnit.SECONDS));
 
-            } catch (InterruptedException e) {
-                Log.d(LOG_TAG, "InterruptedException");
-            } catch (ExecutionException e) {
-                Log.d(LOG_TAG, "ExecutionException");
-            } catch (TimeoutException e) {
-                Log.d(LOG_TAG, "TimeoutException");
-            } catch (IOException e) {
-                Log.d(LOG_TAG, "IOException");
-            }
+//            try {
+//                //checking why doesn't work
+//                if(httpConnection.get()=="") {
+//                    String command = "ping -c 1 google.com";
+//                    if(!(Runtime.getRuntime().exec (command).waitFor() == 0)){
+//                        doToast(getString(R.string.ConnectionError));
+//                    }else {
+//                        doToast(getString(R.string.AddressIsWrong));
+//                    }
+//                    return;
+//                }
+//                //set text to editText from internet
+//                editTextInput.setText(httpConnection.get(2, TimeUnit.SECONDS));
+//
+//            } catch (InterruptedException e) {
+//                Log.d(LOG_TAG, "InterruptedException");
+//            } catch (ExecutionException e) {
+//                Log.d(LOG_TAG, "ExecutionException");
+//            } catch (TimeoutException e) {
+//                Log.d(LOG_TAG, "TimeoutException");
+//            } catch (IOException e) {
+//                Log.d(LOG_TAG, "IOException");
+//            }
 
         }
     }
 
-    public void resetText(View view) {
+    public void resetText() {
         ShowHideKeyboard();
 
         editTextInput.setText(R.string.forReset);
@@ -181,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * For toasting!
      ***********************/
 
-    private  void doToast(String message) {
+    public  void doToast(String message) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, message, duration);

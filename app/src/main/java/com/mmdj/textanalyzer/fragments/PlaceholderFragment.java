@@ -2,6 +2,7 @@ package com.mmdj.textanalyzer.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,19 +24,25 @@ import java.util.Map;
 import static com.mmdj.textanalyzer.R.id.lstVw_result;
 import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.countAndSort;
 import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.elementaryCounts;
+import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.getSemanticCoreList;
 import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.getSortedStopWordsList;
 import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.textInStringToArray;
 
 
 public class PlaceholderFragment extends Fragment {
+    public static final int TYPE_SEMANTIC = 1;
+    public static final int TYPE_STOP_WORD = 2;
+    public static final int TYPE_ALL_WORDS = 3;
+
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static final String GET_TAG = "PlaceHolderFragment";
     private int mPageLayout = R.layout.fragment_activity_listview;
+    private int currentType;
 
     private View rootView;
     private String textInStringFromActivity = Result_Activity.getTextInString();
     private String[] allWords = textInStringToArray(textInStringFromActivity);
-    private List<Map.Entry<String, Integer>> wordsList = countAndSort(allWords);
+    //  private List<Map.Entry<String, Integer>> wordsList;
 
     public PlaceholderFragment() {
     }
@@ -51,8 +58,9 @@ public class PlaceholderFragment extends Fragment {
      * It returns a new instance of this fragment for the given section number.
      ***/
 
-    public static PlaceholderFragment newInstance(int sectionNumber) {
+    public static PlaceholderFragment newInstance(int sectionNumber, int listType) {
         PlaceholderFragment fragment = new PlaceholderFragment();
+        fragment.currentType = listType;
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
@@ -79,28 +87,36 @@ public class PlaceholderFragment extends Fragment {
 
         super.onActivityCreated(savedInstanceState);
 
+        ArrayList<String> stopWordsAllLang = getStopWordsFromArraysXML();
+        LinkedHashMap<String, Integer> summaryMap = elementaryCounts(textInStringFromActivity, stopWordsAllLang);
+        List<Map.Entry<String, Integer>> wordsList = countAndSort(allWords);
+        List<Map.Entry<String, Integer>> sortedStopWordsList = getSortedStopWordsList();
+        List<Map.Entry<String, Integer>> sortedSemanticCoreList = getSemanticCoreList();
+        Log.d("analyze", "onCreateView is started | wordsList=" + wordsList);
+
 
         /***** words counting *****/
 
         if (rootView.findViewById(lstVw_result) != null) {
-            int fragmentNumber = SectionsPagerAdapter.getPositionNumber();
+            //   int fragmentNumber = SectionsPagerAdapter.getPositionNumber();//this is not a true solution TODO
 
-            if (fragmentNumber == 1) {
+            if (currentType == TYPE_ALL_WORDS) {
                 listViewFiller(wordsList);                   //List of all words fragment
-            }
 
-            else if (fragmentNumber == 2) {
-                listViewFiller(wordsList);                   //List of all words fragment
-            }
-
-            else if (fragmentNumber == 3) {
-                listViewFiller(getSortedStopWordsList());    //List of stop-words fragment
+                /*
+                int i=0;
+                for (Map.Entry word:wordsList) {
+                     Log.d(GET_TAG, "Fragment"+ currentType + ". wordsList: " + (++i) +"-" + word.getKey());
+                 }*/
+            } else if (currentType == TYPE_SEMANTIC) {
+                listViewFiller(sortedSemanticCoreList);//Semantic Core List
+            } else if (currentType == TYPE_STOP_WORD) {
+                listViewFiller(sortedStopWordsList);                  //List of stop-words fragment
             }
 
 
         } else {                                             //Summary fragment
-            ArrayList<String> stopWordsAllLang = getStopWordsFromArraysXML();
-            LinkedHashMap<String, Integer> summaryMap = elementaryCounts(textInStringFromActivity, stopWordsAllLang);
+
             summaryPageFiller(summaryMap);
         }
 
