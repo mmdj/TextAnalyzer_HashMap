@@ -1,8 +1,13 @@
 package com.mmdj.textanalyzer;
 
+import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +19,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mmdj.textanalyzer.connection.OpenHTTPConnection;
+
+import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
 
 //import java.util.concurrent.TimeUnit;
 
@@ -35,6 +42,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnReset = (Button) findViewById(R.id.btn_reset);
 
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.insertText_fab);
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //sending email:
+                    String textToPaste = null;
+
+                    ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+
+                    if (clipboard.hasPrimaryClip()) {
+                        ClipData clip = clipboard.getPrimaryClip();
+
+                        // if you need text data only, use:
+                        if (clip.getDescription().hasMimeType(MIMETYPE_TEXT_PLAIN))
+                            // WARNING: The item could cantain URI that points to the text data.
+                            // In this case the getText() returns null and this code fails!
+                            textToPaste = clip.getItemAt(0).getText().toString();
+
+                        // or you may coerce the data to the text representation:
+                        // textToPaste = clip.getItemAt(0).coerceToText(MainActivity.this).toString();
+                    }
+
+
+                    if (editTextURLInput.hasFocus()) {
+                        editTextURLInput.setText(textToPaste);
+                    } else editTextInput.setText(textToPaste);
+
+
+                }
+
+
+            });
+        }
+
         if (btnGetURL != null) {
             btnGetURL.setOnClickListener(this);
         }
@@ -46,7 +88,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Exit Application?");
+        alertDialogBuilder
+                .setMessage("Click \"Yes\" to exit!")
+                .setCancelable(false)
+                .setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                moveTaskToBack(true);
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                                System.exit(1);
+                            }
+                        })
 
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
 
     /***************** Menu **********************/
 
@@ -126,34 +193,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
                 Log.d(LOG_TAG, "Connection start");
-            httpConnection = new OpenHTTPConnection(editTextInput,this); //TODO add progress bar
+            httpConnection = new OpenHTTPConnection(editTextInput,this);
             httpConnection.execute(strURL);
 
 
-
-//            try {
-//                //checking why doesn't work
-//                if(httpConnection.get()=="") {
-//                    String command = "ping -c 1 google.com";
-//                    if(!(Runtime.getRuntime().exec (command).waitFor() == 0)){
-//                        doToast(getString(R.string.ConnectionError));
-//                    }else {
-//                        doToast(getString(R.string.AddressIsWrong));
-//                    }
-//                    return;
-//                }
-//                //set text to editText from internet
-//                editTextInput.setText(httpConnection.get(2, TimeUnit.SECONDS));
-//
-//            } catch (InterruptedException e) {
-//                Log.d(LOG_TAG, "InterruptedException");
-//            } catch (ExecutionException e) {
-//                Log.d(LOG_TAG, "ExecutionException");
-//            } catch (TimeoutException e) {
-//                Log.d(LOG_TAG, "TimeoutException");
-//            } catch (IOException e) {
-//                Log.d(LOG_TAG, "IOException");
-//            }
 
         }
     }

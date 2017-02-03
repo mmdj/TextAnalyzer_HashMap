@@ -1,22 +1,30 @@
 package com.mmdj.textanalyzer;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.mmdj.textanalyzer.fragments.SectionsPagerAdapter;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static com.mmdj.textanalyzer.fragments.PlaceholderFragment.getSummaryMap;
+
 public class Result_Activity extends AppCompatActivity {
 
 
+    private static final String GET_TAG = "resultActivity";
     private static String textInString;
 
 
@@ -51,10 +59,36 @@ public class Result_Activity extends AppCompatActivity {
         if (fab != null) {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {    //TODO
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                public void onClick(View view) {
+                    //sending email:
+                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"Text analyzer");
+                    intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(fillMailBody().toString()));
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+
+                   /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();*///TODO to click on list item
                 }
+
+                private StringBuilder fillMailBody() {
+                    StringBuilder body = new StringBuilder();
+                    body.append("<HTML><BODY><h3>Summary:</h3></br>");
+                    LinkedHashMap<String, Integer> summary = getSummaryMap();
+
+                    for (Map.Entry<String, Integer> entry : summary.entrySet()) {
+                       body = body.append(entry.getKey()+": "+entry.getValue()+"</br>");
+                    }
+                    body= body.append("<h6>This mail was generated with Text Analyzer app</h6></BODY></HTML>");
+                        Log.d(GET_TAG, "bodyHTML: " + body);
+                    return body;
+                }
+
+
+
+
             });
         }
 
@@ -83,23 +117,17 @@ public class Result_Activity extends AppCompatActivity {
      *******************************/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu
         getMenuInflater().inflate(R.menu.menu_tabbed, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

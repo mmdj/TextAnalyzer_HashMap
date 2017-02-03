@@ -31,11 +31,12 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        //TODO show progress bar
+        //show progress bar
         progressBar = (ProgressBar) activity.findViewById(R.id.mainProgressBar);
-        progressBar.setVisibility(ProgressBar.VISIBLE);
-// запускаем длительную операцию
- //       progressBar.setVisibility(ProgressBar.INVISIBLE);
+        if (progressBar != null) {
+            progressBar.setVisibility(ProgressBar.VISIBLE);
+        }
+
     }
 
     @Override
@@ -51,6 +52,7 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
             // Log.d(LOG_TAG, "currentURL = " + currentURL);
             if (content.toString().contains("harset")) {
                 String realCharset = getCharset(content);
+
                 if (!CHARSET.equals(realCharset)) {
                     content = openHttpConnection(currentURL, realCharset);
                     Log.d("analyze", "Encoding HTML: " + realCharset);
@@ -82,7 +84,7 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
                 }
                 return;
             }
-
+            //hide progress bar
             progressBar.setVisibility(ProgressBar.INVISIBLE);
             //set text to editText from internet
             editTextInput.setText(s);

@@ -65,8 +65,8 @@ public class WordsCountAndSort {
     public static List<Map.Entry<String, Integer>> countAndSort(String[] words) {
         HashMap<String, Integer> map = new HashMap<>();
 
-       countedWordsMap = fillMapAndCounting(map, words);
-        Log.d(GET_TAG,"countAndSort started | countedWordsMap="+countedWordsMap);
+        countedWordsMap = fillMapAndCounting(map, words);
+        Log.d(GET_TAG, "countAndSort started | countedWordsMap=" + countedWordsMap);
         return sortingList(map);
     }
 
@@ -174,7 +174,7 @@ public class WordsCountAndSort {
         if (currentStopWords != null) {
             Log.d(GET_TAG, "elementaryCounts is started | semanticCoreList" + semanticCoreList);
 
-            if(countedWordsMap!=null) {
+            if (countedWordsMap != null) {
                 semanticCoreList = findSemanticCore(currentStopWords);
             }
 
@@ -188,7 +188,7 @@ public class WordsCountAndSort {
                 stopWords += value;
             }
 
-          //  Log.d(GET_TAG, "stopWords: " + stopWords);
+            //  Log.d(GET_TAG, "stopWords: " + stopWords);
         }
 
 
@@ -240,40 +240,42 @@ public class WordsCountAndSort {
             String[] stopSentence;
             ArrayList<String> foundTextWords = new ArrayList<>();
             String foundStopWord;
+            if (stopWordsAllLang.size() > stopWordIndex) {
+                do {
 
-            do {
+                    String stopWord = stopWordsAllLang.get(stopWordIndex++);
 
-                String stopWord = stopWordsAllLang.get(stopWordIndex++);
+                    stopSentence = stopWord.split(" ");
 
-                stopSentence = stopWord.split(" ");
+                    if (stopSentence.length > 1 && i + stopSentence.length <= arrWords.length) {
 
-                if (stopSentence.length > 1 && i + stopSentence.length <= arrWords.length) {
+                        StringBuilder textSentence = new StringBuilder();
 
-                    StringBuilder textSentence = new StringBuilder();
+                        //building a sentence from text:
+                        for (int n = 0; n < stopSentence.length - 1; n++) {
+                            textSentence = textSentence.append(arrWords[i + n]).append(" ");
+                        }
+                        //last word without space:
+                        textSentence = textSentence.append(arrWords[i + stopSentence.length - 1]);
+                        textWord = textSentence.toString();
+                        // Log.d(GET_TAG, "textSentence after appending: " + textWord);
 
-                    //building a sentence from text:
-                    for (int n = 0; n < stopSentence.length - 1; n++) {
-                        textSentence = textSentence.append(arrWords[i + n]).append(" ");
                     }
-                    //last word without space:
-                    textSentence = textSentence.append(arrWords[i + stopSentence.length - 1]);
-                    textWord = textSentence.toString();
-                    // Log.d(GET_TAG, "textSentence after appending: " + textWord);
+
+
+                    if (textWord.equals(stopWord)) {
+                        foundTextWords.add(textWord);
+                        i += stopSentence.length - 1;
+                    }
 
                 }
-
-
-                if (textWord.equals(stopWord)) {
-                    foundTextWords.add(textWord);
-                    i += stopSentence.length - 1;
-                }
-
-            } while (stopSentence[0].equalsIgnoreCase(arrWords[i]));
-
+                while (stopSentence[0].equalsIgnoreCase(arrWords[i]));
+            }
             if (!foundTextWords.isEmpty()) {
                 foundStopWord = foundTextWords.get(foundTextWords.size() - 1);
                 fillStopWordsMap(foundStopWord, currentStopWords);
             }
+
         }
         return currentStopWords;
     }
@@ -289,23 +291,22 @@ public class WordsCountAndSort {
         return currentStopWords;
     }
 
-   private static List<Map.Entry<String, Integer>> findSemanticCore(HashMap<String, Integer> currentStopWords) {
-Log.d(GET_TAG,"findSemanticCore is started | countedWordsMap="+countedWordsMap);
+    private static List<Map.Entry<String, Integer>> findSemanticCore(HashMap<String, Integer> currentStopWords) {
+        Log.d(GET_TAG, "findSemanticCore is started | countedWordsMap=" + countedWordsMap);
 
-       HashMap<String,Integer> semanticCoreMap = new HashMap<>();
-       for (Map.Entry<String, Integer> entry : countedWordsMap.entrySet()) {
+        HashMap<String, Integer> semanticCoreMap = new HashMap<>();
+        for (Map.Entry<String, Integer> entry : countedWordsMap.entrySet()) {
             // Check if the current value is a key in the 2nd map
-            if (!currentStopWords.containsKey(entry.getKey()) && entry.getValue()>1) {
+            if (!currentStopWords.containsKey(entry.getKey()) && entry.getValue() > 1) {
 
                 semanticCoreMap.put(entry.getKey(), entry.getValue());
-               Log.d(GET_TAG, "semanticCoreMap: " + entry.getKey() + ": " + entry.getValue());
+                Log.d(GET_TAG, "semanticCoreMap: " + entry.getKey() + ": " + entry.getValue());
 
             }
         }
 
         return sortingList(semanticCoreMap);
     }
-
 
 
 }
