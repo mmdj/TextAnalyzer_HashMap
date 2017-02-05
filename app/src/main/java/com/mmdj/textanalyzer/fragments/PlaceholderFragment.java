@@ -108,7 +108,7 @@ public class PlaceholderFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         ArrayList<String> stopWordsAllLang = getStopWordsFromArraysXML();
-        summaryMap = elementaryCounts(textInStringFromActivity, stopWordsAllLang);
+        summaryMap = elementaryCounts(textInStringFromActivity, stopWordsAllLang, getContext());
         wordsList = countAndSort(allWords);
         sortedStopWordsList = getSortedStopWordsList();
         sortedSemanticCoreList = getSemanticCoreList();
@@ -196,14 +196,14 @@ public class PlaceholderFragment extends Fragment {
 
 
         //map from WordsCountAndSort.elementaryCounts()
-        String allChars = String.valueOf(map.get("allChars"));
-        String woSpaces = String.valueOf(map.get("woSpaces"));
-        String woPunct = String.valueOf(map.get("woPunct"));
-        String charsSignificant = String.valueOf(map.get("significantChars"));
-        String allWords = String.valueOf(map.get("allWords"));
-        String uniqueWords = String.valueOf(map.get("uniqueWords"));
-        String stopWords = String.valueOf(map.get("stopWords"));
-        String dilution = String.valueOf(map.get("dilution"));
+        String allChars = String.valueOf(map.get(getString(R.string.txtSummary_all_symbols_number)));
+        String woSpaces = String.valueOf(map.get(getString(R.string.txtSum_without_spaces)));
+        String woPunct = String.valueOf(map.get(getString(R.string.txtSum_without_punctuation_marks)));
+        String charsSignificant = String.valueOf(map.get(getString(R.string.txtSum_significant_characters_only)));
+        String allWords = String.valueOf(map.get(getString(R.string.txtSum_number_of_words)));
+        String uniqueWords = String.valueOf(map.get(getString(R.string.txtSum_unique_words)));
+        String stopWords = String.valueOf(map.get(getString(R.string.txtSum_number_of_stop_words)));
+        String dilution = String.valueOf(map.get(getString(R.string.txtSum_percent_of_dilution)));
 
         //get id
         TextView charsNumberInt = (TextView) rootView.findViewById(R.id.txtVw_charsNumberInt);

@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.mmdj.textanalyzer.fragments.SectionsPagerAdapter;
 
 import java.util.LinkedHashMap;
@@ -26,7 +28,7 @@ public class Result_Activity extends AppCompatActivity {
 
     private static final String GET_TAG = "resultActivity";
     private static String textInString;
-
+    private AdView mAdView;
 
     public static String getTextInString() {
         return textInString;
@@ -63,7 +65,7 @@ public class Result_Activity extends AppCompatActivity {
                     //sending email:
                     Intent intent = new Intent(Intent.ACTION_SENDTO);
                     intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-                    intent.putExtra(Intent.EXTRA_SUBJECT,"Text analyzer");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Text analyzer");
                     intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(fillMailBody().toString()));
                     if (intent.resolveActivity(getPackageManager()) != null) {
                         startActivity(intent);
@@ -79,19 +81,27 @@ public class Result_Activity extends AppCompatActivity {
                     LinkedHashMap<String, Integer> summary = getSummaryMap();
 
                     for (Map.Entry<String, Integer> entry : summary.entrySet()) {
-                       body = body.append(entry.getKey()+": "+entry.getValue()+"</br>");
+                        body = body.append("<div>")
+                                .append(entry.getKey())
+                                .append(": ")
+                                .append(entry.getValue())
+                                .append("</div>");
                     }
-                    body= body.append("<h6>This mail was generated with Text Analyzer app</h6></BODY></HTML>");
-                        Log.d(GET_TAG, "bodyHTML: " + body);
+                    body = body.append("<h6>This mail was generated with Text Analyzer app</h6></BODY></HTML>");
+                    Log.d(GET_TAG, "bodyHTML: " + body);
                     return body;
                 }
 
 
-
-
             });
         }
+        //adMob
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("9742E5320F93696FBE2CA5608B8ABE86")
+                .build();
 
+        mAdView.loadAd(adRequest);
 
         /**************** From getting intent till transforming data here ************/
         //this take textInString from MainActivity
@@ -104,6 +114,23 @@ public class Result_Activity extends AppCompatActivity {
         } else textInString = intent.getStringExtra("textInString");
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAdView.resume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mAdView.pause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAdView.destroy();
+    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

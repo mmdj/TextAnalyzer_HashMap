@@ -51,7 +51,7 @@
         android:layout_gravity="end|bottom"
         android:layout_marginRight="@dimen/fab_margin"
         android:src="@android:drawable/ic_dialog_email"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="16dp"
 
         />
 
@@ -59,9 +59,9 @@
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_gravity="top"
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id"
-        android:layout_marginBottom="16dp">
+        android:layout_marginTop= "16dp">
     </com.google.android.gms.ads.AdView>
 </android.support.design.widget.CoordinatorLayout>

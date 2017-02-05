@@ -1,6 +1,9 @@
 package com.mmdj.textanalyzer.analisis;
 
+import android.content.Context;
 import android.util.Log;
+
+import com.mmdj.textanalyzer.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -116,7 +119,7 @@ public class WordsCountAndSort {
      * @return map with  text statistic
      */
 
-    public static LinkedHashMap<String, Integer> elementaryCounts(String textInString, ArrayList<String> stopWordsAllLang) {
+    public static LinkedHashMap<String, Integer> elementaryCounts(String textInString, ArrayList<String> stopWordsAllLang, Context context) {
 
         LinkedHashMap<String, Integer> elementaryCountsMap = new LinkedHashMap<>();
 
@@ -197,15 +200,16 @@ public class WordsCountAndSort {
         double dilution = currentStopWords != null ? dilutionCalculate(currentStopWords, allWords) : 0;
         //  Log.d(GET_TAG, "dilution: " + dilution);
 
+
         // filling map with results:
-        elementaryCountsMap.put("allChars", allChars);
-        elementaryCountsMap.put("woSpaces", woSpaces);
-        elementaryCountsMap.put("woPunct", woPunct);
-        elementaryCountsMap.put("significantChars", significantChars);
-        elementaryCountsMap.put("allWords", allWords);
-        elementaryCountsMap.put("uniqueWords", uniqueWords);
-        elementaryCountsMap.put("stopWords", stopWords);
-        elementaryCountsMap.put("dilution", (int) dilution);
+        elementaryCountsMap.put(context.getString(R.string.txtSummary_all_symbols_number), allChars);
+        elementaryCountsMap.put(context.getString(R.string.txtSum_without_spaces), woSpaces);
+        elementaryCountsMap.put(context.getString(R.string.txtSum_without_punctuation_marks), woPunct);
+        elementaryCountsMap.put(context.getString(R.string.txtSum_significant_characters_only), significantChars);
+        elementaryCountsMap.put(context.getString(R.string.txtSum_number_of_words), allWords);
+        elementaryCountsMap.put(context.getString(R.string.txtSum_unique_words), uniqueWords);
+        elementaryCountsMap.put(context.getString(R.string.txtSum_number_of_stop_words), stopWords);
+        elementaryCountsMap.put(context.getString(R.string.txtSum_percent_of_dilution), (int) dilution);
 
 
         return elementaryCountsMap;

@@ -16,7 +16,7 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">section: %1$d</string>
     <string name="tab_name_statistical_data">Statistical data</string>
-    <string name="txtSummary_all_symbols_number">All symbols number</string>
+    <string name="txtSummary_all_symbols_number">All symbols amount</string>
     <string name="txtSum_without_spaces">Without spaces</string>
     <string name="txtSum_without_punctuation_marks">Without punctuation marks</string>
     <string name="txtSum_significant_characters_only">Significant characters only</string>
@@ -26,5 +26,7 @@
     <string name="txtSum_percent_of_dilution">Percent of dilution</string>
     <string name="txtSum_999999">999999</string>
     <string name="pageTitle0">Summary</string>
+    <string name="banner_ad_unit_id">ca-app-pub-9696735279514968/3316085076</string>
+
 
 </resources>
