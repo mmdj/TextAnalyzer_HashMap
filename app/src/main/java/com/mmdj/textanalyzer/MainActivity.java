@@ -61,15 +61,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             // In this case the getText() returns null and this code fails!
                             textToPaste = clip.getItemAt(0).getText().toString();
 
-                        // or you may coerce the data to the text representation:
-                        // textToPaste = clip.getItemAt(0).coerceToText(MainActivity.this).toString();
+                            //  Log.d(LOG_TAG, "textToPaste " + textToPaste);
+                            // or you may coerce the data to the text representation:
+                        else textToPaste = clip.getItemAt(0).coerceToText(MainActivity.this).toString();
                     }
 
 
                     if (editTextURLInput.hasFocus()) {
                         editTextURLInput.setText(textToPaste);
                     } else editTextInput.setText(textToPaste);
-
+                     showHideKeyboard();
 
                 }
 
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -115,7 +117,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alertDialog.show();
     }
 
-    /***************** Menu **********************/
+    /*****************
+     * Menu
+     **********************/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -129,8 +133,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    /*****************End of menu **********************/
-
+    /*****************
+     * End of menu
+     **********************/
 
 
     @Override
@@ -175,7 +180,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
     public void get_address() {
         OpenHTTPConnection httpConnection;
         if (editTextURLInput.getText().toString().equals("")) {
@@ -184,32 +188,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String strURL = editTextURLInput.getText().toString();
 
             //add "http://" to URL
-            if (!strURL.startsWith("http")){
+            if (!strURL.startsWith("http")) {
                 String strUrlWithHTTP = "http://";
                 strUrlWithHTTP = strUrlWithHTTP.concat(strURL);
-                Log.d(LOG_TAG, "strUrlWithHTTP: " + strUrlWithHTTP + " strURL: " +strURL);
+                Log.d(LOG_TAG, "strUrlWithHTTP: " + strUrlWithHTTP + " strURL: " + strURL);
                 strURL = strUrlWithHTTP;
-                Log.d(LOG_TAG, "new strURL: " +strURL);
+                Log.d(LOG_TAG, "new strURL: " + strURL);
             }
 
-                Log.d(LOG_TAG, "Connection start");
-            httpConnection = new OpenHTTPConnection(editTextInput,this);
+            Log.d(LOG_TAG, "Connection start");
+            httpConnection = new OpenHTTPConnection(editTextInput, this);
             httpConnection.execute(strURL);
-
 
 
         }
     }
 
     public void resetText() {
-        ShowHideKeyboard();
+        showHideKeyboard();
 
         editTextInput.setText(R.string.forReset);
         editTextURLInput.setText(R.string.http2TextURLInput);
     }
 
-   /*********  Hide/show keyboard  *****************/
-    private void ShowHideKeyboard() {
+    /*********
+     * Hide/show keyboard
+     *****************/
+    private void showHideKeyboard() {
 
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
@@ -220,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * For toasting!
      ***********************/
 
-    public  void doToast(String message) {
+    public void doToast(String message) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, message, duration);

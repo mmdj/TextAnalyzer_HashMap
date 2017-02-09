@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Анализатор текста</string>
+    <string name="AddressIsWrong">Неправильный адрес</string>
+    <string name="CheckAddress">Незаполнен адрес сайта</string>
+    <string name="CheckText4Analyze">Нет текста для анализа</string>
+    <string name="ConnectionError">Ошибка интернет соединения</string>
+    <string name="EditText_Input_Hint"><font size="15">... или текст для анализа</font></string>
+    <string name="EditText_URL_Input_Hint"><font size="15">Адрес интернет страницы</font></string>
+    <string name="action_settings">Настройки</string>
+    <string name="btn_analyze">Анализ</string>
+    <string name="btn_reset">Сброс</string>
+    <string name="tab_name_statistical_data">Статистика</string>
+    <string name="txtSum_number_of_stop_words">Количество стоп-слов</string>
+    <string name="txtSum_number_of_words">Всего слов</string>
+    <string name="txtSum_percent_of_dilution">Водность (%)</string>
+    <string name="txtSum_significant_characters_only">Значимых символов</string>
+    <string name="txtSum_unique_words">Уникальных слов</string>
+    <string name="txtSum_without_punctuation_marks">Без знаков пунктуации</string>
+    <string name="txtSum_without_spaces">Без учета пробелов</string>
+    <string name="txtSummary_all_symbols_number">Всего символов</string>
+    <string name="menu_about">О программе</string>
+    <string name="menu_help">Помощь</string>
+    <string name="menuSnackBar_about">\"Text analyzer для копирайтеров. Проверь свой текст\"</string>
+    <string name="pageTitles_allWords">Все слова</string>
+    <string name="pageTitles_semanticCore">Семантическое ядро</string>
+    <string name="pageTitles_summary">Общее</string>
+    <string name="pageTitles_stopWords">Стоп-слова</string>
+</resources>

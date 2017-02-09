@@ -1,20 +1,20 @@
 <resources>
     <string name="app_name">Text Analyzer</string>
     <string name="btn_analyze">Analyze</string>
-    <string name="spaceForDividingWords">" "</string>
+    <string name="spaceForDividingWords" translatable="false">" "</string>
     <string name="EditText_Input_Hint"><font size="15">...or paste your text here</font></string>
     <string name="EditText_URL_Input_Hint"><font size="15">Paste an internet address here</font></string>
     <string name="btn_reset">Reset</string>
-    <string name="get_address">Get</string>
-    <string name="http2TextURLInput"> </string>
+    <string name="get_address" translatable="false">WWW</string>
+    <string name="http2TextURLInput" translatable="false"> </string>
     <string name="AddressIsWrong">The address is wrong. Try again.</string>
     <string name="ConnectionError">Internet connection error</string>
     <string name="CheckAddress">Address field is empty.</string>
     <string name="CheckText4Analyze">There is no text to analyze.</string>
-    <string name="forReset" />
-    <string name="title_activity_tabbed">TabbedActivity</string>
+    <string name="forReset" translatable="false"/>
+    <string name="title_activity_tabbed" translatable="false">TabbedActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="section_format">section: %1$d</string>
+    <string name="section_format" translatable="false">section: %1$d</string>
     <string name="tab_name_statistical_data">Statistical data</string>
     <string name="txtSummary_all_symbols_number">All symbols amount</string>
     <string name="txtSum_without_spaces">Without spaces</string>
@@ -24,9 +24,17 @@
     <string name="txtSum_unique_words">Unique words</string>
     <string name="txtSum_number_of_stop_words">Number of stop-words</string>
     <string name="txtSum_percent_of_dilution">Percent of dilution</string>
-    <string name="txtSum_999999">999999</string>
-    <string name="pageTitle0">Summary</string>
-    <string name="banner_ad_unit_id">ca-app-pub-9696735279514968/3316085076</string>
+    <string name="txtSum_999999" translatable="false">999999</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-9696735279514968/3316085076</string>
+    <string name="pageTitles_summary">Summary</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_about">About</string>
+    <string name="menuPopUpWin_about">Text analyzer for copywriters. Check your text!</string>
+    <string name="pageTitles_allWords">All words</string>
+    <string name="pageTitles_semanticCore">Semantic Core</string>
+    <string name="pageTitles_stopWords">Stop-words</string>
+    <string name="popupWindow_help">Help</string>
+    <string name="ok">OK</string>
 
 
 </resources>

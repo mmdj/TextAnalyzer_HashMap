@@ -27,30 +27,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="72dp"
             android:orientation="horizontal"
+
             >
 
             <EditText
                 android:id="@+id/edtTxt_URL_Input"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="top|left"
+                android:gravity="center_vertical|left"
                 android:hint="@string/EditText_URL_Input_Hint"
 
                 android:inputType="textWebEmailAddress"/>
 
 
             <Button
-
                 android:id="@+id/btn_getURL"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.23"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.35"
                 android:text="@string/get_address"
-
 
                 />
         </LinearLayout>
@@ -58,7 +58,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.3">
+            android:layout_weight="1">
 
             <EditText
                 android:id="@+id/edtTxt_input"
@@ -66,7 +66,9 @@
 
                 android:layout_height="match_parent"
                 android:gravity="top|left"
-                android:hint="@string/EditText_Input_Hint"/>
+                android:hint="@string/EditText_Input_Hint"
+                android:shadowDx="2"
+                android:shadowDy="2"/>
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/insertText_fab"
@@ -74,7 +76,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_margin="@dimen/fab_margin"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="32dp"
                 android:src="@drawable/ic_assignment_black_24dp"/>
 
         </RelativeLayout>

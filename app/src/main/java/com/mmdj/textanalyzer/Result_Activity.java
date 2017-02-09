@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.mmdj.textanalyzer.UI.PopUpWindow;
 import com.mmdj.textanalyzer.fragments.SectionsPagerAdapter;
 
 import java.util.LinkedHashMap;
@@ -29,6 +31,7 @@ public class Result_Activity extends AppCompatActivity {
     private static final String GET_TAG = "resultActivity";
     private static String textInString;
     private AdView mAdView;
+    private Snackbar mSnackbar;
 
     public static String getTextInString() {
         return textInString;
@@ -44,7 +47,7 @@ public class Result_Activity extends AppCompatActivity {
 
         //give context to  SectionsPagerAdapter
         SectionsPagerAdapter mSectionsPagerAdapter =
-                new SectionsPagerAdapter(getSupportFragmentManager());
+                new SectionsPagerAdapter(getSupportFragmentManager(), this);
 
         ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
         if (mViewPager != null) {
@@ -70,9 +73,6 @@ public class Result_Activity extends AppCompatActivity {
                     if (intent.resolveActivity(getPackageManager()) != null) {
                         startActivity(intent);
                     }
-
-                   /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();*///TODO to click on list item
                 }
 
                 private StringBuilder fillMailBody() {
@@ -152,9 +152,23 @@ public class Result_Activity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+     //   View viewItem = findViewById(id);
+
+        if (id == R.id.action_about) {
+            String message = getString(R.string.menuPopUpWin_about);
+            PopUpWindow popUpWindow = new PopUpWindow(this, Result_Activity.this, message);
+            popUpWindow.doPopUpWindow();
             return true;
         }
+
+        if (id == R.id.action_help) {
+           String message = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ";
+
+            PopUpWindow popUpWindow = new PopUpWindow(this, Result_Activity.this, message);
+            popUpWindow.doPopUpWindow();
+
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

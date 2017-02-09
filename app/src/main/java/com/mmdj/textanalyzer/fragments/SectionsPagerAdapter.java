@@ -1,5 +1,6 @@
 package com.mmdj.textanalyzer.fragments;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -9,16 +10,21 @@ import com.mmdj.textanalyzer.R;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    private static String[] pageTitles =
-                     {"Summary"
-                    , "All words"
-                    , "Semantic Core"
-                    , "Stop-words"};
+    private static String[] pageTitles = new String[4];
+    private  Context context;
 
-    public SectionsPagerAdapter(FragmentManager fm) {
+    public SectionsPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
+        this.context=context;
+        pageTitles[0]=this.context.getString(R.string.pageTitles_summary);
+        pageTitles[1]=this.context.getString(R.string.pageTitles_allWords);
+        pageTitles[2]=this.context.getString(R.string.pageTitles_semanticCore);
+        pageTitles[3]=this.context.getString(R.string.pageTitles_stopWords);
     }
 
+    public Context getContext() {
+        return context;
+    }
 
     @Override
     public Fragment getItem(int position) { //compile all fragments
@@ -50,6 +56,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
+
         return pageTitles[position].toUpperCase();
     }
 
