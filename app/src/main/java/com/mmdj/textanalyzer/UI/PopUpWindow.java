@@ -1,10 +1,12 @@
 package com.mmdj.textanalyzer.UI;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +21,13 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 
 public class PopUpWindow {
-    private  Context context;
-    private  Activity activity;
-    private  String message;
+    private Context context;
+
+    private String message;
 
 
-    public PopUpWindow(Context context, Activity activity, String message) {
+    public PopUpWindow(Context context, String message) {
         this.context = context;
-        this.activity = activity;
         this.message = message;
     }
 
@@ -39,26 +40,10 @@ public class PopUpWindow {
         return this;
     }
 
-    public Activity getActivity() {
-        return activity;
-    }
-
-    public PopUpWindow setActivity(Activity activity) {
-        this.activity = activity;
-        return this;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public PopUpWindow setMessage(String message) {
-        this.message = message;
-        return this;
-    }
 
     public void doPopUpWindow() {
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        @SuppressLint("InflateParams")
         View popupView = layoutInflater.inflate(R.layout.popup_help, null);
         final PopupWindow popupWindow = new PopupWindow(
                 popupView,
@@ -77,7 +62,8 @@ public class PopUpWindow {
         popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
 
         TextView txtVwPopupText = (TextView) popupView.findViewById(R.id.txtVw_popup_text);
-        txtVwPopupText.setText(message);
+        txtVwPopupText.setMovementMethod(ScrollingMovementMethod.getInstance());
+        txtVwPopupText.setText(Html.fromHtml(message));
 
         Button btnDismiss = (Button) popupView.findViewById(R.id.btn_popup_dismiss);
         btnDismiss.setOnClickListener(new Button.OnClickListener() {

@@ -3,8 +3,6 @@ package com.mmdj.textanalyzer;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +11,6 @@ import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -31,7 +28,6 @@ public class Result_Activity extends AppCompatActivity {
     private static final String GET_TAG = "resultActivity";
     private static String textInString;
     private AdView mAdView;
-    private Snackbar mSnackbar;
 
     public static String getTextInString() {
         return textInString;
@@ -60,42 +56,14 @@ public class Result_Activity extends AppCompatActivity {
             tabLayout.setupWithViewPager(mViewPager);
         }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        if (fab != null) {
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //sending email:
-                    Intent intent = new Intent(Intent.ACTION_SENDTO);
-                    intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-                    intent.putExtra(Intent.EXTRA_SUBJECT, "Text analyzer");
-                    intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(fillMailBody().toString()));
-                    if (intent.resolveActivity(getPackageManager()) != null) {
-                        startActivity(intent);
-                    }
-                }
-
-                private StringBuilder fillMailBody() {
-                    StringBuilder body = new StringBuilder();
-                    body.append("<HTML><BODY><h3>Summary:</h3></br>");
-                    LinkedHashMap<String, Integer> summary = getSummaryMap();
-
-                    for (Map.Entry<String, Integer> entry : summary.entrySet()) {
-                        body = body.append("<div>")
-                                .append(entry.getKey())
-                                .append(": ")
-                                .append(entry.getValue())
-                                .append("</div>");
-                    }
-                    body = body.append("<h6>This mail was generated with Text Analyzer app</h6></BODY></HTML>");
-                    Log.d(GET_TAG, "bodyHTML: " + body);
-                    return body;
-                }
 
 
-            });
-        }
-        //adMob
+
+
+        /**
+         *  adMob
+         */
+
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("9742E5320F93696FBE2CA5608B8ABE86")
@@ -152,27 +120,56 @@ public class Result_Activity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-     //   View viewItem = findViewById(id);
+        //   View viewItem = findViewById(id);
 
         if (id == R.id.action_about) {
-            String message = getString(R.string.menuPopUpWin_about);
-            PopUpWindow popUpWindow = new PopUpWindow(this, Result_Activity.this, message);
+            String message = getString(R.string.menuResult_about);
+            PopUpWindow popUpWindow = new PopUpWindow(this, message);
             popUpWindow.doPopUpWindow();
             return true;
         }
 
         if (id == R.id.action_help) {
-           String message = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text ";
+            String message = getString(R.string.menuResult_help);
 
-            PopUpWindow popUpWindow = new PopUpWindow(this, Result_Activity.this, message);
+            PopUpWindow popUpWindow = new PopUpWindow(this, message);
             popUpWindow.doPopUpWindow();
 
         }
+
+        if (id == R.id.action_email) {
+
+            //sending email:
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Text analyzer");
+            intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(fillMailBody().toString()));
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
 
 
+    private StringBuilder fillMailBody() {
+        StringBuilder body = new StringBuilder();
+        body.append(getString(R.string.mail_summary));
+        LinkedHashMap<String, Integer> summary = getSummaryMap();
+
+        for (Map.Entry<String, Integer> entry : summary.entrySet()) {
+            body = body.append("<div>")
+                    .append(entry.getKey())
+                    .append(": ")
+                    .append(entry.getValue())
+                    .append("</div>");
+        }
+        body = body.append(getString(R.string.mail_footer));
+        Log.d(GET_TAG, "bodyHTML: " + body);
+        return body;
+    }
 }
 
 

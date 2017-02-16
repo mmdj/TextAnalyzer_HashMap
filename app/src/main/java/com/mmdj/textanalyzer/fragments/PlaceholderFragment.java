@@ -1,5 +1,6 @@
 package com.mmdj.textanalyzer.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.mmdj.textanalyzer.R;
 import com.mmdj.textanalyzer.Result_Activity;
+import com.mmdj.textanalyzer.UI.PopUpWindow;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +30,7 @@ import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.getSortedStopWord
 import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.textInStringToArray;
 
 
-public class PlaceholderFragment extends Fragment {
+public class PlaceholderFragment extends Fragment implements View.OnClickListener {
     public static final int TYPE_SEMANTIC = 1;
     public static final int TYPE_STOP_WORD = 2;
     public static final int TYPE_ALL_WORDS = 3;
@@ -107,12 +109,51 @@ public class PlaceholderFragment extends Fragment {
 
         super.onActivityCreated(savedInstanceState);
 
+
+        /**
+         * TextViews onClick Handler (Help)
+         */
+        TextView txtVw_charsNumber = (TextView) rootView.findViewById(R.id.txtVw_charsNumber);
+        TextView txtVw_charsNumberWithoutSpaces = (TextView) rootView.findViewById(R.id.txtVw_charsNumberWithoutSpaces);
+        TextView txtVw_charsWOPunct = (TextView) rootView.findViewById(R.id.txtVw_charsWOPunct);
+        TextView txtVw_charsMeaningful = (TextView) rootView.findViewById(R.id.txtVw_charsMeaningful);
+        TextView txtVw_wordsNumber = (TextView) rootView.findViewById(R.id.txtVw_wordsNumber);
+        TextView txtVw_uniqueWords = (TextView) rootView.findViewById(R.id.txtVw_uniqueWords);
+        TextView txtVw_stopWords = (TextView) rootView.findViewById(R.id.txtVw_stopWords);
+        TextView txtVw_dilution = (TextView) rootView.findViewById(R.id.txtVw_dilution);
+
+        if (txtVw_charsNumber != null) {
+            txtVw_charsNumber.setOnClickListener(this);
+        }
+        if (txtVw_charsNumberWithoutSpaces != null) {
+            txtVw_charsNumberWithoutSpaces.setOnClickListener(this);
+        }
+        if (txtVw_charsWOPunct != null) {
+            txtVw_charsWOPunct.setOnClickListener(this);
+        }
+        if (txtVw_charsMeaningful != null) {
+            txtVw_charsMeaningful.setOnClickListener(this);
+        }
+        if (txtVw_wordsNumber != null) {
+            txtVw_wordsNumber.setOnClickListener(this);
+        }
+        if (txtVw_uniqueWords != null) {
+            txtVw_uniqueWords.setOnClickListener(this);
+        }
+        if (txtVw_stopWords != null) {
+            txtVw_stopWords.setOnClickListener(this);
+        }
+        if (txtVw_dilution != null) {
+            txtVw_dilution.setOnClickListener(this);
+        }
+
+
         ArrayList<String> stopWordsAllLang = getStopWordsFromArraysXML();
         summaryMap = elementaryCounts(textInStringFromActivity, stopWordsAllLang, getContext());
         wordsList = countAndSort(allWords);
         sortedStopWordsList = getSortedStopWordsList();
         sortedSemanticCoreList = getSemanticCoreList();
-       // Log.d("analyze", "onCreateView is started | wordsList=" + wordsList);
+        // Log.d("analyze", "onCreateView is started | wordsList=" + wordsList);
 
 
         /***** words counting *****/
@@ -152,7 +193,7 @@ public class PlaceholderFragment extends Fragment {
         String[] stopWordsRu = getResources().getStringArray(R.array.stopWordsRu);
         String[] stopWordsHe = getResources().getStringArray(R.array.stopWordsHe);
 
-        ArrayList<String> list = new ArrayList(Arrays.asList(stopWordsEn));
+        ArrayList<String> list = new ArrayList<>(Arrays.asList(stopWordsEn));
         list.addAll(Arrays.asList(stopWordsRu));
         list.addAll(Arrays.asList(stopWordsHe));
         Collections.sort(list);
@@ -225,9 +266,46 @@ public class PlaceholderFragment extends Fragment {
         stopWordsInt.setText(stopWords);
         dilutionInt.setText(dilution);
 
+        String textColor ="#ff303030";
+        if (Integer.parseInt(dilution)<=15) textColor = "#99cc00";
+        else if (Integer.parseInt(dilution)<30) textColor = "#ff4444";
+        else if (Integer.parseInt(dilution)>=30) textColor = "#ffbb33";
+        dilutionInt.setTextColor(Color.parseColor(textColor));
+
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.txtVw_charsNumber:
+                new PopUpWindow(getActivity(), getString(R.string.helpSum_all_symbols)).doPopUpWindow();
+                break;
+            case R.id.txtVw_charsNumberWithoutSpaces:
+                new PopUpWindow(getActivity(), getString(R.string.helpSum_woSpaces)).doPopUpWindow();
+                break;
+            case R.id.txtVw_charsWOPunct:
+                new PopUpWindow(getActivity(), getString(R.string.helpSum_woPunctuation_marks)).doPopUpWindow();
+                break;
+            case  R.id.txtVw_charsMeaningful:
+                new PopUpWindow(getActivity(),
+                        getString(R.string.helpSum_charsMeaningful)).doPopUpWindow();
+                break;
+            case R.id.txtVw_wordsNumber:
+                new PopUpWindow(getActivity(), getString(R.string.helpSum_number_of_words)).doPopUpWindow();
+                break;
+            case R.id.txtVw_uniqueWords:
+                new PopUpWindow(getActivity(), getString(R.string.helpSum_unique_words)).doPopUpWindow();
+                break;
+            case R.id.txtVw_stopWords:
+                new PopUpWindow(getActivity(), getString(R.string.helpSum_number_of_stop_words)).doPopUpWindow();
+                break;
+            case R.id.txtVw_dilution:
+               new PopUpWindow(getActivity(), getString(R.string.helpSum_percent_of_dilution)).doPopUpWindow();
+                break;
+        }
+
+    }
 }
 
 

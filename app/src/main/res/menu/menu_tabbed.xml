@@ -19,5 +19,10 @@
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_info_outline_black_24dp"/>
 
-
+    <item
+        android:id="@+id/action_email"
+        android:orderInCategory="300"
+        android:title="Send email"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_email_black_24dp"/>
 </menu>

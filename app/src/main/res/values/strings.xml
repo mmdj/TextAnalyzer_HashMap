@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Text Analyzer</string>
+    <string name="app_name">Text Analyzer for SEO copywriting</string>
     <string name="btn_analyze">Analyze</string>
     <string name="spaceForDividingWords" translatable="false">" "</string>
     <string name="EditText_Input_Hint"><font size="15">...or paste your text here</font></string>
-    <string name="EditText_URL_Input_Hint"><font size="15">Paste an internet address here</font></string>
+    <string name="EditText_URL_Input_Hint"><font size="15">Paste an Internet address here</font></string>
     <string name="btn_reset">Reset</string>
     <string name="get_address" translatable="false">WWW</string>
     <string name="http2TextURLInput" translatable="false"> </string>
@@ -16,6 +16,20 @@
     <string name="action_settings">Settings</string>
     <string name="section_format" translatable="false">section: %1$d</string>
     <string name="tab_name_statistical_data">Statistical data</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-9696735279514968/3316085076</string>
+    <string name="pageTitles_summary">Summary</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_about">About</string>
+    <string name="menuResult_about" >Text analyzer for copywriters and SEO. Check your text!</string>
+    <string name="pageTitles_allWords">All words</string>
+    <string name="pageTitles_semanticCore">Semantic Core</string>
+    <string name="pageTitles_stopWords">Stop-words</string>
+    <string name="popupWindow_help">Help</string>
+    <string name="ok" translatable="false">OK</string>
+
+
+    <!-- fields for summary page fragment -->
+
     <string name="txtSummary_all_symbols_number">All symbols amount</string>
     <string name="txtSum_without_spaces">Without spaces</string>
     <string name="txtSum_without_punctuation_marks">Without punctuation marks</string>
@@ -23,18 +37,98 @@
     <string name="txtSum_number_of_words">Number of words</string>
     <string name="txtSum_unique_words">Unique words</string>
     <string name="txtSum_number_of_stop_words">Number of stop-words</string>
-    <string name="txtSum_percent_of_dilution">Percent of dilution</string>
+    <string name="txtSum_percent_of_dilution">Percentage of dilution</string>
     <string name="txtSum_999999" translatable="false">999999</string>
-    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-9696735279514968/3316085076</string>
-    <string name="pageTitles_summary">Summary</string>
-    <string name="menu_help">Help</string>
-    <string name="menu_about">About</string>
-    <string name="menuPopUpWin_about">Text analyzer for copywriters. Check your text!</string>
-    <string name="pageTitles_allWords">All words</string>
-    <string name="pageTitles_semanticCore">Semantic Core</string>
-    <string name="pageTitles_stopWords">Stop-words</string>
-    <string name="popupWindow_help">Help</string>
-    <string name="ok">OK</string>
 
+
+    <!-- help from summary page for popUpWindows -->
+
+        <string name="helpSum_all_symbols">
+            <![CDATA[
+            <font color=\'#ff4081\'><b>All symbols:</b></font>
+            <i>The total characters number in the text, excluding the tags (if the text is taken from the Internet)</i>
+            ]]>
+        </string>
+
+        <string name="helpSum_woSpaces">
+            <![CDATA[
+            <font color=\'#ff4081\'><b>Without spaces:</b></font>
+            <i>The total characters number in the text, excluding spaces </i>
+            ]]>
+        </string>
+
+         <string name="helpSum_woPunctuation_marks">
+            <![CDATA[
+            <font color=\'#ff4081\'><b>Without punctuation_marks:</b></font>
+            <i>The total characters number in the text, excluding spaces and punctuation marks</i>
+            ]]>
+        </string>
+
+        <string name="helpSum_charsMeaningful">
+            <![CDATA[
+            <font color=\'#ff4081\'><b>Significant characters only:</b></font>
+            <i> Number of significant characters (excluding spaces, punctuation marks and digits)</i>
+            ]]>
+        </string>
+
+        <string name="helpSum_number_of_words">
+            <![CDATA[
+            <font color=\'#ff4081\'><b>Number of words:</b></font>
+            <i>The number of all words in the text</i>
+            ]]>
+        </string>
+
+        <string name="helpSum_unique_words">
+            <![CDATA[
+            <font color=\'#ff4081\'><b>Unique words: </b></font>
+            <i>The number of unique (non-repeating) words in the text</i>
+            ]]>
+        </string>
+
+        <string name="helpSum_number_of_stop_words">
+            <![CDATA[
+            <font color=\'#ff4081\'><b>Number of stop-words: </b></font>
+            <i>The number of stop-words in the text.<br>
+            <b>Stop-words</b> are some words, which are ignored in a search queries.
+            Words like <b>the, an, a, of, or, many,</b> etc. They have nothing to do with the content.
+            Search engines, in both search queries and in results, often ignore them.</i>
+            ]]>
+        </string>
+
+
+         <string name="helpSum_percent_of_dilution" formatted="false">
+                <![CDATA[
+                <b>Percentage of dilution: </b>
+                <i>Determination of percentage of water content in the text.<br>
+                This parameter displays the percentage of cases in the text stop words,
+                 which are not significant and are not bearing semantic load.
+                Small amount of "water" in the text is the natural exponent, wherein:<br>
+            <font color=\'#99cc00\'><b>up to 15%</b></font> - the content of the natural "water" in the text;<br>
+            <font color=\'#ffbb33\'><b>from 15% to 30% </b></font> - an excess of "water" in the text;<br>
+            <font color=\'#ff4444\'><b>greater than 30% </b></font> - high content of "water" in the text.</i>
+                ]]>
+         </string>
+
+
+    <string name="menuResult_help">
+       <![CDATA[
+               <b> Using a special algorithm, this application analyzes the text and displays the results in four tabs:</b><br>
+                <i>
+                <font color=\'#ff4081\'><b>Summary </b></font> - statistical data of the text according to various indicators.<br>
+                <font color=\'#ff4081\'><b>All words</b></font> - all the words of the text, arranged in descending order of their frequency.<br>
+                <font color=\'#ff4081\'><b>Semantic core</b></font> - a list of keywords (words meeting in the text more than once and at the same time non-stop-words.<br>
+                <font color=\'#ff4081\'><b>Stop-words</b></font> - a list of stop-words arranged in descending order of their frequency.<br>
+                </i>
+                ]]>
+    </string>
+
+    <string name="dialogExit">Exit Text analyzer?</string>
+    <string name="dialogExit_touch">Press \"Yes\" to exit!</string>
+    <string name="dialogExit_yes">Yes</string>
+    <string name="dialogExit_No">No</string>
+    <string name="mail_summary"><![CDATA[<HTML><BODY><h3>Summary:</h3></br>]]></string>
+    <string name="mail_footer"><![CDATA[<h6>This mail was generated with Text Analyzer app</h6></BODY></HTML>]]></string>
+    <string name="listHeader_word">Word</string>
+    <string name="listHeader_amount">Amount</string>
 
 </resources>

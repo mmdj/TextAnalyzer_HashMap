@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             style="@style/Widget.AppCompat.PopupWindow"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_margin="10dp"
-             android:background="@color/colorPrimary"
-             android:minWidth="128dp"
-             android:orientation="horizontal">
+            style="@style/Widget.AppCompat.PopupWindow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/colorPrimary"
+            >
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,17 +16,30 @@
         >
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="8dp"
             android:minWidth="128dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtVw_popup_text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/popupWindow_help"/>
+                android:maxLines="10"
+                android:text="@string/popupWindow_help"
+                android:scrollbars="vertical"
+                android:scrollbarStyle="outsideOverlay"
+                android:fadeScrollbars="false"
+                android:scrollbarThumbVertical="@color/colorAccent"
+                android:scrollbarSize="1dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:focusableInTouchMode="false"
+
+               />
+
 
             <Button
                 android:id="@+id/btn_popup_dismiss"

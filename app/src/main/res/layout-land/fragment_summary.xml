@@ -16,21 +16,22 @@
         android:paddingStart="16dp"
         android:text="@string/tab_name_statistical_data"
         android:textSize="@dimen/design_tab_text_size"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
             android:gravity="center|right"
             android:minHeight="?android:listPreferredItemHeight"
+            android:orientation="vertical"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingStart="16dp">
@@ -39,48 +40,80 @@
                 android:id="@+id/txtVw_charsNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSummary_all_symbols_number" />
+                android:minHeight="22dp"
+                android:drawableLeft="@drawable/ic_help_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/txtSummary_all_symbols_number"/>
 
             <TextView
                 android:id="@+id/txtVw_charsNumberWithoutSpaces"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_without_spaces" />
+                android:minHeight="22dp"
+                android:drawableLeft="@drawable/ic_help_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/txtSum_without_spaces"/>
 
             <TextView
                 android:id="@+id/txtVw_charsWOPunct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_without_punctuation_marks" />
+                android:minHeight="22dp"
+                android:drawableLeft="@drawable/ic_help_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/txtSum_without_punctuation_marks"/>
 
             <TextView
                 android:id="@+id/txtVw_charsMeaningful"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="22dp"
+                android:drawableLeft="@drawable/ic_help_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
                 android:text="@string/txtSum_significant_characters_only"/>
 
             <TextView
                 android:id="@+id/txtVw_wordsNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_number_of_words" />
+                android:minHeight="22dp"
+                android:drawableLeft="@drawable/ic_help_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/txtSum_number_of_words"/>
 
             <TextView
                 android:id="@+id/txtVw_uniqueWords"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_unique_words" />
+                android:minHeight="22dp"
+                android:drawableLeft="@drawable/ic_help_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/txtSum_unique_words"/>
 
             <TextView
                 android:id="@+id/txtVw_stopWords"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_number_of_stop_words" />
+                android:minHeight="22dp"
+                android:drawableLeft="@drawable/ic_help_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/txtSum_number_of_stop_words"/>
 
             <TextView
                 android:id="@+id/txtVw_dilution"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="22dp"
+                android:drawableLeft="@drawable/ic_help_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
                 android:text="@string/txtSum_percent_of_dilution"/>
 
         </LinearLayout>
@@ -88,16 +121,16 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent" />
+            android:background="@color/colorAccent"/>
 
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:orientation="vertical"
             android:gravity="center|left"
             android:minHeight="?android:listPreferredItemHeight"
+            android:orientation="vertical"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingStart="16dp">
@@ -106,50 +139,66 @@
                 android:id="@+id/txtVw_charsNumberInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_999999" />
+                android:freezesText="true"
+                android:minHeight="22dp"
+                android:text="@string/txtSum_999999"/>
 
             <TextView
                 android:id="@+id/txtVw_charsNumberWithoutSpacesInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_999999" />
+                android:freezesText="true"
+                android:minHeight="22dp"
+                android:text="@string/txtSum_999999"/>
 
             <TextView
                 android:id="@+id/txtVw_charsWOPunctInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_999999" />
+                android:freezesText="true"
+                android:minHeight="22dp"
+                android:text="@string/txtSum_999999"/>
 
             <TextView
                 android:id="@+id/txtVw_charsMeaningfulInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_999999" />
+                android:freezesText="true"
+                android:minHeight="22dp"
+                android:text="@string/txtSum_999999"/>
 
 
             <TextView
                 android:id="@+id/txtVw_wordsNumberInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_999999" />
+                android:freezesText="true"
+                android:minHeight="22dp"
+                android:text="@string/txtSum_999999"/>
 
             <TextView
                 android:id="@+id/txtVw_uniqueWordsInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_999999" />
+                android:freezesText="true"
+                android:minHeight="22dp"
+                android:text="@string/txtSum_999999"/>
 
             <TextView
                 android:id="@+id/txtVw_stopWordsInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_999999" />
+                android:freezesText="true"
+                android:minHeight="22dp"
+                android:text="@string/txtSum_999999"/>
 
             <TextView
                 android:id="@+id/txtVw_dilutionInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtSum_999999" />
+                android:freezesText="true"
+                android:minHeight="22dp"
+                android:text="@string/txtSum_999999"/>
 
         </LinearLayout>
     </LinearLayout>

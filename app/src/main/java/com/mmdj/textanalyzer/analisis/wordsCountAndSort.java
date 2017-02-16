@@ -266,7 +266,6 @@ public class WordsCountAndSort {
 
                     }
 
-
                     if (textWord.equals(stopWord)) {
                         foundTextWords.add(textWord);
                         i += stopSentence.length - 1;

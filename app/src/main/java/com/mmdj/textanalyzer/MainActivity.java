@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Process;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -92,21 +93,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("Exit Application?");
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
+        alertDialogBuilder.setTitle(R.string.dialogExit);
         alertDialogBuilder
-                .setMessage("Click \"Yes\" to exit!")
+                .setMessage(R.string.dialogExit_touch)
                 .setCancelable(false)
-                .setPositiveButton("Yes",
+                .setPositiveButton(R.string.dialogExit_yes,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 moveTaskToBack(true);
-                                android.os.Process.killProcess(android.os.Process.myPid());
+                                Process.killProcess(Process.myPid());
                                 System.exit(1);
                             }
                         })
 
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.dialogExit_No, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                         dialog.cancel();
