@@ -22,7 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
 
         <LinearLayout
@@ -39,19 +41,19 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical|left"
                 android:hint="@string/EditText_URL_Input_Hint"
-
                 android:inputType="textWebEmailAddress"/>
 
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_getURL"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="0.35"
-                android:text="@string/get_address"
-
+                android:layout_weight="0.3"
+                android:src="@drawable/ic_play_for_work_black_24dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 />
         </LinearLayout>
 
@@ -67,8 +69,7 @@
                 android:layout_height="match_parent"
                 android:gravity="top|left"
                 android:hint="@string/EditText_Input_Hint"
-                android:shadowDx="2"
-                android:shadowDy="2"/>
+                />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/insertText_fab"

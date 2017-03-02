@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.mmdj.textanalyzer.connection.OpenHTTPConnection;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         editTextURLInput = (EditText) findViewById(R.id.edtTxt_URL_Input);
         editTextInput = (EditText) findViewById(R.id.edtTxt_input);
-        Button btnGetURL = (Button) findViewById(R.id.btn_getURL);
+        ImageButton btnGetURL = (ImageButton) findViewById(R.id.btn_getURL);
         Button btnAnalyze = (Button) findViewById(R.id.btn_analyze);
         Button btnReset = (Button) findViewById(R.id.btn_reset);
 
@@ -163,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String textInString = null;
 
         if (editTextInput != null) {                                               //from text
-            textInString = editTextInput.getText().toString();
+            textInString = editTextInput.getText().toString().trim();
         }
 
         if (textInString == null || textInString.isEmpty()) {                      //checking text

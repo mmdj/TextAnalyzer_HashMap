@@ -56,12 +56,15 @@
         android:alpha="0.05"
         android:scaleX="2"
         >
+
+
     </View>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
 </android.support.design.widget.CoordinatorLayout>

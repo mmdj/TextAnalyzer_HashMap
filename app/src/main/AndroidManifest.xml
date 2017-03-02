@@ -20,7 +20,7 @@
 
         <activity
             android:name=".Result_Activity"
-            android:label="Text Analyzer: Results" />
+            android:label="Text Analyzer" />
 
     </application>
 

@@ -103,8 +103,8 @@
                 This parameter displays the percentage of cases in the text stop words,
                  which are not significant and are not bearing semantic load.
                 Small amount of "water" in the text is the natural exponent, wherein:<br>
-            <font color=\'#99cc00\'><b>up to 15%</b></font> - the content of the natural "water" in the text;<br>
-            <font color=\'#ffbb33\'><b>from 15% to 30% </b></font> - an excess of "water" in the text;<br>
+            <font color=\'#ffbb33\'><b>up to 15%</b></font> - the content of the natural "water" in the text;<br>
+            <font color=\'#99cc00\'><b>from 15% to 30% </b></font> - an excess of "water" in the text;<br>
             <font color=\'#ff4444\'><b>greater than 30% </b></font> - high content of "water" in the text.</i>
                 ]]>
          </string>
@@ -118,6 +118,7 @@
                 <font color=\'#ff4081\'><b>All words</b></font> - all the words of the text, arranged in descending order of their frequency.<br>
                 <font color=\'#ff4081\'><b>Semantic core</b></font> - a list of keywords (words meeting in the text more than once and at the same time non-stop-words.<br>
                 <font color=\'#ff4081\'><b>Stop-words</b></font> - a list of stop-words arranged in descending order of their frequency.<br>
+                <font color=\'#ff4081\'><b>Stop-words in text</b></font> - the same stop-words within the text, marked in color to improve readability.<br>
                 </i>
                 ]]>
     </string>
@@ -130,5 +131,9 @@
     <string name="mail_footer"><![CDATA[<h6>This mail was generated with Text Analyzer app</h6></BODY></HTML>]]></string>
     <string name="listHeader_word">Word</string>
     <string name="listHeader_amount">Amount</string>
+    <string name="menuResult_send">Send results</string>
+    <string name="pageTitles_textWithStopWords">Stop-words in the text</string>
+    <string name="txtVw_classic_nausea">Classic nausea</string>
+    <string name="txtVw_academic_nausea">Academic nausea</string>
 
 </resources>

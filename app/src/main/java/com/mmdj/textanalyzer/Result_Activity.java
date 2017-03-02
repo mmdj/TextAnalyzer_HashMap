@@ -56,10 +56,6 @@ public class Result_Activity extends AppCompatActivity {
             tabLayout.setupWithViewPager(mViewPager);
         }
 
-
-
-
-
         /**
          *  adMob
          */
@@ -80,6 +76,7 @@ public class Result_Activity extends AppCompatActivity {
             textInString = savedInstanceState.getString("text");
 
         } else textInString = intent.getStringExtra("textInString");
+        Log.d(GET_TAG,"textInString: "+textInString);
     }
 
     @Override

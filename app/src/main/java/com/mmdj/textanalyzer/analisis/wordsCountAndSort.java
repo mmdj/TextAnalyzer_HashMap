@@ -295,7 +295,7 @@ public class WordsCountAndSort {
     }
 
     private static List<Map.Entry<String, Integer>> findSemanticCore(HashMap<String, Integer> currentStopWords) {
-        Log.d(GET_TAG, "findSemanticCore is started | countedWordsMap=" + countedWordsMap);
+        //Log.d(GET_TAG, "findSemanticCore is started | countedWordsMap=" + countedWordsMap);
 
         HashMap<String, Integer> semanticCoreMap = new HashMap<>();
         for (Map.Entry<String, Integer> entry : countedWordsMap.entrySet()) {
@@ -303,7 +303,7 @@ public class WordsCountAndSort {
             if (!currentStopWords.containsKey(entry.getKey()) && entry.getValue() > 1) {
 
                 semanticCoreMap.put(entry.getKey(), entry.getValue());
-                Log.d(GET_TAG, "semanticCoreMap: " + entry.getKey() + ": " + entry.getValue());
+                //Log.d(GET_TAG, "semanticCoreMap: " + entry.getKey() + ": " + entry.getValue());
 
             }
         }

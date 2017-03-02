@@ -10,7 +10,7 @@ import com.mmdj.textanalyzer.R;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    private static String[] pageTitles = new String[4];
+    private static String[] pageTitles = new String[5];
     private  Context context;
 
     public SectionsPagerAdapter(FragmentManager fm, Context context) {
@@ -20,6 +20,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         pageTitles[1]=this.context.getString(R.string.pageTitles_allWords);
         pageTitles[2]=this.context.getString(R.string.pageTitles_semanticCore);
         pageTitles[3]=this.context.getString(R.string.pageTitles_stopWords);
+        pageTitles[4]=this.context.getString(R.string.pageTitles_textWithStopWords);
     }
 
     public Context getContext() {
@@ -45,6 +46,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 3:
                 return PlaceholderFragment
                         .newInstance(position + 1,PlaceholderFragment.TYPE_STOP_WORD).setPageLayout(R.layout.fragment_activity_listview);
+            case 4:
+                return PlaceholderFragment
+                        .newInstance(position + 1,PlaceholderFragment.TYPE_TEXT_WITH_STOP_WORD).setPageLayout(R.layout.fragment_text_with_stop_words);
         }
         return null;
     }

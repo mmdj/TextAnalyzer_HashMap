@@ -3,6 +3,8 @@ package com.mmdj.textanalyzer.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +36,7 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
     public static final int TYPE_SEMANTIC = 1;
     public static final int TYPE_STOP_WORD = 2;
     public static final int TYPE_ALL_WORDS = 3;
+    public static final int TYPE_TEXT_WITH_STOP_WORD = 4;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static final String GET_TAG = "PlaceHolderFragment";
@@ -81,8 +84,10 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
      ***/
 
     public static PlaceholderFragment newInstance(int sectionNumber, int listType) {
+
         PlaceholderFragment fragment = new PlaceholderFragment();
         fragment.currentType = listType;
+
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
@@ -153,36 +158,75 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
         wordsList = countAndSort(allWords);
         sortedStopWordsList = getSortedStopWordsList();
         sortedSemanticCoreList = getSemanticCoreList();
-        // Log.d("analyze", "onCreateView is started | wordsList=" + wordsList);
+        //  Log.d(GET_TAG, "onCreateView is started | wordsList=" + wordsList);
 
 
         /***** words counting *****/
+        //  Log.d(GET_TAG, "type:" + currentType);
+        //if (rootView.findViewById(lstVw_result) != null) {
 
-        if (rootView.findViewById(lstVw_result) != null) {
-
-            if (currentType == TYPE_ALL_WORDS) {
-                listViewFiller(wordsList);                   //List of all words fragment
-
-                /*
-                int i=0;
-                for (Map.Entry word:wordsList) {
-                     Log.d(GET_TAG, "Fragment"+ currentType + ". wordsList: " + (++i) +"-" + word.getKey());
-                 }*/
-
-
-            } else if (currentType == TYPE_SEMANTIC) {
-                listViewFiller(sortedSemanticCoreList);//Semantic Core List
-            } else if (currentType == TYPE_STOP_WORD) {
-                listViewFiller(sortedStopWordsList);                  //List of stop-words fragment
-            }
-
-
-        } else {                                             //Summary fragment
-
-            summaryPageFiller(summaryMap);
+        if (currentType == TYPE_ALL_WORDS) {                        //All words
+            listViewFiller(wordsList);
+            // Log.d(GET_TAG, "wordsList");
+        } else if (currentType == TYPE_SEMANTIC) {
+            listViewFiller(sortedSemanticCoreList);                //Semantic Core List
+            //  Log.d(GET_TAG, "sortedSemanticCoreList");
+        } else if (currentType == TYPE_STOP_WORD) {
+            listViewFiller(sortedStopWordsList);                  //List of stop-words fragment
+            //  Log.d(GET_TAG, "sortedStopWordsList");
         }
 
+        //}
+        else if (currentType == TYPE_TEXT_WITH_STOP_WORD) {
+            textWithStopWordsFiller();
+            //  Log.d(GET_TAG, "TYPE_TEXT_WITH_STOP_WORD");
+        } else {                                             //Summary fragment
+            summaryPageFiller(summaryMap);
+            //  Log.d(GET_TAG, "summaryPageFiller");
+        }
+
+
         return rootView;
+    }
+
+    private void textWithStopWordsFiller() {
+        TextView txtVw_textStopWords = (TextView) rootView.findViewById(R.id.txtVw_textStopWords);
+        txtVw_textStopWords.setMovementMethod(ScrollingMovementMethod.getInstance());
+
+
+
+        //change \n to <br> for html:
+        String textWithLineBreaksChanged = textInStringFromActivity.replaceAll("(\r\n|\n)", " <br> ");
+
+       // Log.d(GET_TAG, "text: " + textWithLineBreaksChanged);
+
+        //split by spaces, and punct.marks(they are not deleted):
+        String[] arrWords = textWithLineBreaksChanged.split("\\s+|(?=\\p{Punct})|(?<=\\p{Punct})");
+
+        StringBuilder textWithStopWordsInHTML = new StringBuilder("");
+        for (int i = 0; i < arrWords.length; i++) {
+            for (Map.Entry<String, Integer> map : sortedStopWordsList) {
+                if (arrWords[i].equalsIgnoreCase(map.getKey())) {
+                    //change color to word:
+                    arrWords[i] = "<font color=\'#ff4444\'>" + arrWords[i] + "</font>";
+                }
+            }
+
+            if (arrWords[i].equals("-")
+                    || arrWords[i].equals("(")
+                    || arrWords[i].equals("«")
+                    ||(i!=arrWords.length-1 && arrWords[i+1].matches("[^\\s\\w]"))){//not a punct. marks
+
+                textWithStopWordsInHTML.append(arrWords[i]);            //without space after it
+
+            }
+            else textWithStopWordsInHTML.append(arrWords[i]).append(" ");//with space after it
+        }
+
+        txtVw_textStopWords.setText(Html.fromHtml(textWithStopWordsInHTML.toString().trim()));
+
+      //  Log.d(GET_TAG, "textWithStopWordsInHTML!!!" + textWithStopWordsInHTML.toString().trim());
+
     }
 
     /**********************************
@@ -266,10 +310,10 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
         stopWordsInt.setText(stopWords);
         dilutionInt.setText(dilution);
 
-        String textColor ="#ff303030";
-        if (Integer.parseInt(dilution)<=15) textColor = "#99cc00";
-        else if (Integer.parseInt(dilution)<30) textColor = "#ff4444";
-        else if (Integer.parseInt(dilution)>=30) textColor = "#ffbb33";
+        String textColor = "#ff303030";
+        if (Integer.parseInt(dilution) <= 15) textColor = "#ffbb33";
+        else if (Integer.parseInt(dilution) <= 30) textColor = "#99cc00";
+        else if (Integer.parseInt(dilution) > 30) textColor = "#ff4444";
         dilutionInt.setTextColor(Color.parseColor(textColor));
 
     }
@@ -287,7 +331,7 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
             case R.id.txtVw_charsWOPunct:
                 new PopUpWindow(getActivity(), getString(R.string.helpSum_woPunctuation_marks)).doPopUpWindow();
                 break;
-            case  R.id.txtVw_charsMeaningful:
+            case R.id.txtVw_charsMeaningful:
                 new PopUpWindow(getActivity(),
                         getString(R.string.helpSum_charsMeaningful)).doPopUpWindow();
                 break;
@@ -301,7 +345,7 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
                 new PopUpWindow(getActivity(), getString(R.string.helpSum_number_of_stop_words)).doPopUpWindow();
                 break;
             case R.id.txtVw_dilution:
-               new PopUpWindow(getActivity(), getString(R.string.helpSum_percent_of_dilution)).doPopUpWindow();
+                new PopUpWindow(getActivity(), getString(R.string.helpSum_percent_of_dilution)).doPopUpWindow();
                 break;
         }
 
