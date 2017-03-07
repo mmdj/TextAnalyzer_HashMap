@@ -5,17 +5,20 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mmdj.textanalyzer.R;
 import com.mmdj.textanalyzer.Result_Activity;
 import com.mmdj.textanalyzer.UI.PopUpWindow;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -154,14 +157,14 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
 
 
         ArrayList<String> stopWordsAllLang = getStopWordsFromArraysXML();
-        summaryMap = elementaryCounts(textInStringFromActivity, stopWordsAllLang, getContext());
         wordsList = countAndSort(allWords);
+        summaryMap = elementaryCounts(textInStringFromActivity, stopWordsAllLang, getContext());
         sortedStopWordsList = getSortedStopWordsList();
         sortedSemanticCoreList = getSemanticCoreList();
         //  Log.d(GET_TAG, "onCreateView is started | wordsList=" + wordsList);
 
 
-        /***** words counting *****/
+        /* **** words counting *****/
         //  Log.d(GET_TAG, "type:" + currentType);
         //if (rootView.findViewById(lstVw_result) != null) {
 
@@ -194,11 +197,10 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
         txtVw_textStopWords.setMovementMethod(ScrollingMovementMethod.getInstance());
 
 
-
         //change \n to <br> for html:
         String textWithLineBreaksChanged = textInStringFromActivity.replaceAll("(\r\n|\n)", " <br> ");
 
-       // Log.d(GET_TAG, "text: " + textWithLineBreaksChanged);
+        // Log.d(GET_TAG, "text: " + textWithLineBreaksChanged);
 
         //split by spaces, and punct.marks(they are not deleted):
         String[] arrWords = textWithLineBreaksChanged.split("\\s+|(?=\\p{Punct})|(?<=\\p{Punct})");
@@ -215,17 +217,16 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
             if (arrWords[i].equals("-")
                     || arrWords[i].equals("(")
                     || arrWords[i].equals("«")
-                    ||(i!=arrWords.length-1 && arrWords[i+1].matches("[^\\s\\w]"))){//not a punct. marks
+                    || (i != arrWords.length - 1 && arrWords[i + 1].matches("[^\\s\\w]"))) {//not a punct. marks
 
                 textWithStopWordsInHTML.append(arrWords[i]);            //without space after it
 
-            }
-            else textWithStopWordsInHTML.append(arrWords[i]).append(" ");//with space after it
+            } else textWithStopWordsInHTML.append(arrWords[i]).append(" ");//with space after it
         }
 
         txtVw_textStopWords.setText(Html.fromHtml(textWithStopWordsInHTML.toString().trim()));
 
-      //  Log.d(GET_TAG, "textWithStopWordsInHTML!!!" + textWithStopWordsInHTML.toString().trim());
+        //  Log.d(GET_TAG, "textWithStopWordsInHTML!!!" + textWithStopWordsInHTML.toString().trim());
 
     }
 
@@ -289,6 +290,10 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
         String uniqueWords = String.valueOf(map.get(getString(R.string.txtSum_unique_words)));
         String stopWords = String.valueOf(map.get(getString(R.string.txtSum_number_of_stop_words)));
         String dilution = String.valueOf(map.get(getString(R.string.txtSum_percent_of_dilution)));
+        double academicNauseaD = calculateAcademicNausea(map.get(getString(R.string.txtSum_number_of_words)));
+
+        double classicNauseaD = calculateClassicNausea();
+
 
         //get id
         TextView charsNumberInt = (TextView) rootView.findViewById(R.id.txtVw_charsNumberInt);
@@ -299,6 +304,8 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
         TextView uniqueWordsInt = (TextView) rootView.findViewById(R.id.txtVw_uniqueWordsInt);
         TextView stopWordsInt = (TextView) rootView.findViewById(R.id.txtVw_stopWordsInt);
         TextView dilutionInt = (TextView) rootView.findViewById(R.id.txtVw_dilutionInt);
+        TextView academicNauseaInt = (TextView) rootView.findViewById(R.id.txtVw_academicNauseaInt);
+        TextView classicNauseaInt = (TextView) rootView.findViewById(R.id.txtVw_classicNauseaInt);
 
         //set text in activity
         charsNumberInt.setText(allChars);
@@ -308,14 +315,49 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
         allWordsInt.setText(allWords);
         uniqueWordsInt.setText(uniqueWords);
         stopWordsInt.setText(stopWords);
-        dilutionInt.setText(dilution);
+        dilutionInt.setText(String.format("%s%%", dilution));
+        classicNauseaInt.setText(new DecimalFormat("##.##").format(classicNauseaD));//double to string in format
 
+        if (academicNauseaD == -1) {
+            academicNauseaInt.setText("-");
+            Toast.makeText(getContext(), "Keywords are not found", Toast.LENGTH_SHORT).show();
+        } else {
+            academicNauseaInt.setText(String.format("%s%%", new DecimalFormat("##.##").format(academicNauseaD)));
+            academicNauseaInt.setTextColor(Color.parseColor(academicNauseaD < 8 ? "#99cc00" : "#ff4444"));
+        }
+
+
+            /* color of dilution */
         String textColor = "#ff303030";
-        if (Integer.parseInt(dilution) <= 15) textColor = "#ffbb33";
-        else if (Integer.parseInt(dilution) <= 30) textColor = "#99cc00";
-        else if (Integer.parseInt(dilution) > 30) textColor = "#ff4444";
+        if (Integer.parseInt(dilution) <= 15) textColor = "#ffbb33";//yellow
+        else if (Integer.parseInt(dilution) <= 30) textColor = "#99cc00";//green
+        else if (Integer.parseInt(dilution) > 30) textColor = "#ff4444";//red
         dilutionInt.setTextColor(Color.parseColor(textColor));
 
+             /* color of classicNausea */
+        textColor = classicNauseaD < 7 ? "#99cc00" : "#ff4444";
+        classicNauseaInt.setTextColor(Color.parseColor(textColor));
+    }
+
+
+    private double calculateAcademicNausea(int allWords) {
+        if (sortedSemanticCoreList != null && sortedSemanticCoreList.size() != 0) {
+            int mostPopularKeyWordNumber = sortedSemanticCoreList.get(0).getValue();
+            if (allWords == 0) return 0;
+            else {
+                double res = (double) mostPopularKeyWordNumber / (double) allWords * 100;
+
+                Log.d("NAUS ", String.valueOf((double) allWords));
+                Log.d("NAUS ", String.valueOf((double) mostPopularKeyWordNumber));
+                Log.d("NAUS ", String.valueOf(res));
+                return res;
+            }
+        } else return -1;
+    }
+
+    private double calculateClassicNausea() {
+        double classicNausea = Math.sqrt(getWordsList().get(0).getValue());
+        return classicNausea < 2.64 ? 2.64 : classicNausea;
     }
 
 

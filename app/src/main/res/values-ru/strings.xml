@@ -119,5 +119,7 @@
     <string name="listHeader_word">Слово</string>
     <string name="menuResult_send">Отправить результаты</string>
     <string name="pageTitles_textWithStopWords">Стоп-слова в тексте</string>
+    <string name="txtVw_academic_nausea">Академическая тошнота</string>
+    <string name="txtVw_classic_nausea">Классическая тошнота</string>
 
 </resources>

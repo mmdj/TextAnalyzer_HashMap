@@ -41,7 +41,7 @@ public class Result_Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //give context to  SectionsPagerAdapter
+        //give context to  SectionsPagerAapter
         SectionsPagerAdapter mSectionsPagerAdapter =
                 new SectionsPagerAdapter(getSupportFragmentManager(), this);
 

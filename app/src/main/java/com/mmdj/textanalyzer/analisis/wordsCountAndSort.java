@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -147,7 +146,7 @@ public class WordsCountAndSort {
         //   Log.d(GET_TAG, " strWithoutDigitsAndPunctuation: " + strWithoutDigitsAndPunctuation);
 
 
-        /*************** WORDS: ****************/
+        /* ************** WORDS: *************** */
 
         //simple words count:
         // String[] arrWords =  textInString.toLowerCase().split("(?!'\\w+)(?!\\w+')[^\\w]+|([0-9])+");
@@ -173,19 +172,15 @@ public class WordsCountAndSort {
 
 
         int stopWords = 0;
-
-        if (currentStopWords != null) {
+        if (countedWordsMap != null) {
+            semanticCoreList = findSemanticCore(currentStopWords);
             Log.d(GET_TAG, "elementaryCounts is started | semanticCoreList" + semanticCoreList);
-
-            if (countedWordsMap != null) {
-                semanticCoreList = findSemanticCore(currentStopWords);
-            }
-
+        }
+        if (currentStopWords != null) {
             Set setOfKeys = currentStopWords.keySet();
-            Iterator iterator = setOfKeys.iterator();
 
-            while (iterator.hasNext()) {
-                String key = (String) iterator.next();
+            for (Object setOfKey : setOfKeys) {
+                String key = (String) setOfKey;
                 Integer value = currentStopWords.get(key);
                 Log.d(GET_TAG, "stopWords: " + key + " - " + value);
                 stopWords += value;
@@ -200,7 +195,6 @@ public class WordsCountAndSort {
         double dilution = currentStopWords != null ? dilutionCalculate(currentStopWords, allWords) : 0;
         //  Log.d(GET_TAG, "dilution: " + dilution);
 
-
         // filling map with results:
         elementaryCountsMap.put(context.getString(R.string.txtSummary_all_symbols_number), allChars);
         elementaryCountsMap.put(context.getString(R.string.txtSum_without_spaces), woSpaces);
@@ -211,9 +205,10 @@ public class WordsCountAndSort {
         elementaryCountsMap.put(context.getString(R.string.txtSum_number_of_stop_words), stopWords);
         elementaryCountsMap.put(context.getString(R.string.txtSum_percent_of_dilution), (int) dilution);
 
-
         return elementaryCountsMap;
     }
+
+
 
     private static double dilutionCalculate(HashMap<String, Integer> currentStopWords, int nAllWords) {
         int nStopWords = 0;
@@ -300,7 +295,7 @@ public class WordsCountAndSort {
         HashMap<String, Integer> semanticCoreMap = new HashMap<>();
         for (Map.Entry<String, Integer> entry : countedWordsMap.entrySet()) {
             // Check if the current value is a key in the 2nd map
-            if (!currentStopWords.containsKey(entry.getKey()) && entry.getValue() > 1) {
+            if ((currentStopWords==null || !currentStopWords.containsKey(entry.getKey())) && entry.getValue() > 1) {
 
                 semanticCoreMap.put(entry.getKey(), entry.getValue());
                 //Log.d(GET_TAG, "semanticCoreMap: " + entry.getKey() + ": " + entry.getValue());
