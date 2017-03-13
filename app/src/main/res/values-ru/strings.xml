@@ -13,7 +13,7 @@
     <string name="tab_name_statistical_data">Статистика</string>
     <string name="txtSum_number_of_stop_words">Количество стоп-слов</string>
     <string name="txtSum_number_of_words">Всего слов</string>
-    <string name="txtSum_percent_of_dilution">Водность (%)</string>
+    <string name="txtSum_percent_of_dilution">Водность</string>
     <string name="txtSum_significant_characters_only">Значимых символов</string>
     <string name="txtSum_unique_words">Уникальных слов</string>
     <string name="txtSum_without_punctuation_marks">Без знаков пунктуации</string>
@@ -65,7 +65,7 @@
     </string>
     <string name="helpSum_percent_of_dilution" formatted="false">
         <![CDATA[
-            <b>Водность текста (%): </b>
+            <b>Водность текста: </b>
             <i>Этот параметр показывает процент наличия в тексте стоп-слов,
             являющихся не значимыми и не несущими смысловой нагрузки.
             Небольшое содержание «воды» в тексте является естественным показателем, при этом:<br>
@@ -74,6 +74,29 @@
             <font color=\'#ff4444\'><b>более 30% </b></font> - высокое содержание воды в тексте, характерное для художественных текстов</i>
         ]]>
         </string>
+
+    <string name="helpSum_academicNausea" formatted="false">
+                <![CDATA[
+                <b>Академическая тошнота </b>
+                <i>
+                    зависит от числа повторений самого популярного ключевого слова и от общего
+                    количества слов в тексте. То есть, чем чаще это ключевое слово  будет повторяться в тексте,
+                    тем больше будет академическая тошнота. Если \"Анализатор текста\" показывает тошноту
+                    больше 8%, рекомендуется ее снизить, используя синонимы, иначе релевантность по ключу снизится.<br>
+                </i>
+                ]]>
+         </string>
+
+    <string name="helpSum_classicNausea" formatted="false">
+                <![CDATA[
+                <b>Классическая тошнота </b>
+                <i>зависит от количества повторений самого частого слова (в том числе стоп-слова),
+                при этом объем текста значения не имеет. Оптимально удерживать коэффициент классической тошноты
+                в значении не более 7. Большее значение этого параметра  вызовет заспамленность текста и уменьшит
+                ранжирование поисковыми системами.</i>
+                ]]>
+         </string>
+
 
      <string name="helpSum_unique_words">
                 <![CDATA[

@@ -20,7 +20,7 @@
     <string name="pageTitles_summary">Summary</string>
     <string name="menu_help">Help</string>
     <string name="menu_about">About</string>
-    <string name="menuResult_about" >Text analyzer for copywriters and SEO. Check your text!</string>
+    <string name="menuResult_about">Text analyzer for copywriters and SEO. Check your text!</string>
     <string name="pageTitles_allWords">All words</string>
     <string name="pageTitles_semanticCore">Semantic Core</string>
     <string name="pageTitles_stopWords">Stop-words</string>
@@ -37,55 +37,55 @@
     <string name="txtSum_number_of_words">Number of words</string>
     <string name="txtSum_unique_words">Unique words</string>
     <string name="txtSum_number_of_stop_words">Number of stop-words</string>
-    <string name="txtSum_percent_of_dilution">Percentage of dilution</string>
+    <string name="txtSum_percent_of_dilution">Dilution</string>
     <string name="txtSum_999999" translatable="false">999999</string>
 
 
     <!-- help from summary page for popUpWindows -->
 
-        <string name="helpSum_all_symbols">
+    <string name="helpSum_all_symbols">
             <![CDATA[
             <font color=\'#ff4081\'><b>All symbols:</b></font>
             <i>The total characters number in the text, excluding the tags (if the text is taken from the Internet)</i>
             ]]>
         </string>
 
-        <string name="helpSum_woSpaces">
+    <string name="helpSum_woSpaces">
             <![CDATA[
             <font color=\'#ff4081\'><b>Without spaces:</b></font>
             <i>The total characters number in the text, excluding spaces </i>
             ]]>
         </string>
 
-         <string name="helpSum_woPunctuation_marks">
+    <string name="helpSum_woPunctuation_marks">
             <![CDATA[
             <font color=\'#ff4081\'><b>Without punctuation_marks:</b></font>
             <i>The total characters number in the text, excluding spaces and punctuation marks</i>
             ]]>
         </string>
 
-        <string name="helpSum_charsMeaningful">
+    <string name="helpSum_charsMeaningful">
             <![CDATA[
             <font color=\'#ff4081\'><b>Significant characters only:</b></font>
             <i> Number of significant characters (excluding spaces, punctuation marks and digits)</i>
             ]]>
         </string>
 
-        <string name="helpSum_number_of_words">
+    <string name="helpSum_number_of_words">
             <![CDATA[
             <font color=\'#ff4081\'><b>Number of words:</b></font>
             <i>The number of all words in the text</i>
             ]]>
         </string>
 
-        <string name="helpSum_unique_words">
+    <string name="helpSum_unique_words">
             <![CDATA[
             <font color=\'#ff4081\'><b>Unique words: </b></font>
             <i>The number of unique (non-repeating) words in the text</i>
             ]]>
         </string>
 
-        <string name="helpSum_number_of_stop_words">
+    <string name="helpSum_number_of_stop_words">
             <![CDATA[
             <font color=\'#ff4081\'><b>Number of stop-words: </b></font>
             <i>The number of stop-words in the text.<br>
@@ -96,7 +96,7 @@
         </string>
 
 
-         <string name="helpSum_percent_of_dilution" formatted="false">
+    <string name="helpSum_percent_of_dilution" formatted="false">
                 <![CDATA[
                 <b>Percentage of dilution: </b>
                 <i>Determination of percentage of water content in the text.<br>
@@ -106,6 +106,29 @@
             <font color=\'#ffbb33\'><b>up to 15%</b></font> - the content of the natural "water" in the text;<br>
             <font color=\'#99cc00\'><b>from 15% to 30% </b></font> - an excess of "water" in the text;<br>
             <font color=\'#ff4444\'><b>greater than 30% </b></font> - high content of "water" in the text.</i>
+                ]]>
+         </string>
+
+    <string name="helpSum_academicNausea" formatted="false">
+                <![CDATA[
+                <b>Academic nausea </b>
+                <i>
+                    depends on the number of repetitions of the most frequent keyword and the total number of words
+                    in the text. <br>
+                    That is, the more often this keyword will be repeated in the text, the more academic
+                    nausea will be. If the "Text Analyzer" shows a nausea greater than 8%, it is recommended to reduce
+                    it using synonyms, otherwise the key relevance will decrease<br>
+                </i>
+                ]]>
+         </string>
+
+    <string name="helpSum_classicNausea" formatted="false">
+                <![CDATA[
+                <b>Classic nausea </b>
+                <i>depends on the number of repetitions of the most frequent word (including stop-words),
+                but the amount of text does not matter. Optimal to maintain the coefficient of classical nausea
+                in the value of not more than 7. A larger value of this parameter will cause spam pollution in the text
+                 and will reduce the ranking by search engines.</i>
                 ]]>
          </string>
 

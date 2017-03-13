@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +54,17 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
     private static List<Map.Entry<String, Integer>> wordsList;
     private static List<Map.Entry<String, Integer>> sortedStopWordsList;
     private static List<Map.Entry<String, Integer>> sortedSemanticCoreList;
+
+    private static double academicNauseaD;
+    private static double classicNauseaD;
+
+    public static double getAcademicNauseaD() {
+        return academicNauseaD;
+    }
+
+    public static double getClassicNauseaD() {
+        return classicNauseaD;
+    }
 
     public static LinkedHashMap<String, Integer> getSummaryMap() {
         return summaryMap;
@@ -129,6 +139,8 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
         TextView txtVw_uniqueWords = (TextView) rootView.findViewById(R.id.txtVw_uniqueWords);
         TextView txtVw_stopWords = (TextView) rootView.findViewById(R.id.txtVw_stopWords);
         TextView txtVw_dilution = (TextView) rootView.findViewById(R.id.txtVw_dilution);
+        TextView txtVw_academicNausea = (TextView) rootView.findViewById(R.id.txtVw_academicNausea);
+        TextView txtVw_classicNausea = (TextView) rootView.findViewById(R.id.txtVw_classicNausea);
 
         if (txtVw_charsNumber != null) {
             txtVw_charsNumber.setOnClickListener(this);
@@ -154,6 +166,13 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
         if (txtVw_dilution != null) {
             txtVw_dilution.setOnClickListener(this);
         }
+        if (txtVw_academicNausea != null) {
+            txtVw_academicNausea.setOnClickListener(this);
+        }
+        if (txtVw_classicNausea != null) {
+            txtVw_classicNausea.setOnClickListener(this);
+        }
+
 
 
         ArrayList<String> stopWordsAllLang = getStopWordsFromArraysXML();
@@ -290,9 +309,8 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
         String uniqueWords = String.valueOf(map.get(getString(R.string.txtSum_unique_words)));
         String stopWords = String.valueOf(map.get(getString(R.string.txtSum_number_of_stop_words)));
         String dilution = String.valueOf(map.get(getString(R.string.txtSum_percent_of_dilution)));
-        double academicNauseaD = calculateAcademicNausea(map.get(getString(R.string.txtSum_number_of_words)));
-
-        double classicNauseaD = calculateClassicNausea();
+        academicNauseaD = calculateAcademicNausea(map.get(getString(R.string.txtSum_number_of_words)));
+        classicNauseaD = calculateClassicNausea();
 
 
         //get id
@@ -347,9 +365,9 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
             else {
                 double res = (double) mostPopularKeyWordNumber / (double) allWords * 100;
 
-                Log.d("NAUS ", String.valueOf((double) allWords));
-                Log.d("NAUS ", String.valueOf((double) mostPopularKeyWordNumber));
-                Log.d("NAUS ", String.valueOf(res));
+               // Log.d("NAUS ", String.valueOf((double) allWords));
+               // Log.d("NAUS ", String.valueOf((double) mostPopularKeyWordNumber));
+               // Log.d("NAUS ", String.valueOf(res));
                 return res;
             }
         } else return -1;
@@ -388,6 +406,12 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
                 break;
             case R.id.txtVw_dilution:
                 new PopUpWindow(getActivity(), getString(R.string.helpSum_percent_of_dilution)).doPopUpWindow();
+                break;
+            case R.id.txtVw_academicNausea:
+                new PopUpWindow(getActivity(), getString(R.string.helpSum_academicNausea)).doPopUpWindow();
+                break;
+            case R.id.txtVw_classicNausea:
+                new PopUpWindow(getActivity(), getString(R.string.helpSum_classicNausea)).doPopUpWindow();
                 break;
         }
 

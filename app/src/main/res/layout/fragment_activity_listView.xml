@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
+    android:orientation="vertical">
 
 
 
@@ -37,7 +36,7 @@
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.6"
             android:gravity="center|left"
             android:minHeight="?android:listPreferredItemHeightSmall"
             android:paddingLeft="16dp"
@@ -61,9 +60,6 @@
         android:fadeScrollbars="false"
         android:scrollbarThumbVertical="@color/colorAccent"
         android:scrollbarSize="1dp"
-        android:layout_marginEnd="8dp"
-
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="64dp"/>
 
 

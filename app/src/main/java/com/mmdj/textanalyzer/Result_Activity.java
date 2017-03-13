@@ -17,9 +17,12 @@ import com.google.android.gms.ads.AdView;
 import com.mmdj.textanalyzer.UI.PopUpWindow;
 import com.mmdj.textanalyzer.fragments.SectionsPagerAdapter;
 
+import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static com.mmdj.textanalyzer.fragments.PlaceholderFragment.getAcademicNauseaD;
+import static com.mmdj.textanalyzer.fragments.PlaceholderFragment.getClassicNauseaD;
 import static com.mmdj.textanalyzer.fragments.PlaceholderFragment.getSummaryMap;
 
 public class Result_Activity extends AppCompatActivity {
@@ -76,7 +79,7 @@ public class Result_Activity extends AppCompatActivity {
             textInString = savedInstanceState.getString("text");
 
         } else textInString = intent.getStringExtra("textInString");
-        Log.d(GET_TAG,"textInString: "+textInString);
+        Log.d(GET_TAG, "textInString: " + textInString);
     }
 
     @Override
@@ -153,6 +156,8 @@ public class Result_Activity extends AppCompatActivity {
 
     private StringBuilder fillMailBody() {
         StringBuilder body = new StringBuilder();
+        String classicNausea = new DecimalFormat("##.##").format(getClassicNauseaD());
+        String academicNausea = String.format("%s%%", new DecimalFormat("##.##").format(getAcademicNauseaD()));
         body.append(getString(R.string.mail_summary));
         LinkedHashMap<String, Integer> summary = getSummaryMap();
 
@@ -163,6 +168,18 @@ public class Result_Activity extends AppCompatActivity {
                     .append(entry.getValue())
                     .append("</div>");
         }
+        body = body.append("<div>")
+                .append(getString(R.string.txtVw_classic_nausea))
+                .append(": ")
+                .append(classicNausea)
+                .append("</div>");
+
+        body = body.append("<div>")
+                .append(getString(R.string.txtVw_academic_nausea))
+                .append(": ")
+                .append(academicNausea)
+                .append("</div>");
+        body = body.append("______________________");
         body = body.append(getString(R.string.mail_footer));
         Log.d(GET_TAG, "bodyHTML: " + body);
         return body;

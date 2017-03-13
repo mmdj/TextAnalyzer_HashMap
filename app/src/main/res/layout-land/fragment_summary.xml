@@ -19,16 +19,23 @@
         android:textStyle="bold"/>
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="outsideOverlay"
+        android:fadeScrollbars="false"
+        android:scrollbarThumbVertical="@color/colorAccent"
+        android:scrollbarSize="1dp"
+        android:layout_marginBottom="64dp"
         >
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
             >
 
             <LinearLayout
@@ -153,7 +160,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_weight="0.35"
                 android:gravity="center|left"
                 android:minHeight="?android:listPreferredItemHeight"
                 android:orientation="vertical"
