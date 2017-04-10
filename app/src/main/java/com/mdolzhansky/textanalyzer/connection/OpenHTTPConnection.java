@@ -1,12 +1,12 @@
-package com.mmdj.textanalyzer.connection;
+package com.mdolzhansky.textanalyzer.connection;
 
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
-import com.mmdj.textanalyzer.MainActivity;
-import com.mmdj.textanalyzer.R;
+import com.mdolzhansky.textanalyzer.MainActivity;
+import com.mdolzhansky.textanalyzer.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -73,19 +73,21 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
         try {
             //checking why doesn't work
             if(s.equals("")) {
                 String command = "ping -c 1 google.com";
                 if(!(Runtime.getRuntime().exec (command).waitFor() == 0)){
                     activity.doToast(activity.getString(R.string.ConnectionError));
+
                 }else {
                     activity.doToast(activity.getString(R.string.AddressIsWrong));
                 }
                 return;
             }
             //hide progress bar
-            progressBar.setVisibility(ProgressBar.INVISIBLE);
+
             //set text to editText from internet
             editTextInput.setText(s);
 

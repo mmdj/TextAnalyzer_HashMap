@@ -1,4 +1,4 @@
-package com.mmdj.textanalyzer;
+package com.mdolzhansky.textanalyzer;
 
 import android.app.AlertDialog;
 import android.content.ClipData;
@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.mmdj.textanalyzer.connection.OpenHTTPConnection;
+import com.mdolzhansky.textanalyzer.connection.OpenHTTPConnection;
 
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
 
@@ -30,26 +30,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public final String LOG_TAG = "analyzer";
     private EditText editTextInput;
     private EditText editTextURLInput;
-
+   // private FirebaseAnalytics mFirebaseAnalytics;
 
     // ListView LstVw_Result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        editTextURLInput = (EditText) findViewById(R.id.edtTxt_URL_Input);
-        editTextInput = (EditText) findViewById(R.id.edtTxt_input);
-        ImageButton btnGetURL = (ImageButton) findViewById(R.id.btn_getURL);
-        Button btnAnalyze = (Button) findViewById(R.id.btn_analyze);
-        Button btnReset = (Button) findViewById(R.id.btn_reset);
+        setContentView(com.mdolzhansky.textanalyzer.R.layout.activity_main);
+        // Obtain the FirebaseAnalytics instance.
+     //   mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        editTextURLInput = (EditText) findViewById(com.mdolzhansky.textanalyzer.R.id.edtTxt_URL_Input);
+        editTextInput = (EditText) findViewById(com.mdolzhansky.textanalyzer.R.id.edtTxt_input);
+        ImageButton btnGetURL = (ImageButton) findViewById(com.mdolzhansky.textanalyzer.R.id.btn_getURL);
+        Button btnAnalyze = (Button) findViewById(com.mdolzhansky.textanalyzer.R.id.btn_analyze);
+        Button btnReset = (Button) findViewById(com.mdolzhansky.textanalyzer.R.id.btn_reset);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.insertText_fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(com.mdolzhansky.textanalyzer.R.id.insertText_fab);
         if (fab != null) {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //sending email:
+
                     String textToPaste = null;
 
                     ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -72,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (editTextURLInput.hasFocus()) {
                         editTextURLInput.setText(textToPaste);
                     } else editTextInput.setText(textToPaste);
-                     showHideKeyboard();
+                    // showHideKeyboard();
 
                 }
 
@@ -94,12 +97,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
-        alertDialogBuilder.setTitle(R.string.dialogExit);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, com.mdolzhansky.textanalyzer.R.style.AlertDialogCustom);
+        alertDialogBuilder.setTitle(com.mdolzhansky.textanalyzer.R.string.dialogExit);
         alertDialogBuilder
-                .setMessage(R.string.dialogExit_touch)
+                .setMessage(com.mdolzhansky.textanalyzer.R.string.dialogExit_touch)
                 .setCancelable(false)
-                .setPositiveButton(R.string.dialogExit_yes,
+                .setPositiveButton(com.mdolzhansky.textanalyzer.R.string.dialogExit_yes,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 moveTaskToBack(true);
@@ -108,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         })
 
-                .setNegativeButton(R.string.dialogExit_No, new DialogInterface.OnClickListener() {
+                .setNegativeButton(com.mdolzhansky.textanalyzer.R.string.dialogExit_No, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                         dialog.cancel();
@@ -125,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(com.mdolzhansky.textanalyzer.R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -168,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if (textInString == null || textInString.isEmpty()) {                      //checking text
-            doToast(getString(R.string.CheckText4Analyze));
+            doToast(getString(com.mdolzhansky.textanalyzer.R.string.CheckText4Analyze));
             return;
         }
 
@@ -185,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void get_address() {
         OpenHTTPConnection httpConnection;
         if (editTextURLInput.getText().toString().equals("")) {
-            doToast(getString(R.string.CheckAddress));
+            doToast(getString(com.mdolzhansky.textanalyzer.R.string.CheckAddress));
         } else {
             String strURL = editTextURLInput.getText().toString();
 
@@ -207,10 +210,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void resetText() {
-        showHideKeyboard();
+        //showHideKeyboard();
 
-        editTextInput.setText(R.string.forReset);
-        editTextURLInput.setText(R.string.http2TextURLInput);
+        editTextInput.setText(com.mdolzhansky.textanalyzer.R.string.forReset);
+        editTextURLInput.setText(com.mdolzhansky.textanalyzer.R.string.http2TextURLInput);
     }
 
     /*********

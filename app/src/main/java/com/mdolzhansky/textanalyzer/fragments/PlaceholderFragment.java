@@ -1,4 +1,4 @@
-package com.mmdj.textanalyzer.fragments;
+package com.mdolzhansky.textanalyzer.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mmdj.textanalyzer.R;
-import com.mmdj.textanalyzer.Result_Activity;
-import com.mmdj.textanalyzer.UI.PopUpWindow;
+import com.mdolzhansky.textanalyzer.Result_Activity;
+import com.mdolzhansky.textanalyzer.R;
+import com.mdolzhansky.textanalyzer.UI.PopUpWindow;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -26,12 +26,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.mmdj.textanalyzer.R.id.lstVw_result;
-import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.countAndSort;
-import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.elementaryCounts;
-import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.getSemanticCoreList;
-import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.getSortedStopWordsList;
-import static com.mmdj.textanalyzer.analisis.WordsCountAndSort.textInStringToArray;
+import static com.mdolzhansky.textanalyzer.R.id.lstVw_result;
+import static com.mdolzhansky.textanalyzer.analisis.WordsCountAndSort.countAndSort;
+import static com.mdolzhansky.textanalyzer.analisis.WordsCountAndSort.elementaryCounts;
+import static com.mdolzhansky.textanalyzer.analisis.WordsCountAndSort.getSemanticCoreList;
+import static com.mdolzhansky.textanalyzer.analisis.WordsCountAndSort.getSortedStopWordsList;
+import static com.mdolzhansky.textanalyzer.analisis.WordsCountAndSort.textInStringToArray;
 
 
 public class PlaceholderFragment extends Fragment implements View.OnClickListener {

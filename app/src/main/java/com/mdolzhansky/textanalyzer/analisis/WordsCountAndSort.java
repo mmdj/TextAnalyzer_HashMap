@@ -1,9 +1,9 @@
-package com.mmdj.textanalyzer.analisis;
+package com.mdolzhansky.textanalyzer.analisis;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.mmdj.textanalyzer.R;
+import com.mdolzhansky.textanalyzer.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

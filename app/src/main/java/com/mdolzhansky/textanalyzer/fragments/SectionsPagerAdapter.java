@@ -1,11 +1,11 @@
-package com.mmdj.textanalyzer.fragments;
+package com.mdolzhansky.textanalyzer.fragments;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.mmdj.textanalyzer.R;
+import com.mdolzhansky.textanalyzer.R;
 
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {

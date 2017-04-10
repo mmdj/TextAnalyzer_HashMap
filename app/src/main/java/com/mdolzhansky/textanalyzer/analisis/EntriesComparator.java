@@ -1,4 +1,4 @@
-package com.mmdj.textanalyzer.analisis;
+package com.mdolzhansky.textanalyzer.analisis;
 
 import java.util.Map;
 

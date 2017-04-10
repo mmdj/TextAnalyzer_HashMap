@@ -1,4 +1,4 @@
-package com.mmdj.textanalyzer.UI;
+package com.mdolzhansky.textanalyzer.UI;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.mmdj.textanalyzer.R;
+import com.mdolzhansky.textanalyzer.R;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 

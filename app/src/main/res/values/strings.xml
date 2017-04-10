@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Text Analyzer for SEO copywriting</string>
+    <string name="app_name">Text Analyzer for SEO</string>
     <string name="btn_analyze">Analyze</string>
     <string name="spaceForDividingWords" translatable="false">" "</string>
     <string name="EditText_Input_Hint"><font size="15">...or paste your text here</font></string>

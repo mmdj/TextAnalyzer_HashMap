@@ -1,4 +1,4 @@
-package com.mmdj.textanalyzer;
+package com.mdolzhansky.textanalyzer;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -14,16 +14,16 @@ import android.view.MenuItem;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.mmdj.textanalyzer.UI.PopUpWindow;
-import com.mmdj.textanalyzer.fragments.SectionsPagerAdapter;
+import com.mdolzhansky.textanalyzer.UI.PopUpWindow;
+import com.mdolzhansky.textanalyzer.fragments.SectionsPagerAdapter;
 
 import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.mmdj.textanalyzer.fragments.PlaceholderFragment.getAcademicNauseaD;
-import static com.mmdj.textanalyzer.fragments.PlaceholderFragment.getClassicNauseaD;
-import static com.mmdj.textanalyzer.fragments.PlaceholderFragment.getSummaryMap;
+import static com.mdolzhansky.textanalyzer.fragments.PlaceholderFragment.getAcademicNauseaD;
+import static com.mdolzhansky.textanalyzer.fragments.PlaceholderFragment.getClassicNauseaD;
+import static com.mdolzhansky.textanalyzer.fragments.PlaceholderFragment.getSummaryMap;
 
 public class Result_Activity extends AppCompatActivity {
 
@@ -39,22 +39,22 @@ public class Result_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tabbed);
+        setContentView(com.mdolzhansky.textanalyzer.R.layout.activity_tabbed);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(com.mdolzhansky.textanalyzer.R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //give context to  SectionsPagerAapter
         SectionsPagerAdapter mSectionsPagerAdapter =
                 new SectionsPagerAdapter(getSupportFragmentManager(), this);
 
-        ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
+        ViewPager mViewPager = (ViewPager) findViewById(com.mdolzhansky.textanalyzer.R.id.container);
         if (mViewPager != null) {
             mViewPager.setAdapter(mSectionsPagerAdapter);
             // mViewPager.setOffscreenPageLimit(4);
         }
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(com.mdolzhansky.textanalyzer.R.id.tabs);
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(mViewPager);
         }
@@ -63,7 +63,7 @@ public class Result_Activity extends AppCompatActivity {
          *  adMob
          */
 
-        mAdView = (AdView) findViewById(R.id.adView);
+        mAdView = (AdView) findViewById(com.mdolzhansky.textanalyzer.R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("9742E5320F93696FBE2CA5608B8ABE86")
                 .build();
@@ -113,7 +113,7 @@ public class Result_Activity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu
-        getMenuInflater().inflate(R.menu.menu_tabbed, menu);
+        getMenuInflater().inflate(com.mdolzhansky.textanalyzer.R.menu.menu_tabbed, menu);
         return true;
     }
 
@@ -122,22 +122,22 @@ public class Result_Activity extends AppCompatActivity {
         int id = item.getItemId();
         //   View viewItem = findViewById(id);
 
-        if (id == R.id.action_about) {
-            String message = getString(R.string.menuResult_about);
+        if (id == com.mdolzhansky.textanalyzer.R.id.action_about) {
+            String message = getString(com.mdolzhansky.textanalyzer.R.string.menuResult_about);
             PopUpWindow popUpWindow = new PopUpWindow(this, message);
             popUpWindow.doPopUpWindow();
             return true;
         }
 
-        if (id == R.id.action_help) {
-            String message = getString(R.string.menuResult_help);
+        if (id == com.mdolzhansky.textanalyzer.R.id.action_help) {
+            String message = getString(com.mdolzhansky.textanalyzer.R.string.menuResult_help);
 
             PopUpWindow popUpWindow = new PopUpWindow(this, message);
             popUpWindow.doPopUpWindow();
 
         }
 
-        if (id == R.id.action_email) {
+        if (id == com.mdolzhansky.textanalyzer.R.id.action_email) {
 
             //sending email:
             Intent intent = new Intent(Intent.ACTION_SENDTO);
@@ -158,7 +158,7 @@ public class Result_Activity extends AppCompatActivity {
         StringBuilder body = new StringBuilder();
         String classicNausea = new DecimalFormat("##.##").format(getClassicNauseaD());
         String academicNausea = String.format("%s%%", new DecimalFormat("##.##").format(getAcademicNauseaD()));
-        body.append(getString(R.string.mail_summary));
+        body.append(getString(com.mdolzhansky.textanalyzer.R.string.mail_summary));
         LinkedHashMap<String, Integer> summary = getSummaryMap();
 
         for (Map.Entry<String, Integer> entry : summary.entrySet()) {
@@ -169,18 +169,18 @@ public class Result_Activity extends AppCompatActivity {
                     .append("</div>");
         }
         body = body.append("<div>")
-                .append(getString(R.string.txtVw_classic_nausea))
+                .append(getString(com.mdolzhansky.textanalyzer.R.string.txtVw_classic_nausea))
                 .append(": ")
                 .append(classicNausea)
                 .append("</div>");
 
         body = body.append("<div>")
-                .append(getString(R.string.txtVw_academic_nausea))
+                .append(getString(com.mdolzhansky.textanalyzer.R.string.txtVw_academic_nausea))
                 .append(": ")
                 .append(academicNausea)
                 .append("</div>");
         body = body.append("______________________");
-        body = body.append(getString(R.string.mail_footer));
+        body = body.append(getString(com.mdolzhansky.textanalyzer.R.string.mail_footer));
         Log.d(GET_TAG, "bodyHTML: " + body);
         return body;
     }
