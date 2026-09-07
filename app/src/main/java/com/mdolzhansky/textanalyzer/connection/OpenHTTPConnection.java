@@ -1,9 +1,12 @@
-package com.mmdj.textanalyzer.connection;
+package com.mdolzhansky.textanalyzer.connection;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 
-import com.mmdj.textanalyzer.MainActivity;
+import com.mdolzhansky.textanalyzer.MainActivity;
+import com.mdolzhansky.textanalyzer.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +17,27 @@ import java.net.URL;
 
 public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
     private static final String CHARSET = "UTF-8";
-    private MainActivity main = new MainActivity();
+    private static final String LOG_TAG = "httpConnection";
+    // private MainActivity main = new MainActivity();
+    private ProgressBar progressBar;
+    private EditText editTextInput;
+    private MainActivity activity;
+
+    public OpenHTTPConnection(EditText editTextInput,MainActivity activity) {
+        this.editTextInput = editTextInput;
+        this.activity = activity;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        //show progress bar
+        progressBar = (ProgressBar) activity.findViewById(R.id.mainProgressBar);
+        if (progressBar != null) {
+            progressBar.setVisibility(ProgressBar.VISIBLE);
+        }
+
+    }
 
     @Override
     protected String doInBackground(String... str) {
@@ -24,38 +47,66 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
 
 
         try {
-            content = OpenHttpConnection(currentURL, CHARSET);
-            // Log.d(main.getLogTag(), "content1: done");
-            // Log.d(main.getLogTag(), "currentURL = " + currentURL);
+            content = openHttpConnection(currentURL, CHARSET);
+            // Log.d(LOG_TAG, "content1: done");
+            // Log.d(LOG_TAG, "currentURL = " + currentURL);
             if (content.toString().contains("harset")) {
                 String realCharset = getCharset(content);
+
                 if (!CHARSET.equals(realCharset)) {
-                    content = OpenHttpConnection(currentURL, realCharset);
-                    Log.d(main.getLogTag(), "Encoding HTML: " + realCharset);
+                    content = openHttpConnection(currentURL, realCharset);
+                    Log.d("analyze", "Encoding HTML: " + realCharset);
                 }
             }
             result = getContentWithoutHTML(content);
-            Log.d(main.getLogTag(), "resultWithoutHTML: " + result);
+            Log.d("analyze", "resultWithoutHTML: " + result);
 
         } catch (IOException ex) {
-            Log.d(main.getLogTag(), "IOException in HttpConnection");
+            Log.d("analyze", "IOException in HttpConnection");
         } catch (NullPointerException e) {
-            Log.d(main.getLogTag(), "NullPointerException in HttpConnection" + e);
+            Log.d("analyze", "NullPointerException in HttpConnection" + e);
         }
 
         return result;
     }
 
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
+        try {
+            //checking why doesn't work
+            if(s.equals("")) {
+                String command = "ping -c 1 google.com";
+                if(!(Runtime.getRuntime().exec (command).waitFor() == 0)){
+                    activity.doToast(activity.getString(R.string.ConnectionError));
 
-    private StringBuilder OpenHttpConnection(String strURL, String charset) throws IOException {
+                }else {
+                    activity.doToast(activity.getString(R.string.AddressIsWrong));
+                }
+                return;
+            }
+            //hide progress bar
+
+            //set text to editText from internet
+            editTextInput.setText(s);
+
+        } catch (InterruptedException e) {
+            Log.d(LOG_TAG, "InterruptedException");
+        } catch (IOException e) {
+            Log.d(LOG_TAG, "IOException");
+        }//progress bar gone
+    }
+
+    private StringBuilder openHttpConnection(String strURL, String charset) throws IOException {
 
         HttpURLConnection conn;
         InputStream inputStream;
-        StringBuilder content = new StringBuilder();//(--)
+        StringBuilder content = new StringBuilder();
 
         try {
             URL url = new URL(strURL);
-            Log.d(main.getLogTag(), "URL = " + url.toString());
+            Log.d("analyze", "URL = " + url.toString());
 
             conn = (HttpURLConnection) url.openConnection();
 
@@ -108,15 +159,15 @@ public class OpenHTTPConnection extends AsyncTask<String, Void, String> {
 
                 if (charset.equals("")) {
                     charset = charsetArray[1];
-                    // Log.d(main.getLogTag(), "charsetArrayIf[0]: " + charsetArray[0]);
-                    //Log.d(main.getLogTag(), "charsetArrayIf[1]: " + charsetArray[1]);
+                    // Log.d(GET_TAG, "charsetArrayIf[0]: " + charsetArray[0]);
+                    //Log.d(GET_TAG, "charsetArrayIf[1]: " + charsetArray[1]);
                 }
 
-                // Log.d(main.getLogTag(), "charset: " + charset);
+                // Log.d(GET_TAG, "charset: " + charset);
 
             }
         } catch (Exception e) {
-            Log.d(main.getLogTag(), "Exception: " + e);
+            Log.d("analyze", "Exception: " + e);
         }
         return charset;
     }

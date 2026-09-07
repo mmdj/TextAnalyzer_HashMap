@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".Result_Activity"
+    >
+
+
+    <item
+        android:id="@+id/action_help"
+        android:icon="@drawable/ic_help_outline_black_24dp"
+        android:orderInCategory="100"
+        android:title="@string/menu_help"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="200"
+        android:title="@string/menu_about"
+        app:showAsAction="collapseActionView"
+        android:icon="@drawable/ic_info_outline_black_24dp"/>
+
+    <item
+        android:id="@+id/action_email"
+        android:orderInCategory="300"
+        android:title="@string/menuResult_send"
+        app:showAsAction="collapseActionView"
+        android:icon="@drawable/ic_email_black_24dp"/>
+</menu>

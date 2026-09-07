@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Анализатор текста</string>
+    <string name="AddressIsWrong">Неправильный адрес</string>
+    <string name="CheckAddress">Незаполнен адрес сайта</string>
+    <string name="CheckText4Analyze">Нет текста для анализа</string>
+    <string name="ConnectionError">Ошибка интернет соединения</string>
+    <string name="EditText_Input_Hint"><font size="15">... или текст для анализа</font></string>
+    <string name="EditText_URL_Input_Hint"><font size="15">Адрес интернет страницы</font></string>
+    <string name="action_settings">Настройки</string>
+    <string name="btn_analyze">Анализ</string>
+    <string name="btn_reset">Сброс</string>
+    <string name="tab_name_statistical_data">Статистика</string>
+    <string name="txtSum_number_of_stop_words">Количество стоп-слов</string>
+    <string name="txtSum_number_of_words">Всего слов</string>
+    <string name="txtSum_percent_of_dilution">Водность</string>
+    <string name="txtSum_significant_characters_only">Значимых символов</string>
+    <string name="txtSum_unique_words">Уникальных слов</string>
+    <string name="txtSum_without_punctuation_marks">Без знаков пунктуации</string>
+    <string name="txtSum_without_spaces">Без учета пробелов</string>
+    <string name="txtSummary_all_symbols_number">Всего символов</string>
+    <string name="menu_about">О программе</string>
+    <string name="menu_help">Помощь</string>
+    <string name="pageTitles_allWords">Все слова</string>
+    <string name="pageTitles_semanticCore">Семантическое ядро</string>
+    <string name="pageTitles_summary">Общее</string>
+    <string name="pageTitles_stopWords">Стоп-слова</string>
+    <string name="dialogExit">Выйти из Анализатора текста?</string>
+    <string name="dialogExit_No">Нет</string>
+    <string name="dialogExit_touch">Нажмите \"Да\" для выхода</string>
+    <string name="dialogExit_yes">Да</string>
+    <string name="popupWindow_help">Помощь</string>
+    <string name="menuResult_about">Анализатор текста для SEO и копирайтеров. Проверь свой текст!</string>
+
+    <string name="helpSum_all_symbols">
+        <![CDATA[
+             <font color=\'#ff4081\'><b>Всего символов:</b></font>
+             <i>Общее количество символов в проверяемом тексте
+             (если текст получен из интернета, теги не учитываются)</i>
+        ]]>
+    </string>
+
+    <string name="helpSum_charsMeaningful">
+        <![CDATA[
+        <font color=\'#ff4081\'><b>Значимые символы:</b></font>
+         <i> Количество значимых символов (исключены пробелы, знаки пунктуации и цифры)</i>
+        ]]>
+    </string>
+
+    <string name="helpSum_number_of_stop_words">
+        <![CDATA[
+         <font color=\'#ff4081\'><b>Количество стоп-слов:</b></font>
+          <b>Стоп-слова</b> - это слова, которые игнорируются поисковыми системами и не учитываются при индексации.
+          Слова и выражения типа <b>как, однажды, около, ну, короче говоря </b> и т.д.
+         сами по себе не несут никакой смысловой нагрузки, но необходимы для нормальной читаемости текста.
+         Этот показатель влияет на \"водность\" текста.
+          </i>
+        ]]>
+    </string>
+
+    <string name="helpSum_number_of_words">
+        <![CDATA[
+            <font color=\'#ff4081\'><b>Всего слов:</b></font> <i>Количество всех слов в тексте</i>
+         ]]>
+    </string>
+    <string name="helpSum_percent_of_dilution" formatted="false">
+        <![CDATA[
+            <b>Водность текста: </b>
+            <i>Этот параметр показывает процент наличия в тексте стоп-слов,
+            являющихся не значимыми и не несущими смысловой нагрузки.
+            Небольшое содержание «воды» в тексте является естественным показателем, при этом:<br>
+            <font color=\'#ffbb33\'><b>менее 15%</b></font> - очень маленькое содержание "воды", характерно для документов, читаемость таких текстов затруднена;<br>
+            <font color=\'#99cc00\'><b>от 15% до 30% </b></font> - оптимальный для SEO процент водности;<br>
+            <font color=\'#ff4444\'><b>более 30% </b></font> - высокое содержание воды в тексте, характерное для художественных текстов</i>
+        ]]>
+        </string>
+
+    <string name="helpSum_academicNausea" formatted="false">
+                <![CDATA[
+                <b>Академическая тошнота </b>
+                <i>
+                    зависит от числа повторений самого популярного ключевого слова и от общего
+                    количества слов в тексте. То есть, чем чаще это ключевое слово  будет повторяться в тексте,
+                    тем больше будет академическая тошнота. Если \"Анализатор текста\" показывает тошноту
+                    больше 8%, рекомендуется ее снизить, используя синонимы, иначе релевантность по ключу уменьшится.<br>
+                </i>
+                ]]>
+         </string>
+
+    <string name="helpSum_classicNausea" formatted="false">
+                <![CDATA[
+                <b>Классическая тошнота </b>
+                <i>зависит от количества повторений самого частого слова (в том числе стоп-слова),
+                при этом объем текста значения не имеет. Оптимально удерживать коэффициент классической тошноты
+                в значении не более 7. Большее значение этого параметра  вызовет заспамленность текста и уменьшит
+                ранжирование поисковыми системами.</i>
+                ]]>
+         </string>
+
+
+     <string name="helpSum_unique_words">
+                <![CDATA[
+                <font color=\'#ff4081\'><b>Уникальные слова: </b></font>
+                <i>Количество уникальных (без повторов) слов в тексте</i>
+                ]]>
+     </string>
+
+     <string name="helpSum_woSpaces">
+            <![CDATA[
+            <font color=\'#ff4081\'><b>Без учета пробелов:</b></font>
+            <i>Общее количество символов в тексте без пробелов </i>
+            ]]>
+        </string>
+
+         <string name="helpSum_woPunctuation_marks">
+            <![CDATA[
+            <font color=\'#ff4081\'><b>Без знаков пунктуации:</b></font>
+            <i>Общее количество символов в проекте без пробелов и пунктуационных знаков</i>
+            ]]>
+        </string>
+
+    <string name="menuResult_help">
+       <![CDATA[
+               С помощью специального алгоритма это приложение анализирует текст и выводит результаты в удобной для понимания форме -
+               в виде четырех вкладок, логически разделяя содержимое экрана по смыслу:<br>
+                <i>
+                <font color=\'#ff4081\'><b>Общее</b></font> - статистические данные по различным показателям.<br>
+                <font color=\'#ff4081\'><b>Все слова</b></font> - все слова из текста, расположенные по убыванию их встречаемости.<br>
+                <font color=\'#ff4081\'><b>Семантическое ядро</b></font> - список ключевых слов (слова, которые встречаются в тексте более одного раза и при этом не являются стоп-словами).<br>
+                <font color=\'#ff4081\'><b>Стоп-слова</b></font> - список стоп-слов, отсортированных по убыванию их встречаемости.<br>
+                <font color=\'#ff4081\'><b>Стоп-слова в тексте</b></font> - Эти же стоп-слова внутри текста, выделенные цветом для улучшения восприятия.<br>
+                </i>
+                ]]>
+    </string>
+
+    <string name="mail_summary"><![CDATA[<HTML><BODY><h3>Результаты анализа текста:</h3></br>]]></string>
+    <string name="mail_footer">
+        <![CDATA[
+        <h6>Это письмо было создано мобильным приложением "Анализатор текста для SEO и копирайтеров"</h6></BODY></HTML>
+        ]]></string>
+    <string name="listHeader_amount">Количество</string>
+    <string name="listHeader_word">Слово</string>
+    <string name="menuResult_send">Отправить результаты</string>
+    <string name="pageTitles_textWithStopWords">Стоп-слова в тексте</string>
+    <string name="txtVw_academic_nausea">Академическая тошнота</string>
+    <string name="txtVw_classic_nausea">Классическая тошнота</string>
+
+</resources>
