@@ -6,10 +6,12 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.window.OnBackInvokedDispatcher;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,18 +38,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.mdolzhansky.textanalyzer.R.layout.activity_main);
+
+        // Predictive back gesture (Android 13+) bypasses onBackPressed();
+        // register the platform callback directly, no AndroidX needed.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+                    OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+                    this::showExitConfirmationDialog);
+        }
+
+        setContentView(R.layout.activity_main);
         // Obtain the FirebaseAnalytics instance.
      //   mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        editTextURLInput = (EditText) findViewById(com.mdolzhansky.textanalyzer.R.id.edtTxt_URL_Input);
-        editTextInput = (EditText) findViewById(com.mdolzhansky.textanalyzer.R.id.edtTxt_input);
-        ImageButton btnGetURL = (ImageButton) findViewById(com.mdolzhansky.textanalyzer.R.id.btn_getURL);
-        Button btnAnalyze = (Button) findViewById(com.mdolzhansky.textanalyzer.R.id.btn_analyze);
-        Button btnReset = (Button) findViewById(com.mdolzhansky.textanalyzer.R.id.btn_reset);
+        editTextURLInput = (EditText) findViewById(R.id.edtTxt_URL_Input);
+        editTextInput = (EditText) findViewById(R.id.edtTxt_input);
+        ImageButton btnGetURL = (ImageButton) findViewById(R.id.btn_getURL);
+        Button btnAnalyze = (Button) findViewById(R.id.btn_analyze);
+        Button btnReset = (Button) findViewById(R.id.btn_reset);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(com.mdolzhansky.textanalyzer.R.id.insertText_fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.insertText_fab);
         if (fab != null) {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -61,14 +72,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         ClipData clip = clipboard.getPrimaryClip();
 
                         // if you need text data only, use:
-                        if (clip.getDescription().hasMimeType(MIMETYPE_TEXT_PLAIN))
+                        if (clip != null && clip.getDescription().hasMimeType(MIMETYPE_TEXT_PLAIN))
                             // WARNING: The item could cantain URI that points to the text data.
                             // In this case the getText() returns null and this code fails!
                             textToPaste = clip.getItemAt(0).getText().toString();
 
                             //  Log.d(LOG_TAG, "textToPaste " + textToPaste);
                             // or you may coerce the data to the text representation:
-                        else textToPaste = clip.getItemAt(0).coerceToText(MainActivity.this).toString();
+                        else if (clip != null)
+                            textToPaste = clip.getItemAt(0).coerceToText(MainActivity.this).toString();
                     }
 
 
@@ -96,13 +108,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    @SuppressWarnings("GestureBackNavigation") // handled explicitly: OnBackInvokedCallback registered in onCreate() for API 33+
     public void onBackPressed() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, com.mdolzhansky.textanalyzer.R.style.AlertDialogCustom);
-        alertDialogBuilder.setTitle(com.mdolzhansky.textanalyzer.R.string.dialogExit);
+        // Fallback for pre-Android 13 and non-gesture back button.
+        // On API 33+ the OnBackInvokedCallback registered in onCreate() handles it instead.
+        showExitConfirmationDialog();
+    }
+
+    private void showExitConfirmationDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
+        alertDialogBuilder.setTitle(R.string.dialogExit);
         alertDialogBuilder
-                .setMessage(com.mdolzhansky.textanalyzer.R.string.dialogExit_touch)
+                .setMessage(R.string.dialogExit_touch)
                 .setCancelable(false)
-                .setPositiveButton(com.mdolzhansky.textanalyzer.R.string.dialogExit_yes,
+                .setPositiveButton(R.string.dialogExit_yes,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 moveTaskToBack(true);
@@ -111,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         })
 
-                .setNegativeButton(com.mdolzhansky.textanalyzer.R.string.dialogExit_No, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.dialogExit_No, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                         dialog.cancel();
@@ -128,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(com.mdolzhansky.textanalyzer.R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -145,18 +164,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_getURL:
-                get_address();
-                break;
-            case R.id.btn_analyze:
-                getTextFromActivity();
-                break;
-            case R.id.btn_reset:
-                resetText();
-                break;
+        int id = v.getId();
+        if (id == R.id.btn_getURL) {
+            get_address();
+        } else if (id == R.id.btn_analyze) {
+            getTextFromActivity();
+        } else if (id == R.id.btn_reset) {
+            resetText();
         }
-
     }
 
     /****************************************************************************
@@ -171,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if (textInString == null || textInString.isEmpty()) {                      //checking text
-            doToast(getString(com.mdolzhansky.textanalyzer.R.string.CheckText4Analyze));
+            doToast(getString(R.string.CheckText4Analyze));
             return;
         }
 
@@ -188,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void get_address() {
         OpenHTTPConnection httpConnection;
         if (editTextURLInput.getText().toString().equals("")) {
-            doToast(getString(com.mdolzhansky.textanalyzer.R.string.CheckAddress));
+            doToast(getString(R.string.CheckAddress));
         } else {
             String strURL = editTextURLInput.getText().toString();
 
@@ -212,8 +227,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void resetText() {
         //showHideKeyboard();
 
-        editTextInput.setText(com.mdolzhansky.textanalyzer.R.string.forReset);
-        editTextURLInput.setText(com.mdolzhansky.textanalyzer.R.string.http2TextURLInput);
+        editTextInput.setText(R.string.forReset);
+        editTextURLInput.setText(R.string.http2TextURLInput);
     }
 
     /*********

@@ -1,0 +1,24 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.mdolzhansky.textanalyzer'
+    compileSdkVersion 36
+
+    defaultConfig {
+        applicationId "com.mdolzhansky.textanalyzer"
+        minSdkVersion 23
+        targetSdkVersion 36
+        versionCode 102
+        versionName "1.02"
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.8.0'
+    implementation 'com.google.android.material:material:1.14.0'
+    implementation 'androidx.viewpager:viewpager:1.1.0'
+    implementation 'androidx.fragment:fragment:1.9.0'
+    implementation 'com.google.android.gms:play-services-ads:25.4.0'
+}

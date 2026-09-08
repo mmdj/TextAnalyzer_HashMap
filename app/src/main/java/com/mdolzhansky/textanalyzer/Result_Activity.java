@@ -3,10 +3,10 @@ package com.mdolzhansky.textanalyzer;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
@@ -14,10 +14,13 @@ import android.view.MenuItem;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.mdolzhansky.textanalyzer.UI.PopUpWindow;
 import com.mdolzhansky.textanalyzer.fragments.SectionsPagerAdapter;
 
 import java.text.DecimalFormat;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -64,10 +67,16 @@ public class Result_Activity extends AppCompatActivity {
          */
 
         mAdView = (AdView) findViewById(com.mdolzhansky.textanalyzer.R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("9742E5320F93696FBE2CA5608B8ABE86")
-                .build();
 
+        // addTestDevice() was removed from AdRequest.Builder in newer SDK versions;
+        // test devices are now configured globally via RequestConfiguration.
+        // TODO: remove this test device ID before a real release build.
+        RequestConfiguration requestConfiguration = new RequestConfiguration.Builder()
+                .setTestDeviceIds(Collections.singletonList("9742E5320F93696FBE2CA5608B8ABE86"))
+                .build();
+        MobileAds.setRequestConfiguration(requestConfiguration);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
         /**************** From getting intent till transforming data here ************/

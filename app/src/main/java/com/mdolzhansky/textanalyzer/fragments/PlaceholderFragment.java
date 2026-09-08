@@ -2,7 +2,7 @@ package com.mdolzhansky.textanalyzer.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -381,40 +381,29 @@ public class PlaceholderFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.txtVw_charsNumber:
-                new PopUpWindow(getActivity(), getString(R.string.helpSum_all_symbols)).doPopUpWindow();
-                break;
-            case R.id.txtVw_charsNumberWithoutSpaces:
-                new PopUpWindow(getActivity(), getString(R.string.helpSum_woSpaces)).doPopUpWindow();
-                break;
-            case R.id.txtVw_charsWOPunct:
-                new PopUpWindow(getActivity(), getString(R.string.helpSum_woPunctuation_marks)).doPopUpWindow();
-                break;
-            case R.id.txtVw_charsMeaningful:
-                new PopUpWindow(getActivity(),
-                        getString(R.string.helpSum_charsMeaningful)).doPopUpWindow();
-                break;
-            case R.id.txtVw_wordsNumber:
-                new PopUpWindow(getActivity(), getString(R.string.helpSum_number_of_words)).doPopUpWindow();
-                break;
-            case R.id.txtVw_uniqueWords:
-                new PopUpWindow(getActivity(), getString(R.string.helpSum_unique_words)).doPopUpWindow();
-                break;
-            case R.id.txtVw_stopWords:
-                new PopUpWindow(getActivity(), getString(R.string.helpSum_number_of_stop_words)).doPopUpWindow();
-                break;
-            case R.id.txtVw_dilution:
-                new PopUpWindow(getActivity(), getString(R.string.helpSum_percent_of_dilution)).doPopUpWindow();
-                break;
-            case R.id.txtVw_academicNausea:
-                new PopUpWindow(getActivity(), getString(R.string.helpSum_academicNausea)).doPopUpWindow();
-                break;
-            case R.id.txtVw_classicNausea:
-                new PopUpWindow(getActivity(), getString(R.string.helpSum_classicNausea)).doPopUpWindow();
-                break;
+        int id = v.getId();
+        if (id == R.id.txtVw_charsNumber) {
+            new PopUpWindow(getActivity(), getString(R.string.helpSum_all_symbols)).doPopUpWindow();
+        } else if (id == R.id.txtVw_charsNumberWithoutSpaces) {
+            new PopUpWindow(getActivity(), getString(R.string.helpSum_woSpaces)).doPopUpWindow();
+        } else if (id == R.id.txtVw_charsWOPunct) {
+            new PopUpWindow(getActivity(), getString(R.string.helpSum_woPunctuation_marks)).doPopUpWindow();
+        } else if (id == R.id.txtVw_charsMeaningful) {
+            new PopUpWindow(getActivity(),
+                    getString(R.string.helpSum_charsMeaningful)).doPopUpWindow();
+        } else if (id == R.id.txtVw_wordsNumber) {
+            new PopUpWindow(getActivity(), getString(R.string.helpSum_number_of_words)).doPopUpWindow();
+        } else if (id == R.id.txtVw_uniqueWords) {
+            new PopUpWindow(getActivity(), getString(R.string.helpSum_unique_words)).doPopUpWindow();
+        } else if (id == R.id.txtVw_stopWords) {
+            new PopUpWindow(getActivity(), getString(R.string.helpSum_number_of_stop_words)).doPopUpWindow();
+        } else if (id == R.id.txtVw_dilution) {
+            new PopUpWindow(getActivity(), getString(R.string.helpSum_percent_of_dilution)).doPopUpWindow();
+        } else if (id == R.id.txtVw_academicNausea) {
+            new PopUpWindow(getActivity(), getString(R.string.helpSum_academicNausea)).doPopUpWindow();
+        } else if (id == R.id.txtVw_classicNausea) {
+            new PopUpWindow(getActivity(), getString(R.string.helpSum_classicNausea)).doPopUpWindow();
         }
-
     }
 }
 
